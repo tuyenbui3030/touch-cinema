@@ -1,5 +1,9 @@
 const { User } = require("../models");
+const devConfig = require("../config/dev.json");
 const passport = require("passport");
+const bcrypt = require("bcryptjs");
+const randomstring = require("randomstring");
+
 const FacebookStrategy = require("passport-facebook").Strategy;
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 
@@ -9,6 +13,7 @@ const FACEBOOK_APP_SECRET = "6cb5b4954e1ec4e0f9b0daae96999971";
 const GOOGLE_CLIENT_ID =
   "582045184385-akd4t5kjp2dtdbu2jfpo7j9faoumkd8o.apps.googleusercontent.com";
 const GOOGLE_CLIENT_SECRET = "Dngx9yJPUnSV4uUo1HwinDJa";
+
 passport.use(
   new FacebookStrategy(
     {
@@ -26,14 +31,24 @@ passport.use(
       if (userItem) {
         cb(null, userItem);
       } else {
-        const newUser = await User.create({
-          facebookId: profile._json.id,
-          fullname: profile._json.name,
-          email: profile._json.email,
-          password: "hello",
-          token: accessToken,
-        });
-        cb(null, newUser);
+        try {
+          const randPass = randomstring.generate(10);
+          const password = bcrypt.hashSync(
+            randPass,
+            devConfig.authentication.saltRounds
+          );
+          const newUser = await User.create({
+            facebookId: profile._json.id,
+            fullname: profile._json.name,
+            email: profile._json.email,
+            password: password,
+            verified: true,
+            token: randomstring.generate(100),
+          });
+          cb(null, newUser);
+        } catch (error) {
+          cb(null);
+        }
       }
     }
   )
@@ -47,8 +62,6 @@ passport.use(
       callbackURL: "http://localhost:3000/signin/auth/google/secrets",
     },
     async function (accessToken, refreshToken, profile, cb) {
-      console.log("Hihi ", profile.emails[0].value);
-      console.log("nè ", profile._json);
       const userItem = await User.findOne({
         where: {
           googleId: profile._json.sub,
@@ -58,16 +71,21 @@ passport.use(
         cb(null, userItem);
       } else {
         try {
+          const randPass = randomstring.generate(10);
+          const password = bcrypt.hashSync(
+            randPass,
+            devConfig.authentication.saltRounds
+          );
           const newUserGoogle = await User.create({
             googleId: profile._json.sub,
             fullname: profile._json.name,
             email: profile._json.email,
-            password: "hello",
-            token: accessToken,
+            password: password,
+            verified: true,
+            token: randomstring.generate(100),
           });
           cb(null, newUserGoogle);
         } catch (error) {
-          console.log("Có lỗi");
           cb(null);
         }
       }
@@ -82,14 +100,14 @@ passport.deserializeUser(function (user, done) {
 });
 module.exports = {
   index: async (req, res) => {
-    res.render("signin/index");
+    const message = req.flash("error");
+    res.render("signin/index", { message });
   },
   authenticate: passport.authenticate("facebook", { scope: ["email"] }),
   authenticateRedirect: passport.authenticate("facebook", {
     successRedirect: "/",
     failureRedirect: "/signin",
-    // failureFlash: true,
-    failureFlash: "Có vẻ như thông tin này đã tồn tại trong hệ thống",
+    failureFlash: "Đăng nhập thất bại, có thể thông tin đã tồn tại",
   }),
 
   authenticateGoogle: passport.authenticate("google", {
@@ -101,5 +119,6 @@ module.exports = {
   authenticateGoogleRedirect: passport.authenticate("google", {
     successRedirect: "/",
     failureRedirect: "/signin",
+    failureFlash: "Đăng nhập thất bại, có thể thông tin đã tồn tại",
   }),
 };

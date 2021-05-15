@@ -3,12 +3,10 @@ const path = require("path");
 
 const expressLayouts = require("express-ejs-layouts");
 const cookieSession = require("cookie-session");
-const passport = require("passport");
-const FacebookStrategy = require("passport-facebook").Strategy;
-const app = express();
+const flash = require("connect-flash");
 
-app.use(passport.initialize());
-app.use(passport.session());
+const passport = require("passport");
+const app = express();
 
 //middleware Cookie Session
 app.use(
@@ -24,6 +22,9 @@ app.use(
     extended: true,
   })
 );
+app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
 // app.use("/public", express.static("public"));
 app.use("/public", express.static(path.join(__dirname, "public")));
 
