@@ -1,5 +1,9 @@
 {
   "authentication": {
     "saltRounds": 8
+  },
+  "mailer": {
+    "username": "notolistore@gmail.com",
+    "password": "gauden123"
   }
 }

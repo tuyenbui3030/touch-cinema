@@ -100,7 +100,7 @@ passport.deserializeUser(function (user, done) {
 });
 module.exports = {
   index: async (req, res) => {
-    const message = req.flash("error");
+    const message = req.flash("message");
     res.render("signin/index", { message });
   },
   authenticate: passport.authenticate("facebook", { scope: ["email"] }),

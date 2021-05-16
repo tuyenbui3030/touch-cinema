@@ -1,36 +1,51 @@
 <div class="container">
   <div class="row">
     <div class="col-md-4 col-md-offset-4 login-margin-dev">
-      <form action="/signup" method="post">
+      <form action="/signup" method="post" id="registration">
         <div class="st_pop_form_heading_wrapper float_left">
           <h3>Đăng Ký</h3>
         </div>
+        <p style="color: #ff4444"><%= message[0] %></p>
         <div class="st_profile_input float_left">
           <label>Họ tên</label>
-          <input type="text">
+          <input name="fullname" id="fullname" type="text" required>
         </div>
         <div class="st_profile_input float_left">
           <label>Email</label>
-          <input type="text">
+          <input name="email" id="email" type="email" required>
         </div>
         <div class="st_profile_input float_left">
           <label>Số điện thoại</label>
-          <input type="text">
+          <input name="phone" id="phone" type="text" minlength="10" required>
         </div>
         <div class="st_profile_input">
           <label>Mật khẩu</label>
-          <input type="password">
+          <input name="password" id="password" type="password" minlength="4" required>
         </div>
-        <div class="st_form_pop_login_btn float_left">	<a href="page-1-7_profile_settings.html">ĐĂNG NHẬP</a>
+        <div class="st_form_pop_login_btn float_left">
+          <!-- <a href="page-1-7_profile_settings.html">ĐĂNG KÝ</a> -->
+          <button id="submit-signup" type="submit">ĐĂNG KÝ</button>
         </div>
         <div class="st_form_pop_or_btn float_left">
           <h4>or</h4>
         </div>
-        <div class="st_form_pop_facebook_btn float_left">	<a href="#"><i class="fa fa-facebook"></i>Đăng nhập bằng Facebook</a>
+        <div class="st_form_pop_facebook_btn float_left">
+          <a href="#">
+            <i class="fa fa-facebook"></i>Đăng nhập bằng Facebook
+          </a>
         </div>
-        <div class="st_form_pop_gmail_btn float_left">	<a href="#"><i class="fa fa-google"></i>Đăng nhập bằng Google</a>
+        <div class="st_form_pop_gmail_btn float_left">
+          <a href="#">
+            <i class="fa fa-google"></i>Đăng nhập bằng Google
+          </a>
         </div>
       </form>       
     </div>  
   </div>
 </div>
+<script>
+  $("#registration").on("submit", function() {
+    $("#preloader").css('display', 'block');
+    $("#status").css('display', 'block');
+  });
+</script>
