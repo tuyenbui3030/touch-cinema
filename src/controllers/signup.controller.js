@@ -68,11 +68,11 @@ module.exports = {
       },
       {
         where: {
-          id: req.query.token,
+          token: req.query.token,
         },
       }
     );
-    if (result[0] === 0) throw new Error("Bùm chiuuuuu");
+    if (result[0] === 0) throw new Error("Bùm chiuuuuu chiu bùm chiuuu");
     res.render("signup/verify");
   },
 };

@@ -8,11 +8,11 @@
         <p style="color: #ff4444"><%= message[0] %></p>
         <div class="st_profile_input float_left">
           <label>Email</label>
-          <input name="email" type="email">
+          <input name="email" type="email" required>
         </div>
         <div class="st_profile_input st_profile__pass_input st_profile__pass_input_pop float_left">
           <label>Mật khẩu</label>
-          <input name="password" type="password">
+          <input name="password" type="password" required>
         </div>
         <div class="st_form_pop_fp float_left">
           <h3><a href="#" data-toggle="modal" data-target="#myModa2" target="_blank">Quên mật khẩu?</a></h3>
@@ -37,3 +37,9 @@
     </div>  
   </div>
 </div>
+<script>
+  $("#singin").on("submit", function() {
+    $("#preloader").css('display', 'block');
+    $("#status").css('display', 'block');
+  });
+</script>
