@@ -2,10 +2,13 @@ const { User } = require("../models");
 const devConfig = require("../config/dev.json");
 const passport = require("passport");
 const bcrypt = require("bcryptjs");
+const initializePassport = require("../utils/passport-config");
+
 const randomstring = require("randomstring");
 
 const FacebookStrategy = require("passport-facebook").Strategy;
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
+const LocalStrategy = require("passport-local").Strategy;
 
 const FACEBOOK_APP_ID = "457573742207792";
 const FACEBOOK_APP_SECRET = "6cb5b4954e1ec4e0f9b0daae96999971";
@@ -92,15 +95,51 @@ passport.use(
     }
   )
 );
+const initPassportLocal = () => {
+  passport.use(
+    new LocalStrategy(
+      {
+        usernameField: "email",
+        passwordField: "password",
+        passReqToCallback: true,
+      },
+      async (req, email, password, done) => {
+        try {
+          const user = await User.findOne({
+            where: {
+              email: email,
+              verified: true,
+            },
+          });
+          if (user === null) {
+            return done(null, false);
+          }
+          const checkPassword = bcrypt.compareSync(password, user.password);
+          if (checkPassword) {
+            return done(null, user);
+          } else {
+            return done(null, false);
+          }
+        } catch (error) {
+          done(null);
+        }
+      }
+    )
+  );
+};
+
 passport.serializeUser(function (user, done) {
   done(null, user);
 });
 passport.deserializeUser(function (user, done) {
   done(null, user);
 });
+
+initPassportLocal();
+
 module.exports = {
   index: async (req, res) => {
-    const message = req.flash("message");
+    const message = req.flash("error");
     res.render("signin/index", { message });
   },
   authenticate: passport.authenticate("facebook", { scope: ["email"] }),
@@ -120,5 +159,10 @@ module.exports = {
     successRedirect: "/",
     failureRedirect: "/signin",
     failureFlash: "Đăng nhập thất bại, có thể thông tin đã tồn tại",
+  }),
+  submitSignin: passport.authenticate("local", {
+    successRedirect: "/",
+    failureRedirect: "/signin",
+    failureFlash: "Mật khẩu hoặc Email không chính xác",
   }),
 };

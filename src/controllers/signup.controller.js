@@ -5,9 +5,10 @@ const bcrypt = require("bcryptjs");
 const devConfig = require("../config/dev.json");
 const randomstring = require("randomstring");
 const transporter = require("../utils/transport");
+
 module.exports = {
   index: async (req, res) => {
-    res.render("signup/index", { message: req.flash("message") });
+    res.render("signup/index", { message: req.flash("error") });
   },
   submit: async (req, res) => {
     const domain = req.protocol + "://" + req.get("host");
@@ -51,12 +52,27 @@ module.exports = {
         .then(console.log)
         .catch(console.error);
 
-      req.flash("message", "Đăng ký thành công, vui lòng xác thực email");
+      req.flash("error", "Đăng ký thành công, vui lòng xác thực email");
       res.redirect("/signin");
     } catch (err) {
       console.log(err);
-      req.flash("message", err);
+      req.flash("error", err);
       res.redirect("/signup");
     }
+  },
+  verify: async (req, res) => {
+    const result = await User.update(
+      {
+        verified: true,
+        token: randomstring.generate(100),
+      },
+      {
+        where: {
+          id: req.query.token,
+        },
+      }
+    );
+    if (result[0] === 0) throw new Error("Bùm chiuuuuu");
+    res.render("signup/verify");
   },
 };
