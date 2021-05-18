@@ -42,6 +42,10 @@ app.use("/detail", require("./routes/detail.route"));
 app.use("/booking", require("./routes/booking.route"));
 app.use("/signin", require("./routes/signin.route"));
 app.use("/signup", require("./routes/signup.route"));
+app.post("/signout", (req, res) => {
+  req.logOut();
+  res.redirect("/signin");
+});
 
 app.use(function (req, res) {
   res.render("404");

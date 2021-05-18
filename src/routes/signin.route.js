@@ -1,17 +1,27 @@
 const express = require("express");
 
+const restrict = require("../middlewares/notAuth");
+
 const signinController = require("../controllers/signin.controller");
 
 const router = express.Router();
 
-router.get("/", signinController.index);
+router.get("/", restrict, signinController.index);
 
-router.post("/", signinController.singinLocal);
+router.post("/", restrict, signinController.singinLocal);
 
-router.get("/auth/facebook", signinController.authenticate);
-router.get("/auth/facebook/secrets", signinController.authenticateRedirect);
+router.get("/auth/facebook", restrict, signinController.authenticate);
+router.get(
+  "/auth/facebook/secrets",
+  restrict,
+  signinController.authenticateRedirect
+);
 
-router.get("/auth/google", signinController.authenticateGoogle);
-router.get("/auth/google/secrets", signinController.authenticateGoogleRedirect);
+router.get("/auth/google", restrict, signinController.authenticateGoogle);
+router.get(
+  "/auth/google/secrets",
+  restrict,
+  signinController.authenticateGoogleRedirect
+);
 
 module.exports = router;
