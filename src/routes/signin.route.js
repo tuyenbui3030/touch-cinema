@@ -10,6 +10,11 @@ router.get("/", restrict, signinController.index);
 
 router.post("/", restrict, signinController.singinLocal);
 
+router.get("/forgot", restrict, signinController.forgotIndex);
+router.post("/forgot", restrict, signinController.forgotSubmit);
+router.get("/change", restrict, signinController.changeIndex);
+router.post("/change", restrict, signinController.changeSubmit);
+
 router.get("/auth/facebook", restrict, signinController.authenticate);
 router.get(
   "/auth/facebook/secrets",
