@@ -6,16 +6,26 @@ const randomstring = require("randomstring");
 
 const FacebookStrategy = require("passport-facebook").Strategy;
 
-const FACEBOOK_APP_ID = "457573742207792";
-const FACEBOOK_APP_SECRET = "6cb5b4954e1ec4e0f9b0daae96999971";
+const FACEBOOK_APP_ID = process.env.FACEBOOK_APP_ID || "457573742207792";
+const FACEBOOK_APP_SECRET =
+  process.env.FACEBOOK_APP_SECRET || "6cb5b4954e1ec4e0f9b0daae96999971";
 
+const FACEBOOK_CALLBACK_URL =
+  process.env.FACEBOOK_CALLBACK_URL ||
+  "http://localhost:3000/signin/auth/facebook/secrets";
+
+// clientID: "1247804085639244",
+// clientSecret: "0e181ca279eff8b5021fcc60261a4dd7",
+// callbackURL:
+//   "https://touch-cinema.herokuapp.com/signin/auth/facebook/secrets",
+// profileFields: ["displayName", "emails"],
 const initPassportFacebook = () => {
   passport.use(
     new FacebookStrategy(
       {
         clientID: FACEBOOK_APP_ID,
         clientSecret: FACEBOOK_APP_SECRET,
-        callbackURL: "http://localhost:3000/signin/auth/facebook/secrets",
+        callbackURL: FACEBOOK_CALLBACK_URL,
         profileFields: ["displayName", "emails"],
       },
       async function (accessToken, refreshToken, profile, cb) {

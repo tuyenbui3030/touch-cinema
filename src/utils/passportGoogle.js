@@ -6,9 +6,16 @@ const randomstring = require("randomstring");
 
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 
-const GOOGLE_CLIENT_ID =
-  "582045184385-akd4t5kjp2dtdbu2jfpo7j9faoumkd8o.apps.googleusercontent.com";
-const GOOGLE_CLIENT_SECRET = "Dngx9yJPUnSV4uUo1HwinDJa";
+const GOOGLE_CLIENT_ID = [
+  process.env.GOOGLE_CLIENT_ID ||
+    "582045184385-akd4t5kjp2dtdbu2jfpo7j9faoumkd8o.apps.googleusercontent.com",
+];
+const GOOGLE_CLIENT_SECRET =
+  process.env.GOOGLE_CLIENT_SECRET || "Dngx9yJPUnSV4uUo1HwinDJa";
+
+const callbackURL =
+  process.env.GOOGLE_CALLBACK_URL ||
+  "http://localhost:3000/signin/auth/google/secrets";
 
 const initPassportGoogle = () => {
   passport.use(
@@ -16,7 +23,7 @@ const initPassportGoogle = () => {
       {
         clientID: GOOGLE_CLIENT_ID,
         clientSecret: GOOGLE_CLIENT_SECRET,
-        callbackURL: "http://localhost:3000/signin/auth/google/secrets",
+        callbackURL: callbackURL,
       },
       async function (accessToken, refreshToken, profile, cb) {
         const userItem = await User.findOne({

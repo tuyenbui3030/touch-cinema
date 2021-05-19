@@ -1,5 +1,7 @@
+const { sequelize } = require("./models");
 const express = require("express");
 require("express-async-errors");
+
 const path = require("path");
 
 const expressLayouts = require("express-ejs-layouts");
@@ -57,4 +59,6 @@ app.use(function (err, req, res, next) {
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, async () => {
   console.log(`Server is running at http://localhost:${PORT}`);
+  await sequelize.sync();
+  console.log("Database synced!");
 });
