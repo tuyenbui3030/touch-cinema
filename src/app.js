@@ -48,6 +48,7 @@ app.post("/signout", (req, res) => {
   req.logOut();
   res.redirect("/signin");
 });
+app.use("/cinema", require("./routes/cinema.route"));
 
 app.use(function (req, res) {
   res.render("404");
