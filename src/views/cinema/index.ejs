@@ -513,5 +513,57 @@
         </div>
       </div>
     </div>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <div class="prs_heading_section_wrapper">
+        <h2 style="padding-top: 30px;">Hình ảnh của <%= cinema.name %></h2>
+      </div>
+    </div>
+    <div class="portfolio-area ptb-100">
+      <div class="container">
+        <div class="row three-column">
+          <div id="gridWrapper" class="clearfix">
+            <% cinema.CinemaPhotos.forEach(function(photo) { %>
+            <div class="col-xs-12 col-sm-6 col-md-4 portfolio-wrapper III_column" data-groups='["all", "website", "logo"]'>
+              <div class="portfolio-thumb">
+                <div class="gc_filter_cont_overlay_wrapper prs_ms_scene_slider_img">
+                  <img src="/public/images/content/<%= photo.name %>" class="zoom image img-responsive" alt="service_img" />
+                  <div class="prs_ms_scene_img_overlay">	<a href="/public/images/content/<%= photo.name %>" class="venobox info" data-title="PORTFOLIO TITTLE" data-gall="gall12"><i class="flaticon-tool"></i></a>
+                  </div>
+                </div>
+              </div>
+              <!-- /.portfolio-thumb -->
+            </div>
+            <% }) %>
+          </div>
+          <!--/#gridWrapper-->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container -->
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <div class="prs_heading_section_wrapper">
+        <h2 style="padding-top: 30px;">Địa chỉ</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="row">
+          <div class="map">
+            <p style="padding: 20px 0;"><b>Địa chỉ:</b> <%= cinema.address %></p> <br>
+            <iframe
+              width="100%"
+              height="450"
+              style="border:0"
+              loading="lazy"
+              allowfullscreen
+              src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAgYGUKWYXGq-QtUZWyHNQq1CvNo5CMSss
+                &q=<%= cinema.address %>">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+  
 </div>

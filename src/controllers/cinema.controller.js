@@ -1,4 +1,4 @@
-const { Movie, Cinema } = require("../models");
+const { Movie, Cinema, CinemaPhoto } = require("../models");
 
 module.exports = {
   index: async (req, res) => {
@@ -7,12 +7,9 @@ module.exports = {
       where: {
         id: id,
       },
-      include: {
-        model: Movie,
-      },
+      include: [Movie, CinemaPhoto],
     });
     res.render("cinema/index", { cinema });
-    // res.json(cinema.Movies);
   },
   all: async (req, res) => {
     const id = req.params.id;
