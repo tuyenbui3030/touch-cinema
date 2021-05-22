@@ -91,8 +91,8 @@ module.exports = {
       {
         name: "DORAEMON 2020",
         openingDay: "2021-10-01",
-        poster: "co-gai-den-tu-hom-qua-poster.jpg",
-        trailer: "https://www.youtube.com/watch?v=NYowPGxSLzU",
+        poster: "doremon.jpg",
+        trailer: "https://www.youtube.com/watch?v=WDILZzpgTJQ",
         description:
           "Trong lúc đang tham gia hoạt động khảo cổ ở một cuộc triễn lãm khủng long, Nobita tình cờ tìm thấy một viên hóa thạch và cậu tin rằng đây là trứng khủng long. Nobita liền mượn bảo bối thần kỳ 'khăn trùm thời gian' của Doraemon để giúp viên hóa thạch trở lại thời của chúng nhưng ngay sau đó, quả trứng liền nở ra một cặp khủng long song sinh. Ngạc nhiên hơn hết, đây lại là loài khủng long mới hoàn toàn và chưa từng được phát hiện.",
         time: 210,

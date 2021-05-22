@@ -8,7 +8,7 @@ module.exports = {
     });
     const openDays = await Movie.findAll({
       order: [["openingDay", "ASC"]],
-      limit: 8,
+      limit: 4,
     });
     res.render("home/index", { movies, openDays });
   },
