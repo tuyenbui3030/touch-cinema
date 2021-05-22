@@ -7,12 +7,6 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
               <div class="prs_mcc_right_side_heading_wrapper">
                 <h2>Toàn bộ phim tại hệ thống rạp phim touch cinema</h2>
-                <ul class="nav nav-pills">
-                  <li class="active"><a data-toggle="pill" href="#grid"><i class="fa fa-th-large"></i></a>
-                  </li>
-                  <li><a data-toggle="pill" href="#list"><i class="fa fa-list"></i></a>
-                  </li>
-                </ul>
               </div>
             </div>
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -27,25 +21,23 @@
                           <div class="prs_upcom_movie_img_overlay"></div>
                           <div class="prs_upcom_movie_img_btn_wrapper">
                             <ul>
-                              <li><a href="#">View Trailer</a>
+                              <li>
+                                <a class="venobox" data-autoplay="true" data-vbtype="video" href="<%= movie.trailer %>">Xem Trailer</a>
                               </li>
-                              <li><a href="#">View Details</a>
+                              <li>
+                                <a href="#">Xem chi tiết</a>
                               </li>
                             </ul>
                           </div>
                         </div>
                         <div class="prs_upcom_movie_content_box">
                           <div class="prs_upcom_movie_content_box_inner">
-                            <h2><a href="#">Busting Car</a></h2>
-                            <p>Drama , Acation</p>	<i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-o"></i>
-                            <i class="fa fa-star-o"></i>
+                            <h2 class="ellipsis"><a href="#"><%= movie.name %></a></h2>
                           </div>
                           <div class="prs_upcom_movie_content_box_inner_icon">
                             <ul>
-                              <li><a href="movie_booking.html"><i class="flaticon-cart-of-ecommerce"></i></a>
+                              <li>
+                                <a href="#" data-toggle="modal" data-target="#modalBook" target="_blank"><i class="flaticon-cart-of-ecommerce"></i></a>
                               </li>
                             </ul>
                           </div>
@@ -73,184 +65,6 @@
                     </div>
                   </div>
                 </div>
-                <div id="list" class="tab-pane fade">
-                  <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                      <div class="prs_mcc_list_movie_main_wrapper">
-                        <div class="prs_mcc_list_movie_img_wrapper">
-                          <img src="/public/images/content/movie_category/up1.jpg" alt="categoty_img">
-                        </div>
-                        <div class="prs_mcc_list_movie_img_cont_wrapper">
-                          <div class="prs_mcc_list_left_cont_wrapper">
-                            <h2>Busting Car</h2>
-                            <p>Drama , Acation &nbsp;&nbsp;&nbsp;<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i>
-                            </p>
-                            <h4>Movie Director - Jhon Doe</h4>
-                          </div>
-                          <div class="prs_mcc_list_right_cont_wrapper">	<a href="#"><i class="flaticon-cart-of-ecommerce"></i></a>
-                          </div>
-                          <div class="prs_mcc_list_bottom_cont_wrapper">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis trud exercitation ullamco.</p>
-                            <ul>
-                              <li><a href="#">View Trailer</a>
-                              </li>
-                              <li><a href="#">View Details</a>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                      <div class="prs_mcc_list_movie_main_wrapper">
-                        <div class="prs_mcc_list_movie_img_wrapper">
-                          <img src="/public/images/content/movie_category/up2.jpg" alt="categoty_img">
-                        </div>
-                        <div class="prs_mcc_list_movie_img_cont_wrapper">
-                          <div class="prs_mcc_list_left_cont_wrapper">
-                            <h2>Busting Car</h2>
-                            <p>Drama , Acation &nbsp;&nbsp;&nbsp;<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i>
-                            </p>
-                            <h4>Movie Director - Jhon Doe</h4>
-                          </div>
-                          <div class="prs_mcc_list_right_cont_wrapper">	<a href="#"><i class="flaticon-cart-of-ecommerce"></i></a>
-                          </div>
-                          <div class="prs_mcc_list_bottom_cont_wrapper">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis trud exercitation ullamco.</p>
-                            <ul>
-                              <li><a href="#">View Trailer</a>
-                              </li>
-                              <li><a href="#">View Details</a>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                      <div class="prs_mcc_list_movie_main_wrapper">
-                        <div class="prs_mcc_list_movie_img_wrapper">
-                          <img src="/public/images/content/movie_category/up3.jpg" alt="categoty_img">
-                        </div>
-                        <div class="prs_mcc_list_movie_img_cont_wrapper">
-                          <div class="prs_mcc_list_left_cont_wrapper">
-                            <h2>Busting Car</h2>
-                            <p>Drama , Acation &nbsp;&nbsp;&nbsp;<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i>
-                            </p>
-                            <h4>Movie Director - Jhon Doe</h4>
-                          </div>
-                          <div class="prs_mcc_list_right_cont_wrapper">	<a href="#"><i class="flaticon-cart-of-ecommerce"></i></a>
-                          </div>
-                          <div class="prs_mcc_list_bottom_cont_wrapper">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis trud exercitation ullamco.</p>
-                            <ul>
-                              <li><a href="#">View Trailer</a>
-                              </li>
-                              <li><a href="#">View Details</a>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                      <div class="prs_mcc_list_movie_main_wrapper">
-                        <div class="prs_mcc_list_movie_img_wrapper">
-                          <img src="/public/images/content/movie_category/up4.jpg" alt="categoty_img">
-                        </div>
-                        <div class="prs_mcc_list_movie_img_cont_wrapper">
-                          <div class="prs_mcc_list_left_cont_wrapper">
-                            <h2>Busting Car</h2>
-                            <p>Drama , Acation &nbsp;&nbsp;&nbsp;<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i>
-                            </p>
-                            <h4>Movie Director - Jhon Doe</h4>
-                          </div>
-                          <div class="prs_mcc_list_right_cont_wrapper">	<a href="#"><i class="flaticon-cart-of-ecommerce"></i></a>
-                          </div>
-                          <div class="prs_mcc_list_bottom_cont_wrapper">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis trud exercitation ullamco.</p>
-                            <ul>
-                              <li><a href="#">View Trailer</a>
-                              </li>
-                              <li><a href="#">View Details</a>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                      <div class="prs_mcc_list_movie_main_wrapper">
-                        <div class="prs_mcc_list_movie_img_wrapper">
-                          <img src="/public/images/content/movie_category/up5.jpg" alt="categoty_img">
-                        </div>
-                        <div class="prs_mcc_list_movie_img_cont_wrapper">
-                          <div class="prs_mcc_list_left_cont_wrapper">
-                            <h2>Busting Car</h2>
-                            <p>Drama , Acation &nbsp;&nbsp;&nbsp;<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i>
-                            </p>
-                            <h4>Movie Director - Jhon Doe</h4>
-                          </div>
-                          <div class="prs_mcc_list_right_cont_wrapper">	<a href="#"><i class="flaticon-cart-of-ecommerce"></i></a>
-                          </div>
-                          <div class="prs_mcc_list_bottom_cont_wrapper">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis trud exercitation ullamco.</p>
-                            <ul>
-                              <li><a href="#">View Trailer</a>
-                              </li>
-                              <li><a href="#">View Details</a>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                      <div class="prs_mcc_list_movie_main_wrapper">
-                        <div class="prs_mcc_list_movie_img_wrapper">
-                          <img src="/public/images/content/movie_category/up6.jpg" alt="categoty_img">
-                        </div>
-                        <div class="prs_mcc_list_movie_img_cont_wrapper">
-                          <div class="prs_mcc_list_left_cont_wrapper">
-                            <h2>Busting Car</h2>
-                            <p>Drama , Acation &nbsp;&nbsp;&nbsp;<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i>
-                            </p>
-                            <h4>Movie Director - Jhon Doe</h4>
-                          </div>
-                          <div class="prs_mcc_list_right_cont_wrapper">	<a href="#"><i class="flaticon-cart-of-ecommerce"></i></a>
-                          </div>
-                          <div class="prs_mcc_list_bottom_cont_wrapper">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis trud exercitation ullamco.</p>
-                            <ul>
-                              <li><a href="#">View Trailer</a>
-                              </li>
-                              <li><a href="#">View Details</a>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                      <div class="pager_wrapper gc_blog_pagination">
-                        <ul class="pagination">
-                          <li><a href="#"><i class="flaticon-left-arrow"></i></a>
-                          </li>
-                          <li><a href="#">1</a>
-                          </li>
-                          <li><a href="#">2</a>
-                          </li>
-                          <li class="prs_third_page"><a href="#">3</a>
-                          </li>
-                          <li class="hidden-xs"><a href="#">4</a>
-                          </li>
-                          <li><a href="#"><i class="flaticon-right-arrow"></i></a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -258,7 +72,4 @@
       </div>
     </div>
   </div>
-</div>
-<div class="hs_contact_map_main_wrapper">
-  <div id="map" style="position: relative; overflow: hidden;"><div style="height: 100%; width: 100%; position: absolute; top: 0px; left: 0px; background-color: rgb(229, 227, 223);"><div class="gm-err-container"><div class="gm-err-content"><div class="gm-err-icon"><img src="https://maps.gstatic.com/mapfiles/api-3/images/icon_error.png" draggable="false" style="user-select: none;"></div><div class="gm-err-title">Oops! Something went wrong.</div><div class="gm-err-message">This page didn't load Google Maps correctly. See the JavaScript console for technical details.</div></div></div></div></div>
 </div>

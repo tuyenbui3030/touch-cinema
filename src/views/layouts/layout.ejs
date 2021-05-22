@@ -1483,6 +1483,21 @@ Author: Webstrot
 	<script src="/public/js/dev.js"></script>
 	<!--main js file end-->
 	<%- script %>
+	<script>
+		// $(".cinema-item").on("change", function() {
+		// // Does some stuff and logs the event to the console
+		//   alert($("#cinema-item").val())
+		
+		// });
+	
+		$("#cinema-item").on("change", function() {
+			const chk = $("#cinema-item").val();
+			console.log(chk)
+			if(chk === "-1") $('.form-search').get(0).setAttribute('action', '/cinema');
+			else $('.form-search').get(0).setAttribute('action', `/cinema/${chk}`);
+
+		});
+	</script>
 </body>
 
 </html>

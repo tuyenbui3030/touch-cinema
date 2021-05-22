@@ -39,6 +39,7 @@ app.set("layout", "../views/layouts/layout.ejs");
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
+require("./middlewares/locals.middleware")(app);
 app.use("/", require("./routes/home.route"));
 app.use("/detail", require("./routes/detail.route"));
 app.use("/booking", require("./routes/booking.route"));

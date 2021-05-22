@@ -23,8 +23,9 @@
             <ul class="dl-menu">
               <li class="parent"><a href="#">Hệ thống rạp</a>
                 <ul class="lg-submenu">
-                  <li><a href="#">Touch Cinema Gold</a></li>
-                  <li><a href="#">Touch Cinema Aeon</a></li>
+                  <% lcCinema.forEach(function(cinema) { %>
+                  <li><a href="/cinema/<%= cinema.id %>"><%= cinema.name %></a></li>
+                  <% }) %>
                 </ul>
               </li>
               <li><a></a></li>
@@ -51,14 +52,17 @@
       </div>
       <div class="product-heading">
         <div class="con">
-          <select>
-            <option>Tất cả cụm rạp</option>
-            <option>Touch Cinema Gold</option>
-            <option>Touch Cinema Aeon</option>
-          </select>
-          <input type="text" placeholder="Tìm phim bạn muốn xem?">
-          <button type="submit"><i class="flaticon-tool"></i>
-          </button>
+          <form action="/cinema" method="get" class="form-search">
+            <select id="cinema-item">
+              <option value="-1">Tất cả cụm rạp</option>
+              <% lcCinema.forEach(function(cinema) { %>
+              <option value="<%= cinema.id %>"><%= cinema.name %></option>
+              <% }) %>
+            </select>
+            <input type="text" name="movie" placeholder="Tìm phim bạn muốn xem?">
+            <button type="submit"><i class="flaticon-tool"></i>
+            </button>
+          </form>
         </div>
       </div>
     </div>

@@ -122,3 +122,12 @@
   font-size: 16px;
   padding-bottom: 20px;
 }
+
+.ellipsis {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.prs_upcom_movie_content_box_inner_icon {
+  padding-top: 0;
+}
