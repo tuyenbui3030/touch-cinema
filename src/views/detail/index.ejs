@@ -29,8 +29,8 @@
 							</div>
 							<div class="st_video_slide_social_right float_left">
 								<ul>
-									<li data-animation="animated fadeInUp" class=""><i class="far fa-calendar-alt"></i> 14 Dec, 2018</li>
-									<li data-animation="animated fadeInUp" class=""><i class="far fa-clock"></i> 2 hrs 23 mins</li>
+									<li data-animation="animated fadeInUp" class=""><i class="far fa-calendar-alt"></i>Ngày công chiếu <%= moment(movie.openingDay).format('L') %></li>
+									<li data-animation="animated fadeInUp" class=""><i class="far fa-clock"></i><%= movie.sold %> phút</li>
 								</ul>
 							</div>
 						</div>
@@ -46,36 +46,19 @@
 			<div class="st_slider_rating_left">
 				<div class="st_rating_box">
 					<fieldset class="rating">
-					<h3>3</h3>
-						<input type="radio" name="rating" value="5" />
-						<label class="full" title="5 stars"></label>
-						<input type="radio" name="rating" value="4 and a half" />
-						<label class="half" title="4.5 stars"></label>
-						<input type="radio" name="rating" value="4" />
-						<label class="full" title="4 stars"></label>
-						<input type="radio" name="rating" value="3 and a half" />
-						<label class="half" title="3.5 stars"></label>
-						<input type="radio" name="rating" value="3" />
-						<label class="full" title="3 stars"></label>
-						<input type="radio" name="rating" value="2 and a half" />
-						<label class="half" title="2.5 stars"></label>
-						<input type="radio" name="rating" value="2" />
-						<label class="full" title="2 stars"></label>
-						<input type="radio" name="rating" value="1 and a half" />
-						<label class="half" title="1.5 stars"></label>
-						<input type="radio" name="rating" value="1" />
-						<label class="full" title="1 star"></label>
-						<input type="radio" name="rating" value="half" />
-						<label class="half" title="0.5 stars"></label>
-												</fieldset>
-					<h4>CRITICS RATING</h4>
+						<h3>Phim: <%= movie.name %></h3>
+					</fieldset>
+					<h3><%= movie.sold %> phút</h4>
 				</div>
 			</div>
 			<div class="st_slider_rating_right">
 				<div class="st_slider_rating_btn prs_animate_btn1">
 					<ul>
-						<li data-animation="animated fadeInUp"><a href="#" class="button button--tamaya prs_upcom_main_btn" data-text="book now"><span>book now</span></a>
-										</li>
+						<li data-animation="animated fadeInUp">
+							<a href="#" class="button button--tamaya prs_upcom_main_btn" data-toggle="modal" data-target="#modalBook" data-text="Đặt vé" >
+								<span>Đặt vé</span>
+							</a>
+						</li>
 					</ul>
 				</div>
 			</div>
@@ -88,7 +71,7 @@
 			<div class="row">
 				<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
 					<div class="prs_syn_cont_wrapper">
-						<h3>Chi tiết</h3>
+						<h3>Giới thiệu</h3>
 						<h4><span>Genre -</span> Action , Reality , Drama, Raching</h4>
 						<p><%= movie.description %></p>
 					</div>

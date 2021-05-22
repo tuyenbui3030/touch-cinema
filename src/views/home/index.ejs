@@ -80,73 +80,45 @@
     <div class="row">
       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="prs_heading_section_wrapper">
-          <h2>Hôm nay xem gì?</h2>
+          <h2>TOP 8 xem nhiều nhất</h2>
         </div>
       </div>
-      <div class="st_slider_index_sidebar_main_wrapper float_left">
-        <div class="container">
-          <div class="row">
-            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-              <div class="st_indx_slider_main_container float_left">
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="row">
-                      <div class="col-md-12">
-                        <div class="ne_busness_main_slider_wrapper">
-                          <div class="ne_recent_heading_main_wrapper">
-                            <h2>Xem nhiều nhất</h2>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-12">
-                        <div class="ne_businees_slider_wrapper">
-                          <div class="owl-carousel owl-theme">
-                            <% movies.forEach(function(movie) { %>
-                            <div class="item">
-                              <div class="prs_upcom_movie_box_wrapper">
-                              <div class="prs_upcom_movie_img_box">
-                                <img src="public/images/content/<%= movie.poster %>" alt="movie_img" />
-                                <div class="prs_upcom_movie_img_overlay"></div>
-                                <div class="prs_upcom_movie_img_btn_wrapper">
-                                  <ul>
-                                    <li>
-                                      <a class="venobox" data-autoplay="true" data-vbtype="video" href="<%= movie.trailer %>">View Trailer</a>
-                                    </li>
-                                    <li><a href="#">View Details</a>
-                                    </li>
-                                  </ul>
-                                </div>
-                              </div>
-                              <div class="prs_upcom_movie_content_box">
-                                <div class="prs_upcom_movie_content_box_inner">
-                                  <h2><a href="#"><%= movie.name %></a></h2>
-                                  <p>Drama , Acation</p>
-                                </div>
-                                <div class="prs_upcom_movie_content_box_inner_icon">
-                                  <ul>
-                                    <li>
-                                      <a href="#" data-toggle="modal" data-target="#modalBook" target="_blank"><i class="flaticon-cart-of-ecommerce"></i></a>
-                                    </li>
-                                  </ul>
-                                </div>
-                              </div>
-                            </div>
-                            </div>
-                            <% }) %>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+      <% movies.forEach(function(movie) { %>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 prs_upcom_slide_first">
+          <div class="prs_upcom_movie_box_wrapper prs_mcc_movie_box_wrapper">
+            <div class="prs_upcom_movie_img_box">
+              <img src="/public/images/content/<%= movie.poster %>" alt="movie_img" />
+              <div class="prs_upcom_movie_img_overlay"></div>
+              <div class="prs_upcom_movie_img_btn_wrapper">
+                <ul>
+                  <li>
+                    <a class="venobox" data-autoplay="true" data-vbtype="video" href="<%= movie.trailer %>">Xem Trailer</a>
+                  </li>
+                  <li>
+                    <a href="/detail/<%= movie.id %>">Xem chi tiết</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="prs_upcom_movie_content_box">
+              <div class="prs_upcom_movie_content_box_inner">
+                <h2 class="ellipsis"><a href="/detail/<%= movie.id %>"><%= movie.name %></a></h2>
+              </div>
+              <div class="prs_upcom_movie_content_box_inner_icon">
+                <ul>
+                  <li>
+                    <a href="#" data-toggle="modal" data-target="#modalBook" target="_blank"><i class="flaticon-cart-of-ecommerce"></i></a>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="st_slider_index_sidebar_main_wrapper float_left">
+        <% }) %>
+      <!-- <div class="st_slider_index_sidebar_main_wrapper float_left">
         <div class="container">
           <div class="row">
+            
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
               <div class="st_indx_slider_main_container float_left">
                 <div class="row">
@@ -208,8 +180,44 @@
             </div>
           </div>
         </div>
+      </div> -->
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="prs_heading_section_wrapper">
+          <h2 style="padding-top: 40px;">Mới được công chiếu</h2>
+        </div>
       </div>
-
+      <% openDays.forEach(function(movie) { %>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 prs_upcom_slide_first">
+          <div class="prs_upcom_movie_box_wrapper prs_mcc_movie_box_wrapper">
+            <div class="prs_upcom_movie_img_box">
+              <img src="/public/images/content/<%= movie.poster %>" alt="movie_img" />
+              <div class="prs_upcom_movie_img_overlay"></div>
+              <div class="prs_upcom_movie_img_btn_wrapper">
+                <ul>
+                  <li>
+                    <a class="venobox" data-autoplay="true" data-vbtype="video" href="<%= movie.trailer %>">Xem Trailer</a>
+                  </li>
+                  <li>
+                    <a href="/detail/<%= movie.id %>">Xem chi tiết</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="prs_upcom_movie_content_box">
+              <div class="prs_upcom_movie_content_box_inner">
+                <h2 class="ellipsis"><a href="/detail/<%= movie.id %>"><%= movie.name %></a></h2>
+              </div>
+              <div class="prs_upcom_movie_content_box_inner_icon">
+                <ul>
+                  <li>
+                    <a href="#" data-toggle="modal" data-target="#modalBook" target="_blank"><i class="flaticon-cart-of-ecommerce"></i></a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% }) %>
       <form action="/signout" method="POST">
         <button type="submit">Signout</button>
       </form>

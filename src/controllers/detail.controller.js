@@ -1,4 +1,5 @@
 const { Movie, Cinema, CinemaPhoto } = require("../models");
+const moment = require("moment");
 
 module.exports = {
   index: async (req, res) => {
@@ -7,6 +8,6 @@ module.exports = {
         id: req.params.id,
       },
     });
-    res.render("detail/index", { movie });
+    res.render("detail/index", { movie, moment });
   },
 };
