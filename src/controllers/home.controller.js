@@ -12,4 +12,7 @@ module.exports = {
     });
     res.render("home/index", { movies, openDays });
   },
+  checkLogin: async (req, res) => {
+    res.json(req.isAuthenticated());
+  },
 };
