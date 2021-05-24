@@ -31,27 +31,18 @@
                   </div>
                   <div class="st_calen_asc_tecket_time_select">
                     <ul>
-                      <li>	<span>
-                        <h4>Rs.160.00</h4>
-                        <p class="asc_pera1">Executive</p>
-                        <p class="asc_pera2">Filling Fast</p>
+                      <% cinema.Rooms.forEach(function(room)  { %>
+                        <% room.Showtimes.forEach(function(showtime)  { %>
+                      <li>
+                        <span>
+                          <h4><%= showtime.price %> VNĐ</h4>
+                          <p class="asc_pera1">Rạp</p>
+                          <p class="asc_pera2"><%= room.name %></p>
                         </span>
-                        <a href="seat_booking.html">11:30 AM</a>
+                        <a href="seat_booking.html"><%= moment(showtime.timeStart).format("LT") %> </a>
                       </li>
-                      <li>	<span>
-                        <h4>Rs.160.00</h4>
-                        <p class="asc_pera1">Executive</p>
-                        <p class="asc_pera2">Filling Fast</p>
-                        </span>
-                        <a href="seat_booking.html">02:45 PM</a>
-                      </li>
-                      <li>	<span>
-                        <h4>Rs.160.00</h4>
-                        <p class="asc_pera1">Executive</p>
-                        <p class="asc_pera2">Filling Fast</p>
-                        </span>
-                        <a href="seat_booking.html">06:30 PM</a>
-                      </li>
+                        <% }); %>
+                      <% }); %> 
                     </ul>
                   </div>
                 </div>

@@ -44,7 +44,7 @@ router.get("/:id", async (req, res) => {
       {
         model: Room,
         required: true,
-
+        left: false,
         include: [
           {
             model: Showtime,
@@ -68,9 +68,10 @@ router.get("/:id", async (req, res) => {
       },
     ],
   });
+
   // const test = await Cinema.findAll({ include: { all: true } });
 
-  res.json(cinemas);
+  // res.json(cinemas);
   res.render("test/index", { moment, listDate, cinemas });
 });
 module.exports = router;
