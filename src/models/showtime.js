@@ -15,10 +15,24 @@ module.exports = (sequelize, DataTypes) => {
   }
   Showtime.init(
     {
-      movieId: DataTypes.INTEGER,
-      roomId: DataTypes.INTEGER,
-      timeStart: DataTypes.DATE,
-      timeEnd: DataTypes.DATE,
+      movieId: {
+        type: DataTypes.INTEGER,
+      },
+      roomId: {
+        allowNull: false,
+        primaryKey: true,
+        type: DataTypes.INTEGER,
+      },
+      timeStart: {
+        allowNull: false,
+        primaryKey: true,
+        type: DataTypes.DATE,
+      },
+      timeEnd: {
+        allowNull: false,
+        primaryKey: true,
+        type: DataTypes.DATE,
+      },
       price: DataTypes.FLOAT,
     },
     {

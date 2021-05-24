@@ -1,4 +1,4 @@
-const { Movie, Cinema, CinemaPhoto } = require("../models");
+const { Movie } = require("../models");
 const moment = require("moment");
 
 module.exports = {

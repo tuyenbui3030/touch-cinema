@@ -21,6 +21,7 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "cinemaId",
         onDelete: "cascade",
       });
+      //test
     }
   }
   Cinema.init(

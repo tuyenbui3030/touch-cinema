@@ -1,0 +1,66 @@
+<div class="st_slider_rating_main_wrapper float_left">
+  <div class="container-fluid">
+    <div class="st_calender_tabs">
+      <ul class="nav nav-tabs">
+        <% listDate.forEach(function(date) { %>
+        <li class="<%= listDate[0]==date?"active":"nav-item" %>">
+          <a data-toggle="tab" href="#home">
+            <span style="text-transform: uppercase;"><%= moment(date).format("ddd"); %></span>
+            <br> <%= moment(date).format("DD/MM"); %>
+          </a>
+        </li>
+        <% }); %>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="st_indx_slider_main_container float_left">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="tab-content">
+            <div id="home" class="tab-pane active">
+              <div class="st_calender_contant_main_wrapper float_left">
+                <% cinemas.forEach(function(cinema)  { %>
+                <div class="st_calender_row_cont st_calender_row_cont2 float_left">
+                  <div class="st_calender_asc">
+                    <div class="st_calen_asc_heart_cont">
+                      <h3><%= cinema.name %></h3>
+                    </div>
+                  </div>
+                  <div class="st_calen_asc_tecket_time_select">
+                    <ul>
+                      <li>	<span>
+                        <h4>Rs.160.00</h4>
+                        <p class="asc_pera1">Executive</p>
+                        <p class="asc_pera2">Filling Fast</p>
+                        </span>
+                        <a href="seat_booking.html">11:30 AM</a>
+                      </li>
+                      <li>	<span>
+                        <h4>Rs.160.00</h4>
+                        <p class="asc_pera1">Executive</p>
+                        <p class="asc_pera2">Filling Fast</p>
+                        </span>
+                        <a href="seat_booking.html">02:45 PM</a>
+                      </li>
+                      <li>	<span>
+                        <h4>Rs.160.00</h4>
+                        <p class="asc_pera1">Executive</p>
+                        <p class="asc_pera2">Filling Fast</p>
+                        </span>
+                        <a href="seat_booking.html">06:30 PM</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <% }); %> 
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

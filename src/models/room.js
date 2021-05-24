@@ -12,9 +12,14 @@ module.exports = (sequelize, DataTypes) => {
       this.belongsTo(models.Typeroom, { foreignKey: "typeRoomId" });
 
       this.belongsToMany(models.Movie, {
-        through: "Showtime",
+        // through: "Showtime",
+        // foreignKey: "movieId",
+        // unique: false,
+        through: { model: models.Showtime, unique: false },
         foreignKey: "movieId",
       });
+
+      this.hasMany(models.Showtime, { foreignKey: "roomId" });
     }
   }
   Room.init(
