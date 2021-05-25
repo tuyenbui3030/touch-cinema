@@ -15,6 +15,10 @@ module.exports = (sequelize, DataTypes) => {
   }
   Showtime.init(
     {
+      uuid: {
+        type: DataTypes.INTEGER,
+        defaultValue: 4,
+      },
       movieId: {
         type: DataTypes.INTEGER,
       },
