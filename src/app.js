@@ -50,6 +50,8 @@ app.post("/signout", (req, res) => {
   res.redirect("/signin");
 });
 app.use("/cinema", require("./routes/cinema.route"));
+app.use("/movie", require("./routes/movie.route"));
+
 app.use("/test", require("./routes/test.route"));
 
 app.use(function (req, res) {

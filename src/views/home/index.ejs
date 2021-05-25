@@ -108,7 +108,7 @@
                 <ul>
                   <li>
                     <!-- <a href="#" data-toggle="modal" data-target="#modalBook" target="_blank"><i class="flaticon-cart-of-ecommerce"></i></a> -->
-                    <a href="#" class="btn-booking"><i class="flaticon-cart-of-ecommerce"></i></a>
+                    <a href="#" data-value="<%= movie.id %>" class="btn-booking" ><i class="flaticon-cart-of-ecommerce"></i></a>
 
                   </li>
                 </ul>
@@ -213,7 +213,7 @@
                 <ul>
                   <li>
                     <!-- <a href="#" data-toggle="modal" data-target="#modalBook" target="_blank" class="btn-booking"><i class="flaticon-cart-of-ecommerce"></i></a> -->
-                    <a href="#" class="btn-booking"><i class="flaticon-cart-of-ecommerce"></i></a>
+                    <a href="#" data-value="<%= movie.id %>" class="btn-booking"><i class="flaticon-cart-of-ecommerce"></i></a>
 
                   </li>
                 </ul>
@@ -229,21 +229,5 @@
   </div>
 </div>
 <script>
-  $(".btn-booking").on("click", function(e) {
-    // alert("Vui lòng đăng nhập để tiến hành đặt vé")
-    e.preventDefault();
 
-    $.ajax({
-      url: "/checkLogin",
-      method: "POST",
-
-      success: function (res) {
-        if(res) {
-          $('#modalBook').modal('show');
-        } else {
-          alert("Đăng nhập để mua vé")
-        }
-      },
-    }); 
-  });
 </script>

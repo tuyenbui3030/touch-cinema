@@ -54,7 +54,9 @@
 .cus-modal-book {
   width: 100%;
 }
-
+.st_pop_form_wrapper .modal-content {
+  width: 100%;
+}
 .modal-body {
   max-height: calc(100vh - 70px);
   overflow-y: overlay;

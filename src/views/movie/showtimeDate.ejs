@@ -1,0 +1,29 @@
+<div id="home" class="tab-pane active">
+  <div class="st_calender_contant_main_wrapper float_left">
+    <% cinemas.forEach(function(cinema)  { %>
+    <div class="st_calender_row_cont st_calender_row_cont2 float_left">
+      <div class="st_calender_asc">
+        <div class="st_calen_asc_heart_cont">
+          <h3><%= cinema.name %></h3>
+        </div>
+      </div>
+      <div class="st_calen_asc_tecket_time_select">
+        <ul>
+          <% cinema.Rooms.forEach(function(room)  { %>
+            <% room.Showtimes.forEach(function(showtime)  { %>
+          <li>
+            <span>
+              <h4><%= showtime.price %> VNĐ</h4>
+              <p class="asc_pera1">Rạp</p>
+              <p class="asc_pera2"><%= room.name %></p>
+            </span>
+            <a href="seat_booking.html"><%= moment(showtime.timeStart).format("LT") %> </a>
+          </li>
+            <% }); %>
+          <% }); %> 
+        </ul>
+      </div>
+    </div>
+    <% }); %> 
+  </div>
+</div>

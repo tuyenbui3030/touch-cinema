@@ -58,7 +58,7 @@ router.get("/:id", async (req, res) => {
               [Op.and]: [
                 Sequelize.where(
                   Sequelize.fn("date", Sequelize.col("timeStart")),
-                  listDate[3]
+                  listDate[1]
                 ),
                 { movieId: req.params.id },
               ],
