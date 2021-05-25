@@ -21,10 +21,19 @@ module.exports = (sequelize, DataTypes) => {
         through: { model: models.Showtime, unique: false },
         foreignKey: "roomId",
       });
+      this.hasMany(models.MoviePhoto, {
+        foreignKey: "movieId",
+        onDelete: "cascade",
+      });
     }
   }
   Movie.init(
     {
+      unsignedName: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true,
+      },
       name: {
         type: DataTypes.STRING,
         allowNull: false,

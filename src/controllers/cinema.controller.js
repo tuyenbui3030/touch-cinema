@@ -3,12 +3,12 @@ const { Op } = require("sequelize");
 
 module.exports = {
   index: async (req, res) => {
-    const id = req.params.id;
+    const unsignedName = req.params.unsignedName;
     const query = req.query.movie || "";
 
     const cinema = await Cinema.findOne({
       where: {
-        id: id,
+        unsignedName: unsignedName,
       },
       include: [
         {

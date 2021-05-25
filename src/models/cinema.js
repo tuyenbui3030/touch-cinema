@@ -26,6 +26,11 @@ module.exports = (sequelize, DataTypes) => {
   }
   Cinema.init(
     {
+      unsignedName: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true,
+      },
       name: DataTypes.STRING,
       address: DataTypes.STRING,
     },

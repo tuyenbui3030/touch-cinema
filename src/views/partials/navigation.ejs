@@ -24,7 +24,7 @@
               <li class="parent"><a href="#">Hệ thống rạp</a>
                 <ul class="lg-submenu">
                   <% lcCinema.forEach(function(cinema) { %>
-                  <li><a href="/cinema/<%= cinema.id %>"><%= cinema.name %></a></li>
+                  <li><a href="/cinema/<%= cinema.unsignedName %>"><%= cinema.name %></a></li>
                   <% }) %>
                 </ul>
               </li>
@@ -56,7 +56,7 @@
             <select id="cinema-item">
               <option value="-1">Tất cả cụm rạp</option>
               <% lcCinema.forEach(function(cinema) { %>
-              <option value="<%= cinema.id %>"><%= cinema.name %></option>
+              <option value="<%= cinema.unsignedName %>"><%= cinema.name %></option>
               <% }) %>
             </select>
             <input type="text" name="movie" placeholder="Tìm phim bạn muốn xem?">

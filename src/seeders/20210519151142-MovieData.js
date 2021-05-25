@@ -5,6 +5,7 @@ module.exports = {
     const date = new Date();
     const data = [
       {
+        unsignedName: "trang-ti",
         name: "Trạng tí",
         openingDay: "2021-4-30",
         poster: "trang-ti-poster.jpg",
@@ -17,6 +18,7 @@ module.exports = {
         updatedAt: date,
       },
       {
+        unsignedName: "thien-than-ho-menh",
         name: "Thiên thần hộ mệnh",
         openingDay: "2021-4-22",
         poster: "thien-than-ho-menh-poster.jpg",
@@ -29,6 +31,7 @@ module.exports = {
         updatedAt: date,
       },
       {
+        unsignedName: "ban-tay-diet-quy",
         name: "Bàn tay diệt quỷ",
         openingDay: "2021-8-22",
         poster: "ban-tay-diet-quy-poster.jpg",
@@ -41,6 +44,7 @@ module.exports = {
         updatedAt: date,
       },
       {
+        unsignedName: "nguoi-nhan-ban",
         name: "Người nhân bản",
         openingDay: "2021-6-20",
         poster: "nguoi-nhan-ban-poster.jpg",
@@ -53,6 +57,7 @@ module.exports = {
         updatedAt: date,
       },
       {
+        unsignedName: "ho-dia-nguc",
         name: "Hố địa ngục",
         openingDay: "2021-5-28",
         poster: "ho-dia-nguc.jpg",
@@ -65,6 +70,7 @@ module.exports = {
         updatedAt: date,
       },
       {
+        unsignedName: "bo-gia",
         name: "Bố già",
         openingDay: "2021-9-11",
         poster: "bo-gia-poster.jpg",
@@ -77,6 +83,7 @@ module.exports = {
         updatedAt: date,
       },
       {
+        unsignedName: "mat-biec",
         name: "Mắt biếc",
         openingDay: "2021-6-20",
         poster: "mat-biec-poster.jpg",
@@ -89,6 +96,7 @@ module.exports = {
         updatedAt: date,
       },
       {
+        unsignedName: "doremon-2020",
         name: "DORAEMON 2020",
         openingDay: "2021-10-01",
         poster: "doremon.jpg",
@@ -101,6 +109,7 @@ module.exports = {
         updatedAt: date,
       },
       {
+        unsignedName: "lat-mat",
         name: "Lật mặt",
         openingDay: "2021-6-29",
         poster: "lat-mat-poster.png",
@@ -113,6 +122,7 @@ module.exports = {
         updatedAt: date,
       },
       {
+        unsignedName: "dua-be",
         name: "Đứa bé",
         openingDay: "2021-6-20",
         poster: "dua-be-poster.jpg",
@@ -125,6 +135,7 @@ module.exports = {
         updatedAt: date,
       },
       {
+        unsignedName: "vung-dat-cam-lang-ii",
         name: "VÙNG ĐẤT CÂM LẶNG II",
         openingDay: "2021-7-20",
         poster: "vung-dat-cam-lang.jpg",
@@ -137,6 +148,7 @@ module.exports = {
         updatedAt: date,
       },
       {
+        unsignedName: "dem-troi-buoc",
         name: "Đêm trói buộc",
         openingDay: "2021-6-20",
         poster: "dem-troi-buoc.jpg",
