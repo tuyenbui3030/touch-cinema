@@ -17,7 +17,7 @@
               <p class="asc_pera1">Rạp</p>
               <p class="asc_pera2"><%= room.name %></p>
             </span>
-            <a href="seat_booking.html"><%= moment(showtime.timeStart).format("LT") %> </a>
+            <a class="booking-seat" href="/booking/seat?showtime=<%=showtime.uuid%>"><%= moment(showtime.timeStart).format("LT") %> </a>
           </li>
             <% }); %>
           <% }); %> 

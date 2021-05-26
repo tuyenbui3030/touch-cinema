@@ -20,8 +20,8 @@
 					</div>
 				<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 					<div class="st_bt_top_center_heading st_bt_top_center_heading_seat_book_page float_left">
-						<h3>Aquaman - English - (2:47)</h3>
-						<h4>Today, 19 Dec, 10:00 PM</h4>
+						<h3><%= showtime.Movie.name %> - (<%= showtime.Movie.time %> phút)</h3>
+						<h4><%= moment(showtime.timeStart).lang("vi").calendar(); %></h4>
 					</div>
 				</div>
 				<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
@@ -44,177 +44,25 @@
 						<img src="/public/images/content/screen.png">
 					</div>
 				</div>
+
 				<div class="st_seat_lay_economy_wrapper st_seat_lay_economy_wrapperexicutive float_left">
+					<% for(const rows of mapRoom) { %>
+
+					
 					<div class="st_seat_lay_row float_left d-flex justify-content-center">
+
 						<ul>
 							<!-- <li class="st_seat_heading_row">A</li> -->
-							<li>	
-								<input type="checkbox" id="a1" name="cb">
-								<label for="a1"></label>
-							</li>
-							<li>	
-								<input type="checkbox" id="a2" name="cb" placeholder="1">
-								<label for="a2"></label>
-							</li>
-							<li class="seat_disable">
-								<input type="checkbox" id="a3" name="cb">
-								<label for="a3"></label>
-							</li>
-							<li>	
-								<input type="checkbox" id="a4" name="cb">
-								<label for="a4"></label>
-							</li>
-							<li>	
-								<input type="checkbox" id="a5" name="cb">
-								<label for="a5"></label>
-							</li>
-							<li>	
-								<input type="checkbox" id="a6" name="cb">
-								<label for="a6"></label>
-							</li>
-							<li>	
-								<input type="checkbox" id="a7" name="cb">
-								<label for="a7"></label>
-							</li>
-							<li>	
-								<input type="checkbox" id="a8" name="cb">
-								<label for="a8"></label>
-							</li>
-							<li>	
-								<input type="checkbox" id="a9" name="cb">
-								<label for="a9"></label>
-							</li>
-							<li>	
-								<input type="checkbox" id="a10" name="cb">
-								<label for="a10"></label>
-							</li>
-              <li>	
-								<input type="checkbox" id="a11" name="cb">
-								<label for="a11"></label>
-							</li>
-              <li>	
-								<input type="checkbox" id="a12" name="cb">
-								<label for="a12"></label>
-							</li>
-              <li>	
-								<input type="checkbox" id="a13" name="cb">
-								<label for="a13"></label>
-							</li>
-              <li>	
-								<input type="checkbox" id="a14" name="cb">
-								<label for="a14"></label>
-							</li>
-              <li>	
-								<input type="checkbox" id="a15" name="cb">
-								<label for="a15"></label>
-							</li>
-              <li>	
-								<input type="checkbox" id="a16" name="cb">
-								<label for="a16"></label>
-							</li>
-              <li>	
-								<input type="checkbox" id="a17" name="cb">
-								<label for="a17"></label>
-							</li>
-              <li>	
-								<input type="checkbox" id="a18" name="cb">
-								<label for="a18"></label>
-							</li>
-              <li>	
-								<input type="checkbox" id="a19" name="cb">
-								<label for="a19"></label>
-							</li>
-              <li>	
-								<input type="checkbox" id="a20" name="cb">
-								<label for="a20"></label>
-							</li>
+							<% for(const seat of rows) { %>
+								<li>	
+									<input type="checkbox" id="<%= seat %>" name="cb">
+									<label for="<%= seat %>"></label>
+								</li>
+							<% } %>
+
 						</ul>
 					</div>
-          <div class="st_seat_lay_row float_left d-flex justify-content-center">
-						<ul>
-							<!-- <li class="st_seat_heading_row">A</li> -->
-							<li>	
-								<input type="checkbox" id="b1" name="cb">
-								<label for="b1"></label>
-							</li>
-							<li>	
-								<input type="checkbox" id="b2" name="cb" placeholder="1">
-								<label for="b2"></label>
-							</li>
-							<li class="seat_disable">
-								<input type="checkbox" id="b3" name="cb">
-								<label for="b3"></label>
-							</li>
-							<li>	
-								<input type="checkbox" id="b4" name="cb">
-								<label for="b4"></label>
-							</li>
-							<li>	
-								<input type="checkbox" id="b5" name="cb">
-								<label for="b5"></label>
-							</li>
-							<li>	
-								<input type="checkbox" id="b6" name="cb">
-								<label for="b6"></label>
-							</li>
-							<li>	
-								<input type="checkbox" id="b7" name="cb">
-								<label for="b7"></label>
-							</li>
-							<li>	
-								<input type="checkbox" id="b8" name="cb">
-								<label for="b8"></label>
-							</li>
-							<li>	
-								<input type="checkbox" id="b9" name="cb">
-								<label for="b9"></label>
-							</li>
-							<li>	
-								<input type="checkbox" id="b10" name="cb">
-								<label for="b10"></label>
-							</li>
-              <li>	
-								<input type="checkbox" id="b11" name="cb">
-								<label for="b11"></label>
-							</li>
-              <li>	
-								<input type="checkbox" id="b12" name="cb">
-								<label for="b12"></label>
-							</li>
-              <li>	
-								<input type="checkbox" id="b13" name="cb">
-								<label for="b13"></label>
-							</li>
-              <li>	
-								<input type="checkbox" id="b14" name="cb">
-								<label for="b14"></label>
-							</li>
-              <li>	
-								<input type="checkbox" id="b15" name="cb">
-								<label for="b15"></label>
-							</li>
-              <li>	
-								<input type="checkbox" id="b16" name="cb">
-								<label for="b16"></label>
-							</li>
-              <li>	
-								<input type="checkbox" id="b17" name="cb">
-								<label for="b17"></label>
-							</li>
-              <li>	
-								<input type="checkbox" id="b18" name="cb">
-								<label for="b18"></label>
-							</li>
-              <li>	
-								<input type="checkbox" id="b19" name="cb">
-								<label for="b19"></label>
-							</li>
-              <li>	
-								<input type="checkbox" id="b20" name="cb">
-								<label for="b20"></label>
-							</li>
-						</ul>
-					</div>
+					<% } %>
 				</div>
 			</div>
 		</div>
@@ -225,19 +73,19 @@
 			<div class="row">
 				<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
           <div class="st_bt_top_center_heading st_bt_top_center_heading_seat_book_page float_left footer-seat">
-						<h3>Phim: Mất biếc</h3>
-            <h4>Thời lượng: 120 phút</h4>
-						<h4>Rạp: Touch Vincom Phú nhuận</h4>
-            <h4>Phòng chiếu: <%= room.name %> | <%= room.Typeroom.type %></h4>
-						<h4>Suất chiếu: 19 Dec, 10:00 PM | <%= moment(showtime.timeStart).format() %></h4>
+						<h3><b>Phim:</b> <%= showtime.Movie.name %></h3>
+            <h4><b>Thời lượng:</b> <%= showtime.Movie.time %> phút</h4>
+						<h4><b>Rạp:</b> <%= showtime.Room.Cinema.name %></h4>
+            <h4><b>Phòng chiếu:</b> <%= showtime.Room.name %> | <%= showtime.Room.Typeroom.type %></h4>
+						<h4><b>Suất chiếu:</b> <%= moment(showtime.timeStart).lang("vi").calendar(); %></h4>
 					</div>
 				</div>
 				<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 					<div class="st_bt_top_center_heading st_bt_top_center_heading_seat_book_page float_left footer-seat">
-						<h4>Giá vé: <%= showtime.price %> VNĐ</h4>
-            <h4>Số lượng: 2</h4>
-						<h4>Tổng tiền: 120.000 VNĐ</h4>
-						<h4>Ghế: A4, A6</h4>
+						<h4><b>Giá vé:</b> <%= showtime.price %> VNĐ</h4>
+            <h4><b>Số lượng:</b> 2</h4>
+						<h4><b>Tổng tiền:</b> 120.000 VNĐ</h4>
+						<h4><b>Ghế:</b> A4, A6</h4>
 					</div>
 				</div>
 				<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">

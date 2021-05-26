@@ -118,183 +118,1083 @@
 .st_seat_lay_row #b20[type="checkbox"] + label:before {
   content: "b20";
 }
-.st_seat_lay_row #c41[type="checkbox"] + label:before {
-  content: "1";
+.st_seat_lay_row #c1[type="checkbox"] + label:before {
+  content: "c1";
 }
-.st_seat_lay_row #c42[type="checkbox"] + label:before {
-  content: "2";
+.st_seat_lay_row #c2[type="checkbox"] + label:before {
+  content: "c2";
 }
-.st_seat_lay_row #c43[type="checkbox"] + label:before {
-  content: "3";
+.st_seat_lay_row #c3[type="checkbox"] + label:before {
+  content: "c3";
 }
-.st_seat_lay_row #c44[type="checkbox"] + label:before {
-  content: "4";
+.st_seat_lay_row #c4[type="checkbox"] + label:before {
+  content: "c4";
 }
-.st_seat_lay_row #c45[type="checkbox"] + label:before {
-  content: "5";
+.st_seat_lay_row #c5[type="checkbox"] + label:before {
+  content: "c5";
 }
-.st_seat_lay_row #c46[type="checkbox"] + label:before {
-  content: "6";
+.st_seat_lay_row #c6[type="checkbox"] + label:before {
+  content: "c6";
 }
-.st_seat_lay_row #c47[type="checkbox"] + label:before {
-  content: "7";
+.st_seat_lay_row #c7[type="checkbox"] + label:before {
+  content: "c7";
 }
-.st_seat_lay_row #c48[type="checkbox"] + label:before {
-  content: "8";
+.st_seat_lay_row #c8[type="checkbox"] + label:before {
+  content: "c8";
 }
-.st_seat_lay_row #c49[type="checkbox"] + label:before {
-  content: "9";
+.st_seat_lay_row #c9[type="checkbox"] + label:before {
+  content: "c9";
 }
-.st_seat_lay_row #c50[type="checkbox"] + label:before {
-  content: "10";
+.st_seat_lay_row #c10[type="checkbox"] + label:before {
+  content: "c10";
 }
-.st_seat_lay_row #c51[type="checkbox"] + label:before {
-  content: "11";
+.st_seat_lay_row #c11[type="checkbox"] + label:before {
+  content: "c11";
 }
-.st_seat_lay_row #c52[type="checkbox"] + label:before {
-  content: "12";
+.st_seat_lay_row #c12[type="checkbox"] + label:before {
+  content: "c12";
 }
-.st_seat_lay_row #c53[type="checkbox"] + label:before {
-  content: "13";
+.st_seat_lay_row #c13[type="checkbox"] + label:before {
+  content: "c13";
 }
-.st_seat_lay_row #c54[type="checkbox"] + label:before {
-  content: "14";
+.st_seat_lay_row #c14[type="checkbox"] + label:before {
+  content: "c14";
 }
-.st_seat_lay_row #c55[type="checkbox"] + label:before {
-  content: "15";
+.st_seat_lay_row #c15[type="checkbox"] + label:before {
+  content: "c15";
 }
-.st_seat_lay_row #c56[type="checkbox"] + label:before {
-  content: "16";
+.st_seat_lay_row #c16[type="checkbox"] + label:before {
+  content: "c16";
 }
-.st_seat_lay_row #c57[type="checkbox"] + label:before {
-  content: "17";
+.st_seat_lay_row #c17[type="checkbox"] + label:before {
+  content: "c17";
 }
-.st_seat_lay_row #c58[type="checkbox"] + label:before {
-  content: "18";
+.st_seat_lay_row #c18[type="checkbox"] + label:before {
+  content: "c18";
 }
-.st_seat_lay_row #c59[type="checkbox"] + label:before {
-  content: "19";
+.st_seat_lay_row #c19[type="checkbox"] + label:before {
+  content: "c19";
 }
-.st_seat_lay_row #c60[type="checkbox"] + label:before {
-  content: "20";
+.st_seat_lay_row #c20[type="checkbox"] + label:before {
+  content: "c20";
 }
-.st_seat_lay_row #c61[type="checkbox"] + label:before {
-  content: "1";
+.st_seat_lay_row #d1[type="checkbox"] + label:before {
+  content: "d1";
 }
-.st_seat_lay_row #c62[type="checkbox"] + label:before {
-  content: "2";
+.st_seat_lay_row #d2[type="checkbox"] + label:before {
+  content: "d2";
 }
-.st_seat_lay_row #c63[type="checkbox"] + label:before {
-  content: "3";
+.st_seat_lay_row #d3[type="checkbox"] + label:before {
+  content: "d3";
 }
-.st_seat_lay_row #c64[type="checkbox"] + label:before {
-  content: "4";
+.st_seat_lay_row #d4[type="checkbox"] + label:before {
+  content: "d4";
 }
-.st_seat_lay_row #c65[type="checkbox"] + label:before {
-  content: "5";
+.st_seat_lay_row #d5[type="checkbox"] + label:before {
+  content: "d5";
 }
-.st_seat_lay_row #c66[type="checkbox"] + label:before {
-  content: "6";
+.st_seat_lay_row #d6[type="checkbox"] + label:before {
+  content: "d6";
 }
-.st_seat_lay_row #c67[type="checkbox"] + label:before {
-  content: "7";
+.st_seat_lay_row #d7[type="checkbox"] + label:before {
+  content: "d7";
 }
-.st_seat_lay_row #c68[type="checkbox"] + label:before {
-  content: "8";
+.st_seat_lay_row #d8[type="checkbox"] + label:before {
+  content: "d8";
 }
-.st_seat_lay_row #c69[type="checkbox"] + label:before {
-  content: "9";
+.st_seat_lay_row #d9[type="checkbox"] + label:before {
+  content: "d9";
 }
-.st_seat_lay_row #c70[type="checkbox"] + label:before {
-  content: "10";
+.st_seat_lay_row #d10[type="checkbox"] + label:before {
+  content: "d10";
 }
-.st_seat_lay_row #c71[type="checkbox"] + label:before {
-  content: "11";
+.st_seat_lay_row #d11[type="checkbox"] + label:before {
+  content: "d11";
 }
-.st_seat_lay_row #c72[type="checkbox"] + label:before {
-  content: "12";
+.st_seat_lay_row #d12[type="checkbox"] + label:before {
+  content: "d12";
 }
-.st_seat_lay_row #c73[type="checkbox"] + label:before {
-  content: "13";
+.st_seat_lay_row #d13[type="checkbox"] + label:before {
+  content: "d13";
 }
-.st_seat_lay_row #c74[type="checkbox"] + label:before {
-  content: "14";
+.st_seat_lay_row #d14[type="checkbox"] + label:before {
+  content: "d14";
 }
-.st_seat_lay_row #c75[type="checkbox"] + label:before {
-  content: "15";
+.st_seat_lay_row #d15[type="checkbox"] + label:before {
+  content: "d15";
 }
-.st_seat_lay_row #c76[type="checkbox"] + label:before {
-  content: "16";
+.st_seat_lay_row #d16[type="checkbox"] + label:before {
+  content: "d16";
 }
-.st_seat_lay_row #c77[type="checkbox"] + label:before {
-  content: "17";
+.st_seat_lay_row #d17[type="checkbox"] + label:before {
+  content: "d17";
 }
-.st_seat_lay_row #c78[type="checkbox"] + label:before {
-  content: "18";
+.st_seat_lay_row #d18[type="checkbox"] + label:before {
+  content: "d18";
 }
-.st_seat_lay_row #c79[type="checkbox"] + label:before {
-  content: "19";
+.st_seat_lay_row #d19[type="checkbox"] + label:before {
+  content: "d19";
 }
-.st_seat_lay_row #c80[type="checkbox"] + label:before {
-  content: "20";
+.st_seat_lay_row #d20[type="checkbox"] + label:before {
+  content: "d20";
 }
-.st_seat_lay_row #c81[type="checkbox"] + label:before {
-  content: "1";
+.st_seat_lay_row #e1[type="checkbox"] + label:before {
+  content: "e1";
 }
-.st_seat_lay_row #c82[type="checkbox"] + label:before {
-  content: "2";
+.st_seat_lay_row #e2[type="checkbox"] + label:before {
+  content: "e2";
 }
-.st_seat_lay_row #c83[type="checkbox"] + label:before {
-  content: "3";
+.st_seat_lay_row #e3[type="checkbox"] + label:before {
+  content: "e3";
 }
-.st_seat_lay_row #c84[type="checkbox"] + label:before {
-  content: "4";
+.st_seat_lay_row #e4[type="checkbox"] + label:before {
+  content: "e4";
 }
-.st_seat_lay_row #c85[type="checkbox"] + label:before {
-  content: "5";
+.st_seat_lay_row #e5[type="checkbox"] + label:before {
+  content: "e5";
 }
-.st_seat_lay_row #c86[type="checkbox"] + label:before {
-  content: "6";
+.st_seat_lay_row #e6[type="checkbox"] + label:before {
+  content: "e6";
 }
-.st_seat_lay_row #c87[type="checkbox"] + label:before {
-  content: "7";
+.st_seat_lay_row #e7[type="checkbox"] + label:before {
+  content: "e7";
 }
-.st_seat_lay_row #c88[type="checkbox"] + label:before {
-  content: "8";
+.st_seat_lay_row #e8[type="checkbox"] + label:before {
+  content: "e8";
 }
-.st_seat_lay_row #c89[type="checkbox"] + label:before {
-  content: "9";
+.st_seat_lay_row #e9[type="checkbox"] + label:before {
+  content: "e9";
 }
-.st_seat_lay_row #c90[type="checkbox"] + label:before {
-  content: "10";
+.st_seat_lay_row #e10[type="checkbox"] + label:before {
+  content: "e10";
 }
-.st_seat_lay_row #c91[type="checkbox"] + label:before {
-  content: "11";
+.st_seat_lay_row #e11[type="checkbox"] + label:before {
+  content: "e11";
 }
-.st_seat_lay_row #c92[type="checkbox"] + label:before {
-  content: "12";
+.st_seat_lay_row #e12[type="checkbox"] + label:before {
+  content: "e12";
 }
-.st_seat_lay_row #c93[type="checkbox"] + label:before {
-  content: "13";
+.st_seat_lay_row #e13[type="checkbox"] + label:before {
+  content: "e13";
 }
-.st_seat_lay_row #c94[type="checkbox"] + label:before {
-  content: "14";
+.st_seat_lay_row #e14[type="checkbox"] + label:before {
+  content: "e14";
 }
-.st_seat_lay_row #c95[type="checkbox"] + label:before {
-  content: "15";
+.st_seat_lay_row #e15[type="checkbox"] + label:before {
+  content: "e15";
 }
-.st_seat_lay_row #c96[type="checkbox"] + label:before {
-  content: "16";
+.st_seat_lay_row #e16[type="checkbox"] + label:before {
+  content: "e16";
 }
-.st_seat_lay_row #c97[type="checkbox"] + label:before {
-  content: "17";
+.st_seat_lay_row #e17[type="checkbox"] + label:before {
+  content: "e17";
 }
-.st_seat_lay_row #c98[type="checkbox"] + label:before {
-  content: "18";
+.st_seat_lay_row #e18[type="checkbox"] + label:before {
+  content: "e18";
 }
-.st_seat_lay_row #c99[type="checkbox"] + label:before {
-  content: "19";
+.st_seat_lay_row #e19[type="checkbox"] + label:before {
+  content: "e19";
 }
-.st_seat_lay_row #c100[type="checkbox"] + label:before {
-  content: "20";
+.st_seat_lay_row #e20[type="checkbox"] + label:before {
+  content: "e20";
+}
+.st_seat_lay_row #f1[type="checkbox"] + label:before {
+  content: "f1";
+}
+.st_seat_lay_row #f2[type="checkbox"] + label:before {
+  content: "f2";
+}
+.st_seat_lay_row #f3[type="checkbox"] + label:before {
+  content: "f3";
+}
+.st_seat_lay_row #f4[type="checkbox"] + label:before {
+  content: "f4";
+}
+.st_seat_lay_row #f5[type="checkbox"] + label:before {
+  content: "f5";
+}
+.st_seat_lay_row #f6[type="checkbox"] + label:before {
+  content: "f6";
+}
+.st_seat_lay_row #f7[type="checkbox"] + label:before {
+  content: "f7";
+}
+.st_seat_lay_row #f8[type="checkbox"] + label:before {
+  content: "f8";
+}
+.st_seat_lay_row #f9[type="checkbox"] + label:before {
+  content: "f9";
+}
+.st_seat_lay_row #f10[type="checkbox"] + label:before {
+  content: "f10";
+}
+.st_seat_lay_row #f11[type="checkbox"] + label:before {
+  content: "f11";
+}
+.st_seat_lay_row #f12[type="checkbox"] + label:before {
+  content: "f12";
+}
+.st_seat_lay_row #f13[type="checkbox"] + label:before {
+  content: "f13";
+}
+.st_seat_lay_row #f14[type="checkbox"] + label:before {
+  content: "f14";
+}
+.st_seat_lay_row #f15[type="checkbox"] + label:before {
+  content: "f15";
+}
+.st_seat_lay_row #f16[type="checkbox"] + label:before {
+  content: "f16";
+}
+.st_seat_lay_row #f17[type="checkbox"] + label:before {
+  content: "f17";
+}
+.st_seat_lay_row #f18[type="checkbox"] + label:before {
+  content: "f18";
+}
+.st_seat_lay_row #f19[type="checkbox"] + label:before {
+  content: "f19";
+}
+.st_seat_lay_row #f20[type="checkbox"] + label:before {
+  content: "f20";
+}
+.st_seat_lay_row #g1[type="checkbox"] + label:before {
+  content: "g1";
+}
+.st_seat_lay_row #g2[type="checkbox"] + label:before {
+  content: "g2";
+}
+.st_seat_lay_row #g3[type="checkbox"] + label:before {
+  content: "g3";
+}
+.st_seat_lay_row #g4[type="checkbox"] + label:before {
+  content: "g4";
+}
+.st_seat_lay_row #g5[type="checkbox"] + label:before {
+  content: "g5";
+}
+.st_seat_lay_row #g6[type="checkbox"] + label:before {
+  content: "g6";
+}
+.st_seat_lay_row #g7[type="checkbox"] + label:before {
+  content: "g7";
+}
+.st_seat_lay_row #g8[type="checkbox"] + label:before {
+  content: "g8";
+}
+.st_seat_lay_row #g9[type="checkbox"] + label:before {
+  content: "g9";
+}
+.st_seat_lay_row #g10[type="checkbox"] + label:before {
+  content: "g10";
+}
+.st_seat_lay_row #g11[type="checkbox"] + label:before {
+  content: "g11";
+}
+.st_seat_lay_row #g12[type="checkbox"] + label:before {
+  content: "g12";
+}
+.st_seat_lay_row #g13[type="checkbox"] + label:before {
+  content: "g13";
+}
+.st_seat_lay_row #g14[type="checkbox"] + label:before {
+  content: "g14";
+}
+.st_seat_lay_row #g15[type="checkbox"] + label:before {
+  content: "g15";
+}
+.st_seat_lay_row #g16[type="checkbox"] + label:before {
+  content: "g16";
+}
+.st_seat_lay_row #g17[type="checkbox"] + label:before {
+  content: "g17";
+}
+.st_seat_lay_row #g18[type="checkbox"] + label:before {
+  content: "g18";
+}
+.st_seat_lay_row #g19[type="checkbox"] + label:before {
+  content: "g19";
+}
+.st_seat_lay_row #g20[type="checkbox"] + label:before {
+  content: "g20";
+}
+.st_seat_lay_row #h1[type="checkbox"] + label:before {
+  content: "h1";
+}
+.st_seat_lay_row #h2[type="checkbox"] + label:before {
+  content: "h2";
+}
+.st_seat_lay_row #h3[type="checkbox"] + label:before {
+  content: "h3";
+}
+.st_seat_lay_row #h4[type="checkbox"] + label:before {
+  content: "h4";
+}
+.st_seat_lay_row #h5[type="checkbox"] + label:before {
+  content: "h5";
+}
+.st_seat_lay_row #h6[type="checkbox"] + label:before {
+  content: "h6";
+}
+.st_seat_lay_row #h7[type="checkbox"] + label:before {
+  content: "h7";
+}
+.st_seat_lay_row #h8[type="checkbox"] + label:before {
+  content: "h8";
+}
+.st_seat_lay_row #h9[type="checkbox"] + label:before {
+  content: "h9";
+}
+.st_seat_lay_row #h10[type="checkbox"] + label:before {
+  content: "h10";
+}
+.st_seat_lay_row #h11[type="checkbox"] + label:before {
+  content: "h11";
+}
+.st_seat_lay_row #h12[type="checkbox"] + label:before {
+  content: "h12";
+}
+.st_seat_lay_row #h13[type="checkbox"] + label:before {
+  content: "h13";
+}
+.st_seat_lay_row #h14[type="checkbox"] + label:before {
+  content: "h14";
+}
+.st_seat_lay_row #h15[type="checkbox"] + label:before {
+  content: "h15";
+}
+.st_seat_lay_row #h16[type="checkbox"] + label:before {
+  content: "h16";
+}
+.st_seat_lay_row #h17[type="checkbox"] + label:before {
+  content: "h17";
+}
+.st_seat_lay_row #h18[type="checkbox"] + label:before {
+  content: "h18";
+}
+.st_seat_lay_row #h19[type="checkbox"] + label:before {
+  content: "h19";
+}
+.st_seat_lay_row #h20[type="checkbox"] + label:before {
+  content: "h20";
+}
+.st_seat_lay_row #i1[type="checkbox"] + label:before {
+  content: "i1";
+}
+.st_seat_lay_row #i2[type="checkbox"] + label:before {
+  content: "i2";
+}
+.st_seat_lay_row #i3[type="checkbox"] + label:before {
+  content: "i3";
+}
+.st_seat_lay_row #i4[type="checkbox"] + label:before {
+  content: "i4";
+}
+.st_seat_lay_row #i5[type="checkbox"] + label:before {
+  content: "i5";
+}
+.st_seat_lay_row #i6[type="checkbox"] + label:before {
+  content: "i6";
+}
+.st_seat_lay_row #i7[type="checkbox"] + label:before {
+  content: "i7";
+}
+.st_seat_lay_row #i8[type="checkbox"] + label:before {
+  content: "i8";
+}
+.st_seat_lay_row #i9[type="checkbox"] + label:before {
+  content: "i9";
+}
+.st_seat_lay_row #i10[type="checkbox"] + label:before {
+  content: "i10";
+}
+.st_seat_lay_row #i11[type="checkbox"] + label:before {
+  content: "i11";
+}
+.st_seat_lay_row #i12[type="checkbox"] + label:before {
+  content: "i12";
+}
+.st_seat_lay_row #i13[type="checkbox"] + label:before {
+  content: "i13";
+}
+.st_seat_lay_row #i14[type="checkbox"] + label:before {
+  content: "i14";
+}
+.st_seat_lay_row #i15[type="checkbox"] + label:before {
+  content: "i15";
+}
+.st_seat_lay_row #i16[type="checkbox"] + label:before {
+  content: "i16";
+}
+.st_seat_lay_row #i17[type="checkbox"] + label:before {
+  content: "i17";
+}
+.st_seat_lay_row #i18[type="checkbox"] + label:before {
+  content: "i18";
+}
+.st_seat_lay_row #i19[type="checkbox"] + label:before {
+  content: "i19";
+}
+.st_seat_lay_row #i20[type="checkbox"] + label:before {
+  content: "i20";
+}
+.st_seat_lay_row #j1[type="checkbox"] + label:before {
+  content: "j1";
+}
+.st_seat_lay_row #j2[type="checkbox"] + label:before {
+  content: "j2";
+}
+.st_seat_lay_row #j3[type="checkbox"] + label:before {
+  content: "j3";
+}
+.st_seat_lay_row #j4[type="checkbox"] + label:before {
+  content: "j4";
+}
+.st_seat_lay_row #j5[type="checkbox"] + label:before {
+  content: "j5";
+}
+.st_seat_lay_row #j6[type="checkbox"] + label:before {
+  content: "j6";
+}
+.st_seat_lay_row #j7[type="checkbox"] + label:before {
+  content: "j7";
+}
+.st_seat_lay_row #j8[type="checkbox"] + label:before {
+  content: "j8";
+}
+.st_seat_lay_row #j9[type="checkbox"] + label:before {
+  content: "j9";
+}
+.st_seat_lay_row #j10[type="checkbox"] + label:before {
+  content: "j10";
+}
+.st_seat_lay_row #j11[type="checkbox"] + label:before {
+  content: "j11";
+}
+.st_seat_lay_row #j12[type="checkbox"] + label:before {
+  content: "j12";
+}
+.st_seat_lay_row #j13[type="checkbox"] + label:before {
+  content: "j13";
+}
+.st_seat_lay_row #j14[type="checkbox"] + label:before {
+  content: "j14";
+}
+.st_seat_lay_row #j15[type="checkbox"] + label:before {
+  content: "j15";
+}
+.st_seat_lay_row #j16[type="checkbox"] + label:before {
+  content: "j16";
+}
+.st_seat_lay_row #j17[type="checkbox"] + label:before {
+  content: "j17";
+}
+.st_seat_lay_row #j18[type="checkbox"] + label:before {
+  content: "j18";
+}
+.st_seat_lay_row #j19[type="checkbox"] + label:before {
+  content: "j19";
+}
+.st_seat_lay_row #j20[type="checkbox"] + label:before {
+  content: "j20";
+}
+.st_seat_lay_row #k1[type="checkbox"] + label:before {
+  content: "k1";
+}
+.st_seat_lay_row #k2[type="checkbox"] + label:before {
+  content: "k2";
+}
+.st_seat_lay_row #k3[type="checkbox"] + label:before {
+  content: "k3";
+}
+.st_seat_lay_row #k4[type="checkbox"] + label:before {
+  content: "k4";
+}
+.st_seat_lay_row #k5[type="checkbox"] + label:before {
+  content: "k5";
+}
+.st_seat_lay_row #k6[type="checkbox"] + label:before {
+  content: "k6";
+}
+.st_seat_lay_row #k7[type="checkbox"] + label:before {
+  content: "k7";
+}
+.st_seat_lay_row #k8[type="checkbox"] + label:before {
+  content: "k8";
+}
+.st_seat_lay_row #k9[type="checkbox"] + label:before {
+  content: "k9";
+}
+.st_seat_lay_row #k10[type="checkbox"] + label:before {
+  content: "k10";
+}
+.st_seat_lay_row #k11[type="checkbox"] + label:before {
+  content: "k11";
+}
+.st_seat_lay_row #k12[type="checkbox"] + label:before {
+  content: "k12";
+}
+.st_seat_lay_row #k13[type="checkbox"] + label:before {
+  content: "k13";
+}
+.st_seat_lay_row #k14[type="checkbox"] + label:before {
+  content: "k14";
+}
+.st_seat_lay_row #k15[type="checkbox"] + label:before {
+  content: "k15";
+}
+.st_seat_lay_row #k16[type="checkbox"] + label:before {
+  content: "k16";
+}
+.st_seat_lay_row #k17[type="checkbox"] + label:before {
+  content: "k17";
+}
+.st_seat_lay_row #k18[type="checkbox"] + label:before {
+  content: "k18";
+}
+.st_seat_lay_row #k19[type="checkbox"] + label:before {
+  content: "k19";
+}
+.st_seat_lay_row #k20[type="checkbox"] + label:before {
+  content: "k20";
+}
+.st_seat_lay_row #l1[type="checkbox"] + label:before {
+  content: "l1";
+}
+.st_seat_lay_row #l2[type="checkbox"] + label:before {
+  content: "l2";
+}
+.st_seat_lay_row #l3[type="checkbox"] + label:before {
+  content: "l3";
+}
+.st_seat_lay_row #l4[type="checkbox"] + label:before {
+  content: "l4";
+}
+.st_seat_lay_row #l5[type="checkbox"] + label:before {
+  content: "l5";
+}
+.st_seat_lay_row #l6[type="checkbox"] + label:before {
+  content: "l6";
+}
+.st_seat_lay_row #l7[type="checkbox"] + label:before {
+  content: "l7";
+}
+.st_seat_lay_row #l8[type="checkbox"] + label:before {
+  content: "l8";
+}
+.st_seat_lay_row #l9[type="checkbox"] + label:before {
+  content: "l9";
+}
+.st_seat_lay_row #l10[type="checkbox"] + label:before {
+  content: "l10";
+}
+.st_seat_lay_row #l11[type="checkbox"] + label:before {
+  content: "l11";
+}
+.st_seat_lay_row #l12[type="checkbox"] + label:before {
+  content: "l12";
+}
+.st_seat_lay_row #l13[type="checkbox"] + label:before {
+  content: "l13";
+}
+.st_seat_lay_row #l14[type="checkbox"] + label:before {
+  content: "l14";
+}
+.st_seat_lay_row #l15[type="checkbox"] + label:before {
+  content: "l15";
+}
+.st_seat_lay_row #l16[type="checkbox"] + label:before {
+  content: "l16";
+}
+.st_seat_lay_row #l17[type="checkbox"] + label:before {
+  content: "l17";
+}
+.st_seat_lay_row #l18[type="checkbox"] + label:before {
+  content: "l18";
+}
+.st_seat_lay_row #l19[type="checkbox"] + label:before {
+  content: "l19";
+}
+.st_seat_lay_row #l20[type="checkbox"] + label:before {
+  content: "l20";
+}
+.st_seat_lay_row #m1[type="checkbox"] + label:before {
+  content: "m1";
+}
+.st_seat_lay_row #m2[type="checkbox"] + label:before {
+  content: "m2";
+}
+.st_seat_lay_row #m3[type="checkbox"] + label:before {
+  content: "m3";
+}
+.st_seat_lay_row #m4[type="checkbox"] + label:before {
+  content: "m4";
+}
+.st_seat_lay_row #m5[type="checkbox"] + label:before {
+  content: "m5";
+}
+.st_seat_lay_row #m6[type="checkbox"] + label:before {
+  content: "m6";
+}
+.st_seat_lay_row #m7[type="checkbox"] + label:before {
+  content: "m7";
+}
+.st_seat_lay_row #m8[type="checkbox"] + label:before {
+  content: "m8";
+}
+.st_seat_lay_row #m9[type="checkbox"] + label:before {
+  content: "m9";
+}
+.st_seat_lay_row #m10[type="checkbox"] + label:before {
+  content: "m10";
+}
+.st_seat_lay_row #m11[type="checkbox"] + label:before {
+  content: "m11";
+}
+.st_seat_lay_row #m12[type="checkbox"] + label:before {
+  content: "m12";
+}
+.st_seat_lay_row #m13[type="checkbox"] + label:before {
+  content: "m13";
+}
+.st_seat_lay_row #m14[type="checkbox"] + label:before {
+  content: "m14";
+}
+.st_seat_lay_row #m15[type="checkbox"] + label:before {
+  content: "m15";
+}
+.st_seat_lay_row #m16[type="checkbox"] + label:before {
+  content: "m16";
+}
+.st_seat_lay_row #m17[type="checkbox"] + label:before {
+  content: "m17";
+}
+.st_seat_lay_row #m18[type="checkbox"] + label:before {
+  content: "m18";
+}
+.st_seat_lay_row #m19[type="checkbox"] + label:before {
+  content: "m19";
+}
+.st_seat_lay_row #m20[type="checkbox"] + label:before {
+  content: "m20";
+}
+.st_seat_lay_row #n1[type="checkbox"] + label:before {
+  content: "n1";
+}
+.st_seat_lay_row #n2[type="checkbox"] + label:before {
+  content: "n2";
+}
+.st_seat_lay_row #n3[type="checkbox"] + label:before {
+  content: "n3";
+}
+.st_seat_lay_row #n4[type="checkbox"] + label:before {
+  content: "n4";
+}
+.st_seat_lay_row #n5[type="checkbox"] + label:before {
+  content: "n5";
+}
+.st_seat_lay_row #n6[type="checkbox"] + label:before {
+  content: "n6";
+}
+.st_seat_lay_row #n7[type="checkbox"] + label:before {
+  content: "n7";
+}
+.st_seat_lay_row #n8[type="checkbox"] + label:before {
+  content: "n8";
+}
+.st_seat_lay_row #n9[type="checkbox"] + label:before {
+  content: "n9";
+}
+.st_seat_lay_row #n10[type="checkbox"] + label:before {
+  content: "n10";
+}
+.st_seat_lay_row #n11[type="checkbox"] + label:before {
+  content: "n11";
+}
+.st_seat_lay_row #n12[type="checkbox"] + label:before {
+  content: "n12";
+}
+.st_seat_lay_row #n13[type="checkbox"] + label:before {
+  content: "n13";
+}
+.st_seat_lay_row #n14[type="checkbox"] + label:before {
+  content: "n14";
+}
+.st_seat_lay_row #n15[type="checkbox"] + label:before {
+  content: "n15";
+}
+.st_seat_lay_row #n16[type="checkbox"] + label:before {
+  content: "n16";
+}
+.st_seat_lay_row #n17[type="checkbox"] + label:before {
+  content: "n17";
+}
+.st_seat_lay_row #n18[type="checkbox"] + label:before {
+  content: "n18";
+}
+.st_seat_lay_row #n19[type="checkbox"] + label:before {
+  content: "n19";
+}
+.st_seat_lay_row #n20[type="checkbox"] + label:before {
+  content: "n20";
+}
+.st_seat_lay_row #o1[type="checkbox"] + label:before {
+  content: "o1";
+}
+.st_seat_lay_row #o2[type="checkbox"] + label:before {
+  content: "o2";
+}
+.st_seat_lay_row #o3[type="checkbox"] + label:before {
+  content: "o3";
+}
+.st_seat_lay_row #o4[type="checkbox"] + label:before {
+  content: "o4";
+}
+.st_seat_lay_row #o5[type="checkbox"] + label:before {
+  content: "o5";
+}
+.st_seat_lay_row #o6[type="checkbox"] + label:before {
+  content: "o6";
+}
+.st_seat_lay_row #o7[type="checkbox"] + label:before {
+  content: "o7";
+}
+.st_seat_lay_row #o8[type="checkbox"] + label:before {
+  content: "o8";
+}
+.st_seat_lay_row #o9[type="checkbox"] + label:before {
+  content: "o9";
+}
+.st_seat_lay_row #o10[type="checkbox"] + label:before {
+  content: "o10";
+}
+.st_seat_lay_row #o11[type="checkbox"] + label:before {
+  content: "o11";
+}
+.st_seat_lay_row #o12[type="checkbox"] + label:before {
+  content: "o12";
+}
+.st_seat_lay_row #o13[type="checkbox"] + label:before {
+  content: "o13";
+}
+.st_seat_lay_row #o14[type="checkbox"] + label:before {
+  content: "o14";
+}
+.st_seat_lay_row #o15[type="checkbox"] + label:before {
+  content: "o15";
+}
+.st_seat_lay_row #o16[type="checkbox"] + label:before {
+  content: "o16";
+}
+.st_seat_lay_row #o17[type="checkbox"] + label:before {
+  content: "o17";
+}
+.st_seat_lay_row #o18[type="checkbox"] + label:before {
+  content: "o18";
+}
+.st_seat_lay_row #o19[type="checkbox"] + label:before {
+  content: "o19";
+}
+.st_seat_lay_row #o20[type="checkbox"] + label:before {
+  content: "o20";
+}
+.st_seat_lay_row #p1[type="checkbox"] + label:before {
+  content: "p1";
+}
+.st_seat_lay_row #p2[type="checkbox"] + label:before {
+  content: "p2";
+}
+.st_seat_lay_row #p3[type="checkbox"] + label:before {
+  content: "p3";
+}
+.st_seat_lay_row #p4[type="checkbox"] + label:before {
+  content: "p4";
+}
+.st_seat_lay_row #p5[type="checkbox"] + label:before {
+  content: "p5";
+}
+.st_seat_lay_row #p6[type="checkbox"] + label:before {
+  content: "p6";
+}
+.st_seat_lay_row #p7[type="checkbox"] + label:before {
+  content: "p7";
+}
+.st_seat_lay_row #p8[type="checkbox"] + label:before {
+  content: "p8";
+}
+.st_seat_lay_row #p9[type="checkbox"] + label:before {
+  content: "p9";
+}
+.st_seat_lay_row #p10[type="checkbox"] + label:before {
+  content: "p10";
+}
+.st_seat_lay_row #p11[type="checkbox"] + label:before {
+  content: "p11";
+}
+.st_seat_lay_row #p12[type="checkbox"] + label:before {
+  content: "p12";
+}
+.st_seat_lay_row #p13[type="checkbox"] + label:before {
+  content: "p13";
+}
+.st_seat_lay_row #p14[type="checkbox"] + label:before {
+  content: "p14";
+}
+.st_seat_lay_row #p15[type="checkbox"] + label:before {
+  content: "p15";
+}
+.st_seat_lay_row #p16[type="checkbox"] + label:before {
+  content: "p16";
+}
+.st_seat_lay_row #p17[type="checkbox"] + label:before {
+  content: "p17";
+}
+.st_seat_lay_row #p18[type="checkbox"] + label:before {
+  content: "p18";
+}
+.st_seat_lay_row #p19[type="checkbox"] + label:before {
+  content: "p19";
+}
+.st_seat_lay_row #p20[type="checkbox"] + label:before {
+  content: "p20";
+}
+.st_seat_lay_row #q1[type="checkbox"] + label:before {
+  content: "q1";
+}
+.st_seat_lay_row #q2[type="checkbox"] + label:before {
+  content: "q2";
+}
+.st_seat_lay_row #q3[type="checkbox"] + label:before {
+  content: "q3";
+}
+.st_seat_lay_row #q4[type="checkbox"] + label:before {
+  content: "q4";
+}
+.st_seat_lay_row #q5[type="checkbox"] + label:before {
+  content: "q5";
+}
+.st_seat_lay_row #q6[type="checkbox"] + label:before {
+  content: "q6";
+}
+.st_seat_lay_row #q7[type="checkbox"] + label:before {
+  content: "q7";
+}
+.st_seat_lay_row #q8[type="checkbox"] + label:before {
+  content: "q8";
+}
+.st_seat_lay_row #q9[type="checkbox"] + label:before {
+  content: "q9";
+}
+.st_seat_lay_row #q10[type="checkbox"] + label:before {
+  content: "q10";
+}
+.st_seat_lay_row #q11[type="checkbox"] + label:before {
+  content: "q11";
+}
+.st_seat_lay_row #q12[type="checkbox"] + label:before {
+  content: "q12";
+}
+.st_seat_lay_row #q13[type="checkbox"] + label:before {
+  content: "q13";
+}
+.st_seat_lay_row #q14[type="checkbox"] + label:before {
+  content: "q14";
+}
+.st_seat_lay_row #q15[type="checkbox"] + label:before {
+  content: "q15";
+}
+.st_seat_lay_row #q16[type="checkbox"] + label:before {
+  content: "q16";
+}
+.st_seat_lay_row #q17[type="checkbox"] + label:before {
+  content: "q17";
+}
+.st_seat_lay_row #q18[type="checkbox"] + label:before {
+  content: "q18";
+}
+.st_seat_lay_row #q19[type="checkbox"] + label:before {
+  content: "q19";
+}
+.st_seat_lay_row #q20[type="checkbox"] + label:before {
+  content: "q20";
+}
+.st_seat_lay_row #r1[type="checkbox"] + label:before {
+  content: "r1";
+}
+.st_seat_lay_row #r2[type="checkbox"] + label:before {
+  content: "r2";
+}
+.st_seat_lay_row #r3[type="checkbox"] + label:before {
+  content: "r3";
+}
+.st_seat_lay_row #r4[type="checkbox"] + label:before {
+  content: "r4";
+}
+.st_seat_lay_row #r5[type="checkbox"] + label:before {
+  content: "r5";
+}
+.st_seat_lay_row #r6[type="checkbox"] + label:before {
+  content: "r6";
+}
+.st_seat_lay_row #r7[type="checkbox"] + label:before {
+  content: "r7";
+}
+.st_seat_lay_row #r8[type="checkbox"] + label:before {
+  content: "r8";
+}
+.st_seat_lay_row #r9[type="checkbox"] + label:before {
+  content: "r9";
+}
+.st_seat_lay_row #r10[type="checkbox"] + label:before {
+  content: "r10";
+}
+.st_seat_lay_row #r11[type="checkbox"] + label:before {
+  content: "r11";
+}
+.st_seat_lay_row #r12[type="checkbox"] + label:before {
+  content: "r12";
+}
+.st_seat_lay_row #r13[type="checkbox"] + label:before {
+  content: "r13";
+}
+.st_seat_lay_row #r14[type="checkbox"] + label:before {
+  content: "r14";
+}
+.st_seat_lay_row #r15[type="checkbox"] + label:before {
+  content: "r15";
+}
+.st_seat_lay_row #r16[type="checkbox"] + label:before {
+  content: "r16";
+}
+.st_seat_lay_row #r17[type="checkbox"] + label:before {
+  content: "r17";
+}
+.st_seat_lay_row #r18[type="checkbox"] + label:before {
+  content: "r18";
+}
+.st_seat_lay_row #r19[type="checkbox"] + label:before {
+  content: "r19";
+}
+.st_seat_lay_row #r20[type="checkbox"] + label:before {
+  content: "r20";
+}
+.st_seat_lay_row #s1[type="checkbox"] + label:before {
+  content: "s1";
+}
+.st_seat_lay_row #s2[type="checkbox"] + label:before {
+  content: "s2";
+}
+.st_seat_lay_row #s3[type="checkbox"] + label:before {
+  content: "s3";
+}
+.st_seat_lay_row #s4[type="checkbox"] + label:before {
+  content: "s4";
+}
+.st_seat_lay_row #s5[type="checkbox"] + label:before {
+  content: "s5";
+}
+.st_seat_lay_row #s6[type="checkbox"] + label:before {
+  content: "s6";
+}
+.st_seat_lay_row #s7[type="checkbox"] + label:before {
+  content: "s7";
+}
+.st_seat_lay_row #s8[type="checkbox"] + label:before {
+  content: "s8";
+}
+.st_seat_lay_row #s9[type="checkbox"] + label:before {
+  content: "s9";
+}
+.st_seat_lay_row #s10[type="checkbox"] + label:before {
+  content: "s10";
+}
+.st_seat_lay_row #s11[type="checkbox"] + label:before {
+  content: "s11";
+}
+.st_seat_lay_row #s12[type="checkbox"] + label:before {
+  content: "s12";
+}
+.st_seat_lay_row #s13[type="checkbox"] + label:before {
+  content: "s13";
+}
+.st_seat_lay_row #s14[type="checkbox"] + label:before {
+  content: "s14";
+}
+.st_seat_lay_row #s15[type="checkbox"] + label:before {
+  content: "s15";
+}
+.st_seat_lay_row #s16[type="checkbox"] + label:before {
+  content: "s16";
+}
+.st_seat_lay_row #s17[type="checkbox"] + label:before {
+  content: "s17";
+}
+.st_seat_lay_row #s18[type="checkbox"] + label:before {
+  content: "s18";
+}
+.st_seat_lay_row #s19[type="checkbox"] + label:before {
+  content: "s19";
+}
+.st_seat_lay_row #s20[type="checkbox"] + label:before {
+  content: "s20";
+}
+.st_seat_lay_row #t1[type="checkbox"] + label:before {
+  content: "t1";
+}
+.st_seat_lay_row #t2[type="checkbox"] + label:before {
+  content: "t2";
+}
+.st_seat_lay_row #t3[type="checkbox"] + label:before {
+  content: "t3";
+}
+.st_seat_lay_row #t4[type="checkbox"] + label:before {
+  content: "t4";
+}
+.st_seat_lay_row #t5[type="checkbox"] + label:before {
+  content: "t5";
+}
+.st_seat_lay_row #t6[type="checkbox"] + label:before {
+  content: "t6";
+}
+.st_seat_lay_row #t7[type="checkbox"] + label:before {
+  content: "t7";
+}
+.st_seat_lay_row #t8[type="checkbox"] + label:before {
+  content: "t8";
+}
+.st_seat_lay_row #t9[type="checkbox"] + label:before {
+  content: "t9";
+}
+.st_seat_lay_row #t10[type="checkbox"] + label:before {
+  content: "t10";
+}
+.st_seat_lay_row #t11[type="checkbox"] + label:before {
+  content: "t11";
+}
+.st_seat_lay_row #t12[type="checkbox"] + label:before {
+  content: "t12";
+}
+.st_seat_lay_row #t13[type="checkbox"] + label:before {
+  content: "t13";
+}
+.st_seat_lay_row #t14[type="checkbox"] + label:before {
+  content: "t14";
+}
+.st_seat_lay_row #t15[type="checkbox"] + label:before {
+  content: "t15";
+}
+.st_seat_lay_row #t16[type="checkbox"] + label:before {
+  content: "t16";
+}
+.st_seat_lay_row #t17[type="checkbox"] + label:before {
+  content: "t17";
+}
+.st_seat_lay_row #t18[type="checkbox"] + label:before {
+  content: "t18";
+}
+.st_seat_lay_row #t19[type="checkbox"] + label:before {
+  content: "t19";
+}
+.st_seat_lay_row #t20[type="checkbox"] + label:before {
+  content: "t20";
 }

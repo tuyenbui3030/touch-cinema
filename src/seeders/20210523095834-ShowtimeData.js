@@ -1,4 +1,5 @@
 "use strict";
+const { v4: uuidv4 } = require("uuid");
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
@@ -14,6 +15,7 @@ module.exports = {
     const date = new Date();
     const data = [
       {
+        uuid: uuidv4(),
         movieId: 1,
         roomId: 1,
         timeStart: "2021-05-24 10:35:32.774+00",
@@ -23,6 +25,7 @@ module.exports = {
         updatedAt: date,
       },
       {
+        uuid: uuidv4(),
         movieId: 1,
         roomId: 1,
         timeStart: "2021-05-25 10:35:32.774+00",
@@ -32,6 +35,7 @@ module.exports = {
         updatedAt: date,
       },
       {
+        uuid: uuidv4(),
         movieId: 1,
         roomId: 1,
         timeStart: "2021-05-26 10:35:32.774+00",
@@ -41,6 +45,7 @@ module.exports = {
         updatedAt: date,
       },
       {
+        uuid: uuidv4(),
         movieId: 1,
         roomId: 1,
         timeStart: "2021-05-27 10:35:32.774+00",
@@ -49,6 +54,7 @@ module.exports = {
         updatedAt: date,
       },
       {
+        uuid: uuidv4(),
         movieId: 1,
         roomId: 2,
         timeStart: "2021-05-27 10:35:32.774+00",
@@ -58,6 +64,7 @@ module.exports = {
         updatedAt: date,
       },
       {
+        uuid: uuidv4(),
         movieId: 1,
         roomId: 3,
         timeStart: "2021-05-27 10:35:32.774+00",
@@ -67,6 +74,7 @@ module.exports = {
         updatedAt: date,
       },
       {
+        uuid: uuidv4(),
         movieId: 1,
         roomId: 4,
         timeStart: "2021-05-27 10:35:32.774+00",
@@ -76,6 +84,7 @@ module.exports = {
         updatedAt: date,
       },
       {
+        uuid: uuidv4(),
         movieId: 1,
         roomId: 5,
         timeStart: "2021-05-27 10:35:32.774+00",
@@ -85,6 +94,7 @@ module.exports = {
         updatedAt: date,
       },
       {
+        uuid: uuidv4(),
         movieId: 2,
         roomId: 1,
         timeStart: "2021-05-24 12:35:32.774+00",
@@ -94,6 +104,7 @@ module.exports = {
         updatedAt: date,
       },
       {
+        uuid: uuidv4(),
         movieId: 2,
         roomId: 1,
         timeStart: "2021-05-25 12:35:32.774+00",
@@ -103,6 +114,7 @@ module.exports = {
         updatedAt: date,
       },
       {
+        uuid: uuidv4(),
         movieId: 2,
         roomId: 1,
         timeStart: "2021-05-26 12:35:32.774+00",
@@ -112,6 +124,7 @@ module.exports = {
         updatedAt: date,
       },
       {
+        uuid: uuidv4(),
         movieId: 2,
         roomId: 1,
         timeStart: "2021-05-27 12:35:32.774+00",
@@ -121,6 +134,7 @@ module.exports = {
         updatedAt: date,
       },
       {
+        uuid: uuidv4(),
         movieId: 2,
         roomId: 2,
         timeStart: "2021-05-27 12:35:32.774+00",
@@ -130,6 +144,7 @@ module.exports = {
         updatedAt: date,
       },
       {
+        uuid: uuidv4(),
         movieId: 2,
         roomId: 3,
         timeStart: "2021-05-27 12:35:32.774+00",
@@ -139,6 +154,7 @@ module.exports = {
         updatedAt: date,
       },
       {
+        uuid: uuidv4(),
         movieId: 2,
         roomId: 4,
         timeStart: "2021-05-27 12:35:32.774+00",
@@ -148,6 +164,7 @@ module.exports = {
         updatedAt: date,
       },
       {
+        uuid: uuidv4(),
         movieId: 2,
         roomId: 5,
         timeStart: "2021-05-27 12:35:32.774+00",
@@ -157,6 +174,7 @@ module.exports = {
         updatedAt: date,
       },
       {
+        uuid: uuidv4(),
         movieId: 3,
         roomId: 1,
         timeStart: "2021-05-28 10:35:32.774+00",
@@ -166,6 +184,7 @@ module.exports = {
         updatedAt: date,
       },
       {
+        uuid: uuidv4(),
         movieId: 3,
         roomId: 6,
         timeStart: "2021-05-29 10:35:32.774+00",
@@ -175,6 +194,7 @@ module.exports = {
         updatedAt: date,
       },
       {
+        uuid: uuidv4(),
         movieId: 4,
         roomId: 4,
         timeStart: "2021-05-29 10:35:32.774+00",
@@ -184,6 +204,7 @@ module.exports = {
         updatedAt: date,
       },
       {
+        uuid: uuidv4(),
         movieId: 3,
         roomId: 1,
         timeStart: "2021-05-30 10:35:32.774+00",
@@ -193,6 +214,7 @@ module.exports = {
         updatedAt: date,
       },
       {
+        uuid: uuidv4(),
         movieId: 3,
         roomId: 2,
         timeStart: "2021-05-30 10:35:32.774+00",
@@ -202,6 +224,7 @@ module.exports = {
         updatedAt: date,
       },
       {
+        uuid: uuidv4(),
         movieId: 3,
         roomId: 3,
         timeStart: "2021-05-31 10:35:32.774+00",
@@ -211,6 +234,7 @@ module.exports = {
         updatedAt: date,
       },
       {
+        uuid: uuidv4(),
         movieId: 3,
         roomId: 4,
         timeStart: "2021-05-31 10:35:32.774+00",
@@ -220,6 +244,7 @@ module.exports = {
         updatedAt: date,
       },
       {
+        uuid: uuidv4(),
         movieId: 3,
         roomId: 5,
         timeStart: "2021-05-31 10:35:32.774+00",
@@ -229,6 +254,7 @@ module.exports = {
         updatedAt: date,
       },
       {
+        uuid: uuidv4(),
         movieId: 1,
         roomId: 1,
         timeStart: "2021-05-27 20:00:32.774+00",
@@ -238,6 +264,7 @@ module.exports = {
         updatedAt: date,
       },
       {
+        uuid: uuidv4(),
         movieId: 7,
         roomId: 1,
         timeStart: "2021-06-01 09:00:32.774+07",
@@ -247,6 +274,7 @@ module.exports = {
         updatedAt: date,
       },
       {
+        uuid: uuidv4(),
         movieId: 7,
         roomId: 2,
         timeStart: "2021-06-01 12:00:32.774+07",
@@ -256,6 +284,7 @@ module.exports = {
         updatedAt: date,
       },
       {
+        uuid: uuidv4(),
         movieId: 7,
         roomId: 4,
         timeStart: "2021-06-01 15:00:32.774+07",
@@ -265,6 +294,7 @@ module.exports = {
         updatedAt: date,
       },
       {
+        uuid: uuidv4(),
         movieId: 7,
         roomId: 5,
         timeStart: "2021-06-01 09:00:32.774+07",
@@ -274,6 +304,7 @@ module.exports = {
         updatedAt: date,
       },
       {
+        uuid: uuidv4(),
         movieId: 7,
         roomId: 8,
         timeStart: "2021-06-01 09:00:32.774+07",
@@ -283,6 +314,7 @@ module.exports = {
         updatedAt: date,
       },
       {
+        uuid: uuidv4(),
         movieId: 7,
         roomId: 10,
         timeStart: "2021-06-01 12:00:32.774+07",
@@ -293,6 +325,7 @@ module.exports = {
       },
       /////////////////////
       {
+        uuid: uuidv4(),
         movieId: 7,
         roomId: 1,
         timeStart: "2021-06-02 07:00:32.774+07",
@@ -302,6 +335,7 @@ module.exports = {
         updatedAt: date,
       },
       {
+        uuid: uuidv4(),
         movieId: 7,
         roomId: 3,
         timeStart: "2021-06-02 18:00:32.774+07",
@@ -311,6 +345,7 @@ module.exports = {
         updatedAt: date,
       },
       {
+        uuid: uuidv4(),
         movieId: 7,
         roomId: 4,
         timeStart: "2021-06-02 21:00:32.774+07",
@@ -320,6 +355,7 @@ module.exports = {
         updatedAt: date,
       },
       {
+        uuid: uuidv4(),
         movieId: 7,
         roomId: 5,
         timeStart: "2021-06-02 09:00:32.774+07",
@@ -329,6 +365,7 @@ module.exports = {
         updatedAt: date,
       },
       {
+        uuid: uuidv4(),
         movieId: 7,
         roomId: 8,
         timeStart: "2021-06-02 13:00:32.774+07",
@@ -338,6 +375,7 @@ module.exports = {
         updatedAt: date,
       },
       {
+        uuid: uuidv4(),
         movieId: 7,
         roomId: 11,
         timeStart: "2021-06-02 09:00:32.774+07",
@@ -348,6 +386,7 @@ module.exports = {
       },
       //
       {
+        uuid: uuidv4(),
         movieId: 7,
         roomId: 1,
         timeStart: "2021-06-03 06:00:32.774+07",
@@ -357,6 +396,7 @@ module.exports = {
         updatedAt: date,
       },
       {
+        uuid: uuidv4(),
         movieId: 7,
         roomId: 1,
         timeStart: "2021-06-03 12:00:32.774+07",
@@ -366,6 +406,7 @@ module.exports = {
         updatedAt: date,
       },
       {
+        uuid: uuidv4(),
         movieId: 7,
         roomId: 4,
         timeStart: "2021-06-03 15:00:32.774+07",
@@ -375,6 +416,7 @@ module.exports = {
         updatedAt: date,
       },
       {
+        uuid: uuidv4(),
         movieId: 7,
         roomId: 4,
         timeStart: "2021-06-03 09:00:32.774+07",
@@ -384,6 +426,7 @@ module.exports = {
         updatedAt: date,
       },
       {
+        uuid: uuidv4(),
         movieId: 7,
         roomId: 8,
         timeStart: "2021-06-03 09:00:32.774+07",
@@ -393,6 +436,7 @@ module.exports = {
         updatedAt: date,
       },
       {
+        uuid: uuidv4(),
         movieId: 7,
         roomId: 8,
         timeStart: "2021-06-03 12:00:32.774+07",

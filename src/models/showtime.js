@@ -1,5 +1,7 @@
 "use strict";
 const { Model } = require("sequelize");
+const { v4: uuidv4 } = require("uuid");
+
 module.exports = (sequelize, DataTypes) => {
   class Showtime extends Model {
     /**
@@ -16,8 +18,10 @@ module.exports = (sequelize, DataTypes) => {
   Showtime.init(
     {
       uuid: {
-        type: DataTypes.INTEGER,
-        defaultValue: 4,
+        allowNull: false,
+        unique: true,
+        type: DataTypes.UUID,
+        defaultValue: DataTypes.UUIDV4,
       },
       movieId: {
         type: DataTypes.INTEGER,
