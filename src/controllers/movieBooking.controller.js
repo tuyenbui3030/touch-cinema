@@ -1,5 +1,12 @@
 const moment = require("moment");
-const { Cinema, Showtime, Room, Movie, Typeroom } = require("../models");
+const {
+  Cinema,
+  Showtime,
+  Room,
+  Movie,
+  Typeroom,
+  Booking,
+} = require("../models");
 
 module.exports = {
   movieBooking: async (req, res) => {
@@ -18,15 +25,18 @@ module.exports = {
           model: Room,
           include: [Cinema, Typeroom],
         },
+        Booking,
       ],
     });
-    const rows = 20; //showtime.Room.row;
-    const cols = 20; //showtime.Room.col;
-    const maxRow = 65 + showtime.Room.row;
+
+    res.json(showtime);
+    const rows = showtime.Room.row;
+    const cols = showtime.Room.col;
+
     const mapRoom = Array.from(Array(rows), () => new Array(cols));
 
-    for (let row = 0; row < 20; row++) {
-      for (let col = 0; col < 20; col++) {
+    for (let row = 0; row < rows; row++) {
+      for (let col = 0; col < cols; col++) {
         mapRoom[row][col] = `${String.fromCharCode(row + 97)}${col + 1}`;
       }
     }

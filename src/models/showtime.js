@@ -13,13 +13,17 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       this.belongsTo(models.Movie, { foreignKey: "movieId" });
       this.belongsTo(models.Room, { foreignKey: "roomId" });
+      this.hasMany(models.Booking, {
+        foreignKey: "showtimeId",
+        onDelete: "cascade",
+      });
     }
   }
   Showtime.init(
     {
       uuid: {
         allowNull: false,
-        unique: true,
+        primaryKey: true,
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
       },
@@ -28,17 +32,14 @@ module.exports = (sequelize, DataTypes) => {
       },
       roomId: {
         allowNull: false,
-        primaryKey: true,
         type: DataTypes.INTEGER,
       },
       timeStart: {
         allowNull: false,
-        primaryKey: true,
         type: DataTypes.DATE,
       },
       timeEnd: {
         allowNull: false,
-        primaryKey: true,
         type: DataTypes.DATE,
       },
       price: DataTypes.FLOAT,
