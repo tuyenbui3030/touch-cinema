@@ -17,6 +17,7 @@ module.exports = {
     const listDate = resultDate.filter((item, index) => {
       return resultDate.indexOf(item) === index;
     });
+    console.log(resultDate);
     //////////////////test/////////////////////
     const cinemas = await Cinema.findAll({
       include: [

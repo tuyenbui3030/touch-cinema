@@ -13,36 +13,44 @@ module.exports = {
      */
     const date = new Date();
     const data = [
-      // {
-      //   unsignedName: "touch-aeon",
-      //   name: "Touch Aeon",
-      //   address: "Số 1 Đường Số 17A, Bình Trị Đông B, Bình Tân, Hồ Chí Minh",
-      //   createdAt: date,
-      //   updatedAt: date,
-      // },
-      // {
-      //   unsignedName: "touch-nowzone",
-      //   name: "Touch Nowzone",
-      //   address: "235 Nguyễn Văn Cừ, Quận 1, Hồ Chí Minh",
-      //   createdAt: date,
-      //   updatedAt: date,
-      // },
-      // {
-      //   unsignedName: "touch-centre",
-      //   name: "Touch Centre",
-      //   address: "65 Lê Lợi, P. Bến Nghé, Quận 1, TP. HCM",
-      //   createdAt: date,
-      //   updatedAt: date,
-      // },
-      // {
-      //   unsignedName: "touch-vincom",
-      //   name: "Touch Vincom",
-      //   address: "72 Lê Thánh Tôn, Bến Nghé, Quận 1, TP.HCM",
-      //   createdAt: date,
-      //   updatedAt: date,
-      // },
+      {
+        id: "9b52a2c6-4558-46de-ae71-485d8b17992b",
+        userId: 1,
+        showtimeId: "9b52a2c6-4558-46de-ae71-485d8b17949a",
+        bookingTime: date,
+        total: 100000,
+        createdAt: date,
+        updatedAt: date,
+      },
+      {
+        id: "9b52a2c6-4558-46de-ae71-485d8b17992c",
+        userId: 2,
+        showtimeId: "9b52a2c6-4558-46de-ae71-485d8b17949a",
+        bookingTime: date,
+        total: 100000,
+        createdAt: date,
+        updatedAt: date,
+      },
+      {
+        id: "9b52a2c6-4558-46de-ae71-485d8b17992d",
+        userId: 1,
+        showtimeId: "9b52a2c6-4558-46de-ae71-485d8b17949a",
+        bookingTime: date,
+        total: 100000,
+        createdAt: date,
+        updatedAt: date,
+      },
+      {
+        id: "9b52a2c6-4558-46de-ae71-485d8b17992e",
+        userId: 3,
+        showtimeId: "9b52a2c6-4558-46de-ae71-485d8b17949a",
+        bookingTime: date,
+        total: 100000,
+        createdAt: date,
+        updatedAt: date,
+      },
     ];
-    await queryInterface.bulkInsert("BookingDatas", data, {});
+    await queryInterface.bulkInsert("Bookings", data, {});
   },
 
   down: async (queryInterface, Sequelize) => {
@@ -52,6 +60,6 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-    await queryInterface.bulkDelete("BookingDatas", null, {});
+    await queryInterface.bulkDelete("Bookings", null, {});
   },
 };
