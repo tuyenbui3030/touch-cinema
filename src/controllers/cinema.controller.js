@@ -6,6 +6,7 @@ module.exports = {
   index: async (req, res) => {
     const unsignedName = req.params.unsignedName;
     const query = req.query.movie ? nonAccentVietnamese(req.query.movie) : "";
+
     const cinema = await Cinema.findOne({
       where: {
         unsignedName: unsignedName,
@@ -14,7 +15,7 @@ module.exports = {
         {
           model: Movie,
           where: {
-            name: {
+            unsignedName: {
               [Op.iLike]: `%${query}%`,
             },
           },
@@ -22,7 +23,6 @@ module.exports = {
         { model: CinemaPhoto },
       ],
     });
-    // res.json(cinema);
     res.render("cinema/index", { cinema });
   },
   all: async (req, res) => {

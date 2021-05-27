@@ -6,6 +6,7 @@ const {
   Movie,
   Typeroom,
   Booking,
+  Ticket,
 } = require("../models");
 
 module.exports = {
@@ -25,11 +26,25 @@ module.exports = {
           model: Room,
           include: [Cinema, Typeroom],
         },
-        Booking,
+        {
+          model: Booking,
+          include: Ticket,
+        },
       ],
     });
 
-    res.json(showtime);
+    // res.json(showtime.Bookings);
+    // const listSeat = showtime.Bookings.map((x) => x.Tickets);
+    const resultSeat = [];
+    const listSeat = showtime.Bookings.map((x) => x.Tickets);
+    listSeat.forEach((objTicket) => {
+      objTicket.forEach((seats) => {
+        resultSeat.push(seats.seat);
+      });
+    });
+    // const test = listSeat[0].map((x) => x.seat);
+    res.json(resultSeat);
+    console.log("Nè ==============>");
     const rows = showtime.Room.row;
     const cols = showtime.Room.col;
 

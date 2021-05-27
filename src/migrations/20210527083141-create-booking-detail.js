@@ -1,24 +1,18 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Tickets', {
+    await queryInterface.createTable('BookingDetails', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      id: {
-        type: Sequelize.UUID
-      },
       bookingId: {
         type: Sequelize.UUID
       },
-      seatId: {
-        type: Sequelize.INTEGER
-      },
-      price: {
-        type: Sequelize.FLOAT
+      ticketId: {
+        type: Sequelize.UUID
       },
       createdAt: {
         allowNull: false,
@@ -31,6 +25,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Tickets');
+    await queryInterface.dropTable('BookingDetails');
   }
 };

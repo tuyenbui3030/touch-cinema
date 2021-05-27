@@ -16,7 +16,8 @@ module.exports = (sequelize, DataTypes) => {
         // foreignKey: "movieId",
         // unique: false,
         through: { model: models.Showtime, unique: false },
-        foreignKey: "movieId",
+        // foreignKey: "movieId",
+        foreignKey: "roomId",
       });
 
       this.hasMany(models.Showtime, { foreignKey: "roomId" });
