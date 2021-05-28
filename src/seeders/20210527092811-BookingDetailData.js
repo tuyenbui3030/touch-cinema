@@ -37,6 +37,18 @@ module.exports = {
         createdAt: date,
         updatedAt: date,
       },
+      {
+        ticketId: "9b52a2c6-1115-46de-ae71-485d8b17992b",
+        bookingId: "9b52a2c6-4558-46de-ae71-485d8b17992d",
+        createdAt: date,
+        updatedAt: date,
+      },
+      {
+        ticketId: "9b52a2c6-1116-46de-ae71-485d8b17992b",
+        bookingId: "9b52a2c6-4558-46de-ae71-485d8b17992e",
+        createdAt: date,
+        updatedAt: date,
+      },
     ];
     await queryInterface.bulkInsert("BookingDetails", data, {});
   },

@@ -44,22 +44,24 @@
 						<img src="/public/images/content/screen.png">
 					</div>
 				</div>
-
-				<div class="st_seat_lay_economy_wrapper st_seat_lay_economy_wrapperexicutive float_left">
-					<% for(const rows of mapRoom) { %>
-					<div class="st_seat_lay_row float_left d-flex justify-content-center">
-						<ul>
-							<!-- <li class="st_seat_heading_row">A</li> -->
-							<% for(const seat of rows) { %>
-								<li>	
-									<input type="checkbox" id="<%= seat %>" name="cb">
-									<label for="<%= seat %>"></label>
-								</li>
-							<% } %>
-						</ul>
+				<form action="/booking/pay" id="booking_seat" name="booking_seat" method="post">
+					<input type="hidden" name="priceTicket" id="price-ticket" value="<%= showtime.price %>"/>
+					<div class="st_seat_lay_economy_wrapper st_seat_lay_economy_wrapperexicutive float_left">
+						<% for(const rows of mapRoom) { %>
+						<div class="st_seat_lay_row float_left d-flex justify-content-center">
+							<ul>
+								<!-- <li class="st_seat_heading_row">A</li> -->
+								<% for(const item of rows) { %>
+									<li class="<%= item.status?"select_seat":"seat_disable" %>">	
+										<input type="checkbox" class="seat_checked" id="<%= item.seat %>" value="<%= item.seat %>" name="cb[]"/>
+										<label for="<%= item.seat %>"></label>
+									</li>
+								<% } %>
+							</ul>
+						</div>
+						<% } %>
 					</div>
-					<% } %>
-				</div>
+				</form>
 			</div>
 		</div>
 	</div>
@@ -78,16 +80,54 @@
 				</div>
 				<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 					<div class="st_bt_top_center_heading st_bt_top_center_heading_seat_book_page float_left footer-seat">
-						<h4><b>Giá vé:</b> <%= showtime.price %> VNĐ</h4>
-            <h4><b>Số lượng:</b> 2</h4>
-						<h4><b>Tổng tiền:</b> 120.000 VNĐ</h4>
-						<h4><b>Ghế:</b> A4, A6</h4>
+						<h4><b>Giá vé: </b><%= showtime.price %> VNĐ</h4>
+            <h4><b>Số lượng: </b><span class="item-qty">0</span> vé</h4>
+						<h4><b>Tổng tiền: </b><span class="item-total">0</span> VNĐ</h4>
+						<h4><b>Ghế: </b><span class="item-seat"></span></h4>
 					</div>
 				</div>
 				<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-					<div class="st_seatlay_btn float_left">	<a href="booking_type.html">Tiếp tục</a>
+					<div class="st_seatlay_btn float_left">
+						<!-- <a href="">Tiếp tục</a> -->
+						<button type="submit" form="booking_seat">Tiếp tục</button>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	<script>
+		$(document).on("click", ".select_seat", function(e) {
+			let seatSelect = [];
+			// let newSeat = $(this).find(".seat_checked").attr("id");
+			// if(!seatSelect.includes(newSeat)) {
+			// 	seatSelect.push(newSeat);
+			// }
+			$('.seat_checked:checkbox:checked').each(function() {
+				let newSeat = $(this).attr("id");
+				if(!seatSelect.includes(newSeat)) {
+					seatSelect.push(newSeat);
+				}
+			});
+			let priceTicket = Number($("#price-ticket").val());
+			let qtyTicket = Number($('.seat_checked:checkbox:checked').length);
+			let total = priceTicket * qtyTicket;
+			$(".item-qty").text(qtyTicket);
+			$(".item-total").text(total);
+			$(".item-seat").text(seatSelect.join(', '));
+			// const date = $(this).data("value");
+			// const movieId = $(".showtime").data("value");
+			// console.log(date);
+			// console.log(movieId);
+			// $.ajax({
+			// 	url: "/movie/showtimeDate",
+			// 	method: "POST",
+			// 	data: {
+			// 		movieId,
+			// 		date,
+			// 	},
+			// 	success: function (res) {
+			// 		$("#home").replaceWith(res);
+			// 	},
+			// });
+		});
+	</script>

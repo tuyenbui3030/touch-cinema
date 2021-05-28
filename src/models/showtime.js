@@ -45,6 +45,12 @@ module.exports = (sequelize, DataTypes) => {
       price: DataTypes.FLOAT,
     },
     {
+      indexes: [
+        {
+          unique: true,
+          fields: ["roomId", "movieId", "timeStart"],
+        },
+      ],
       sequelize,
       modelName: "Showtime",
     }

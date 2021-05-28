@@ -33,18 +33,15 @@ module.exports = {
       ],
     });
 
-    // res.json(showtime.Bookings);
-    // const listSeat = showtime.Bookings.map((x) => x.Tickets);
-    const resultSeat = [];
+    //Lọc ghế đã có người đặt
+    const existsSeat = [];
     const listSeat = showtime.Bookings.map((x) => x.Tickets);
     listSeat.forEach((objTicket) => {
       objTicket.forEach((seats) => {
-        resultSeat.push(seats.seat);
+        existsSeat.push(seats.seat);
       });
     });
-    // const test = listSeat[0].map((x) => x.seat);
-    res.json(resultSeat);
-    console.log("Nè ==============>");
+
     const rows = showtime.Room.row;
     const cols = showtime.Room.col;
 
@@ -52,10 +49,16 @@ module.exports = {
 
     for (let row = 0; row < rows; row++) {
       for (let col = 0; col < cols; col++) {
-        mapRoom[row][col] = `${String.fromCharCode(row + 97)}${col + 1}`;
+        // mapRoom[row][col] = `${String.fromCharCode(row + 97)}${col + 1}`;
+        const seat = `${String.fromCharCode(row + 97)}${col + 1}`;
+        const status = !existsSeat.includes(seat);
+        mapRoom[row][col] = {
+          seat,
+          status,
+        };
       }
     }
-
+    // res.json(mapRoom);
     // console.log(mapRoom);
 
     // res.send(mapRoom);
@@ -65,5 +68,8 @@ module.exports = {
       showtime,
       mapRoom,
     });
+  },
+  payBooking: async (req, res) => {
+    res.json(req.body);
   },
 };

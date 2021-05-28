@@ -24,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
         defaultValue: DataTypes.UUIDV4,
         allowNull: false,
       },
-      // bookingId: DataTypes.UUID,
+      bookingId: DataTypes.UUID,
       seat: DataTypes.STRING,
       rowAddress: DataTypes.STRING,
       colAddress: DataTypes.STRING,
