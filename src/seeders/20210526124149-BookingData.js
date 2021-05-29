@@ -42,7 +42,7 @@ module.exports = {
       },
       {
         id: "9b52a2c6-4558-46de-ae71-485d8b17992e",
-        userId: 3,
+        userId: 2,
         showtimeId: "9b52a2c6-4558-46de-ae71-485d8b17949a",
         bookingTime: date,
         total: 100000,

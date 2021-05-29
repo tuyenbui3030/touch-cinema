@@ -149,3 +149,21 @@
   margin-right: 30px;
   margin-top: 10px;
 }
+.pm_icon {
+  background-position: 50% 50%;
+  background-size: 100% 100%;
+  width: 37px;
+  height: 37px;
+  margin-right: 5px;
+  margin-top: -9px;
+  display: inline-block;
+}
+.pm_name {
+  margin-top: -31px;
+  vertical-align: middle;
+  display: inline-block;
+}
+.st_seatlay_btn .pay-btn {
+  margin-top: 20px;
+  margin-right: 0px;
+}

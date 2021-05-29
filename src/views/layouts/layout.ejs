@@ -15,6 +15,7 @@ Author: Webstrot
 	<meta charset="utf-8" />
 	<title>Movie Pro Responsive HTML Template</title>
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+	<meta http-equiv="Content-Type" charset="utf-8"/>
 	<meta name="description" content="Movie Pro" />
 	<meta name="keywords" content="Movie Pro" />
 	<meta name="author" content="" />
@@ -208,9 +209,7 @@ Author: Webstrot
 
 
 		$(".btn-booking").on("click", function(e) {
-    // alert("Vui lòng đăng nhập để tiến hành đặt vé")
 			e.preventDefault();
-
 			const movieId = $(this).data("value");
 			$.ajax({
 				url: "/movie/showtime",
@@ -221,20 +220,14 @@ Author: Webstrot
 				success: function (res) {
 					$("#modalBook").replaceWith(res);
 					$("#modalBook").modal('show');
-					// $("#listDel").hide();
 				},
-    });
+			});
+		});
 
-
-  });
-	$(document).on("click", ".date-showtime", function(e) {
-    // alert("Vui lòng đăng nhập để tiến hành đặt vé")
+		$(document).on("click", ".date-showtime", function(e) {
 			e.preventDefault();
-
 			const date = $(this).data("value");
 			const movieId = $(".showtime").data("value");
-			console.log(date);
-			console.log(movieId);
 			$.ajax({
 				url: "/movie/showtimeDate",
 				method: "POST",
@@ -247,9 +240,6 @@ Author: Webstrot
 				},
 			});
 		});
-
-
-		
 	</script>
 </body>
 

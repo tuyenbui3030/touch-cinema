@@ -49,7 +49,6 @@ module.exports = {
 
     for (let row = 0; row < rows; row++) {
       for (let col = 0; col < cols; col++) {
-        // mapRoom[row][col] = `${String.fromCharCode(row + 97)}${col + 1}`;
         const seat = `${String.fromCharCode(row + 97)}${col + 1}`;
         const status = !existsSeat.includes(seat);
         mapRoom[row][col] = {
@@ -58,10 +57,6 @@ module.exports = {
         };
       }
     }
-    // res.json(mapRoom);
-    // console.log(mapRoom);
-
-    // res.send(mapRoom);
     res.render("booking/seatBooking", {
       layout: "../views/layouts/layoutBooking.ejs",
       moment,
@@ -70,6 +65,28 @@ module.exports = {
     });
   },
   payBooking: async (req, res) => {
-    res.json(req.body);
+    // res.json(req.body);
+    let { showtimeId, priceTicket, cb } = req.body;
+    let showtime = await Showtime.findOne({
+      where: {
+        uuid: showtimeId,
+      },
+      include: [
+        Movie,
+        {
+          model: Room,
+          include: [Cinema, Typeroom],
+        },
+      ],
+    });
+    const seat = cb.join(", ");
+    // res.send(showtime);
+
+    res.render("booking/payBooking", {
+      layout: "../views/layouts/layoutBooking.ejs",
+      moment,
+      showtime,
+      seat,
+    });
   },
 };
