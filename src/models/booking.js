@@ -31,6 +31,7 @@ module.exports = (sequelize, DataTypes) => {
       userId: DataTypes.INTEGER,
       showtimeId: DataTypes.UUID,
       bookingTime: DataTypes.DATE,
+      status: DataTypes.BOOLEAN,
       total: DataTypes.FLOAT,
     },
     {

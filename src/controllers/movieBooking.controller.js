@@ -7,7 +7,17 @@ const {
   Typeroom,
   Booking,
   Ticket,
+  BookingDetail,
 } = require("../models");
+
+// const processText =(inputText) => {
+//   let output = [];
+//   let json = inputText.split(' ');
+//   json.forEach(function (item) {
+//       output.push(item.replace(/\'/g, '').split(/(\d+)/).filter(Boolean));
+//   });
+//   return output;
+// }
 
 module.exports = {
   movieBooking: async (req, res) => {
@@ -57,6 +67,12 @@ module.exports = {
         };
       }
     }
+    // function myFunc(arg) {
+    //   console.log(`arg was => ${arg}`);
+    // }
+
+    // await setTimeout(myFunc, 10000, "funky");
+
     res.render("booking/seatBooking", {
       layout: "../views/layouts/layoutBooking.ejs",
       moment,
@@ -66,7 +82,44 @@ module.exports = {
   },
   payBooking: async (req, res) => {
     // res.json(req.body);
-    let { showtimeId, priceTicket, cb } = req.body;
+
+    const { showtimeId, priceTicket, cb } = req.body;
+    const total = Number(priceTicket) * cb.length;
+    //Tạo Booking mới, với trạng thái chưa thanh toán
+    const resultBooking = await Booking.create({
+      userId: req.session.passport.user.id,
+      showtimeId,
+      bookingTime: new Date(),
+      total,
+      status: false,
+    });
+    //Tạo vé mới
+    cb.forEach(async function (element) {
+      let resultTicket = await Ticket.create({
+        bookingId: resultBooking.id,
+        seat: element,
+        rowAddress: "a",
+        colAddress: "1",
+        // rowAddress: element.match(/\d+/g),
+        // colAddress: element.match(/[a-zA-Z]+/g),
+      });
+
+      let resultBookingDetail = await BookingDetail.create({
+        bookingId: resultBooking.id,
+        ticketId: resultTicket.id,
+      });
+    });
+
+    await setTimeout(async () => {
+      const insertResult = await Booking.destroy({
+        where: {
+          id: resultBooking.id,
+          status: false,
+        },
+      });
+      console.log(insertResult);
+    }, 1000 * 60 * 1);
+
     let showtime = await Showtime.findOne({
       where: {
         uuid: showtimeId,
