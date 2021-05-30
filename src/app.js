@@ -1,7 +1,8 @@
 const { sequelize } = require("./models");
+const http = require("http");
 const express = require("express");
+const socketio = require("socket.io");
 require("express-async-errors");
-
 const path = require("path");
 
 const expressLayouts = require("express-ejs-layouts");
@@ -11,6 +12,9 @@ const flash = require("connect-flash");
 const passport = require("passport");
 
 const app = express();
+
+const server = http.createServer(app);
+const io = socketio(server);
 
 //middleware Cookie Session
 app.use(
@@ -62,8 +66,30 @@ app.use(function (err, req, res, next) {
   res.status(500).render("500");
 });
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, async () => {
+server.listen(PORT, async () => {
   console.log(`Server is running at http://localhost:${PORT}`);
   await sequelize.sync({ alter: true });
   console.log("Database synced!");
+});
+
+// io.on("connection", (socket) => {
+//   console.log("user: " + socket.id);
+//   socket.on("message", (data) => {
+//     socket.broadcast.emit("message", data);
+//   });
+// });
+io.on("connection", (socket) => {
+  console.log(socket.id);
+  socket.on("send-message", (message, room) => {
+    console.log("Result ", {
+      message,
+      room,
+    });
+    socket.to(room).emit("showtime", message);
+  });
+  socket.on("join-room", (room) => {
+    console.log("Debug =>>>>>>>>>>>>>>>>>>");
+    console.log(room);
+    socket.join(room);
+  });
 });

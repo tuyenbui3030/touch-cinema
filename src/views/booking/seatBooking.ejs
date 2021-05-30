@@ -53,7 +53,7 @@
 							<ul>
 								<!-- <li class="st_seat_heading_row">A</li> -->
 								<% for(const item of rows) { %>
-									<li class="<%= item.status?"select_seat":"seat_disable" %>">	
+									<li id="seat-<%= item.seat %>" class="<%= item.status?"select_seat":"seat_disable" %>">	
 										<input type="checkbox" class="seat_checked" id="<%= item.seat %>" value="<%= item.seat %>" name="cb[]"/>
 										<label for="<%= item.seat %>"></label>
 									</li>
@@ -97,12 +97,45 @@
 		</div>
 	</div>
 	<script>
+		const socket = io('http://localhost:3000')
+		//socket.on("connection");
+		// const sendMessage = () => {
+		// 	socket.emit('message', "hey")
+		// }
+		// socket.emit("joinRoom", "Hello");
+		// socket.on("success", (res) => console.log(res));
+		// socket.on("message", (data) => {
+		// 	$(`#seat-${data}`).addClass("seat_disable");
+		// 	$(`#seat-${data}`).removeClass("select_seat");
+		// 	// document.querySelector("#yeye").innerHTML = data
+		// })
+
+		socket.emit("join-room", "<%= showtime.uuid %>");
+		socket.on("showtime", (data) => {
+			const disable = $(`#seat-${data}`).hasClass("seat_disable");
+			if(disable) {
+				$(`#seat-${data}`).removeClass("seat_disable");
+				// $(`#seat-${data}`).addClass("select_seat");
+			} else {
+				$(`#seat-${data}`).addClass("seat_disable");
+				// $(`#seat-${data}`).removeClass("select_seat");
+			}
+		})
+
 		$(document).on("click", ".select_seat", function(e) {
+			e.preventDefault();
+			const disable = $(this).hasClass("seat_disable");
+			if(disable) return;
+			const seatChecked = ($(this).find(".seat_checked").attr("id"));
+			if($(`#${seatChecked}`).is(':checked')) {
+				$(`#${seatChecked}`).prop('checked', false);
+			} else {
+				$(`#${seatChecked}`).prop('checked', true);
+			}
+			const item = ($(this).find(".seat_checked").val());
+			socket.emit("send-message", item, "<%= showtime.uuid %>");
+
 			let seatSelect = [];
-			// let newSeat = $(this).find(".seat_checked").attr("id");
-			// if(!seatSelect.includes(newSeat)) {
-			// 	seatSelect.push(newSeat);
-			// }
 			$('.seat_checked:checkbox:checked').each(function() {
 				let newSeat = $(this).attr("id");
 				if(!seatSelect.includes(newSeat)) {
@@ -115,6 +148,7 @@
 			$(".item-qty").text(qtyTicket);
 			$(".item-total").text(total);
 			$(".item-seat").text(seatSelect.join(', '));	
+
 		});
 
 		$("#booking_seat").on("submit", function (e) {

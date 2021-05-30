@@ -10,6 +10,14 @@ const {
   BookingDetail,
 } = require("../models");
 
+const http = require("http");
+const socketio = require("socket.io");
+const express = require("express");
+
+const app = express();
+const server = http.createServer(app);
+const io = socketio(server);
+
 // const processText =(inputText) => {
 //   let output = [];
 //   let json = inputText.split(' ');
