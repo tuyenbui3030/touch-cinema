@@ -103,6 +103,8 @@ module.exports = {
     });
     //Tạo vé mới
     cb.forEach(async function (element) {
+      console.log(element.match(/\d+/g));
+      console.log(element.match(/[a-zA-Z]+/g));
       let resultTicket = await Ticket.create({
         bookingId: resultBooking.id,
         seat: element,
@@ -110,11 +112,6 @@ module.exports = {
         colAddress: "1",
         // rowAddress: element.match(/\d+/g),
         // colAddress: element.match(/[a-zA-Z]+/g),
-      });
-
-      let resultBookingDetail = await BookingDetail.create({
-        bookingId: resultBooking.id,
-        ticketId: resultTicket.id,
       });
     });
 

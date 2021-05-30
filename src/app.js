@@ -88,8 +88,6 @@ io.on("connection", (socket) => {
     socket.to(room).emit("showtime", message);
   });
   socket.on("join-room", (room) => {
-    console.log("Debug =>>>>>>>>>>>>>>>>>>");
-    console.log(room);
     socket.join(room);
   });
 });

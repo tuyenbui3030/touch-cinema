@@ -12,10 +12,9 @@ module.exports = (sequelize, DataTypes) => {
       this.belongsTo(models.User, { foreignKey: "userId" });
 
       this.belongsTo(models.Showtime, { foreignKey: "showtimeId" });
-      this.belongsToMany(models.Ticket, {
-        through: { model: models.BookingDetail },
-        // foreignKey: "ticketId",
-        foreignKey: "bookingId", //test
+      this.hasMany(models.Ticket, {
+        foreignKey: "bookingId",
+        onDelete: "cascade",
       });
     }
   }
