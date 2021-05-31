@@ -118,11 +118,32 @@
             </div>
             <div class="st_seatlay_btn float_left">
               <!-- <a href="">Tiếp tục</a> -->
-              <button class="pay-btn" type="submit" form="booking_seat">Thanh toán</button>
+              <!-- <button class="pay-btn" type="submit" form="booking_seat">Thanh toán</button> -->
             </div>
+            <form action="/booking/actionPay" method="post">
+              <!-- <button class="pay-btn" type="submit">Thanh toán</button> -->
+              <button class="pay-btn" type="submit">Thanh toán</button>
+            </form>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+<script>
+  $("input:checkbox").on('click', function() {
+    // in the handler, 'this' refers to the box clicked on
+    var $box = $(this);
+    if ($box.is(":checked")) {
+      // the name of the box is retrieved using the .attr() method
+      // as it is assumed and expected to be immutable
+      var group = "input:checkbox[name='" + $box.attr("name") + "']";
+      // the checked state of the group/box on the other hand will change
+      // and the current value is retrieved using .prop() method
+      $(group).prop("checked", false);
+      $box.prop("checked", true);
+    } else {
+      $box.prop("checked", false);
+    }
+  });
+</script>

@@ -1,4 +1,5 @@
 const moment = require("moment");
+const paypal = require("paypal-rest-sdk");
 const {
   Cinema,
   Showtime,
@@ -9,6 +10,14 @@ const {
   Ticket,
   Cart,
 } = require("../models");
+
+paypal.configure({
+  mode: "sandbox", //sandbox or live
+  client_id:
+    "AZEFXwjPQGpnIdL3KsqktAy_9RhlNAzx0t9QAnxv-iN5jrr-UgSBZc71nIOf61A4kLHNcuCVpvjdElTg",
+  client_secret:
+    "EK2j2GyEGCKGcA12GN6zNmn2lz0us_1n0LcXPAhtmzTSypWyrkufleGXZmeQCP4e-sUiUuTlxC5I-VC3",
+});
 
 const http = require("http");
 const socketio = require("socket.io");
@@ -108,15 +117,14 @@ module.exports = {
     });
     //Tạo vé mới
     cb.forEach(async function (element) {
-      console.log(element.match(/\d+/g));
-      console.log(element.match(/[a-zA-Z]+/g));
+      const col = element.match(/\d+/g);
+      const row = element.match(/[a-zA-Z]+/g);
       let resultTicket = await Ticket.create({
         bookingId: resultBooking.id,
         seat: element,
-        rowAddress: "a",
-        colAddress: "1",
-        // rowAddress: element.match(/\d+/g),
-        // colAddress: element.match(/[a-zA-Z]+/g),
+        rowAddress: row[0],
+        colAddress: col[0],
+        price: Number(priceTicket),
       });
     });
 
@@ -145,12 +153,104 @@ module.exports = {
     const seat = cb.join(", ");
     // res.send(showtime);
 
+    req.session.bookingId = resultBooking.id;
+
     res.render("booking/payBooking", {
       layout: "../views/layouts/layoutBooking.ejs",
       moment,
       showtime,
       seat,
     });
+  },
+  actionPay: async (req, res) => {
+    const create_payment_json = {
+      intent: "sale",
+      payer: {
+        payment_method: "paypal",
+      },
+      redirect_urls: {
+        return_url: "http://localhost:3000/booking/success",
+        cancel_url: "http://localhost:3000/booking/cancel",
+      },
+      transactions: [
+        {
+          item_list: {
+            items: [
+              {
+                name: "Vé xem phim mắt biếc 1",
+                sku: "001",
+                price: "5.00",
+                currency: "USD",
+                quantity: 1,
+              },
+              {
+                name: "Vé xem phim mắt biếc 2",
+                sku: "002",
+                price: "5.00",
+                currency: "USD",
+                quantity: 1,
+              },
+            ],
+          },
+          amount: {
+            currency: "USD",
+            total: "10.0",
+          },
+          description: "Hat for the best team ever",
+        },
+      ],
+    };
+
+    paypal.payment.create(create_payment_json, function (error, payment) {
+      if (error) {
+        res.render("cancle");
+      } else {
+        for (let i = 0; i < payment.links.length; i++) {
+          if (payment.links[i].rel === "approval_url") {
+            res.redirect(payment.links[i].href);
+          }
+        }
+      }
+    });
+  },
+  success: async (req, res) => {
+    const payerId = req.query.PayerID;
+    const paymentId = req.query.paymentId;
+
+    const execute_payment_json = {
+      payer_id: payerId,
+      transactions: [
+        {
+          amount: {
+            currency: "USD",
+            total: "10.0",
+          },
+        },
+      ],
+    };
+
+    paypal.payment.execute(
+      paymentId,
+      execute_payment_json,
+      async function (error, payment) {
+        if (error) {
+          res.render("cancle");
+        } else {
+          console.log(JSON.stringify(payment));
+          const result = await Booking.update(
+            {
+              status: true,
+            },
+            {
+              where: {
+                id: req.session.bookingId,
+              },
+            }
+          );
+          res.send("OK");
+        }
+      }
+    );
   },
   addCart: async (req, res) => {
     const { showtimeId, seat } = req.body;

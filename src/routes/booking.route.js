@@ -8,5 +8,7 @@ router.get("/seat", restrict, bookingController.seatBooking);
 router.post("/addCart", restrict, bookingController.addCart);
 router.post("/delCart", restrict, bookingController.delCart);
 router.post("/pay", restrict, bookingController.payBooking);
+router.post("/actionPay", bookingController.actionPay);
+router.get("/success", bookingController.success);
 
 module.exports = router;
