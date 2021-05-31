@@ -5,6 +5,8 @@ const router = express.Router();
 
 // router.get("/", bookingController.movieBooking);
 router.get("/seat", restrict, bookingController.seatBooking);
-router.get("/pay", restrict, bookingController.payBooking);
+router.post("/addCart", restrict, bookingController.addCart);
+router.post("/delCart", restrict, bookingController.delCart);
+router.post("/pay", restrict, bookingController.payBooking);
 
 module.exports = router;

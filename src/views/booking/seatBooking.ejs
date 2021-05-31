@@ -124,13 +124,37 @@
 
 		$(document).on("click", ".select_seat", function(e) {
 			e.preventDefault();
+			const valueSeat = $(this).find(".seat_checked").val();
 			const disable = $(this).hasClass("seat_disable");
 			if(disable) return;
 			const seatChecked = ($(this).find(".seat_checked").attr("id"));
 			if($(`#${seatChecked}`).is(':checked')) {
 				$(`#${seatChecked}`).prop('checked', false);
+				console.log("xóa");
+				$.ajax({
+					url: "/booking/delCart",
+					method: "POST",
+					data: {
+						showtimeId: "<%= showtime.uuid %>",
+						seat: valueSeat,
+					},
+					success: function (res) {
+						console.log(res);
+					},
+				});
 			} else {
 				$(`#${seatChecked}`).prop('checked', true);
+				$.ajax({
+					url: "/booking/addCart",
+					method: "POST",
+					data: {
+						showtimeId: "<%= showtime.uuid %>",
+						seat: valueSeat,
+					},
+					success: function (res) {
+						console.log(res);
+					},
+				});
 			}
 			const item = ($(this).find(".seat_checked").val());
 			socket.emit("send-message", item, "<%= showtime.uuid %>");

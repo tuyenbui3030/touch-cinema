@@ -7,7 +7,7 @@ const {
   Typeroom,
   Booking,
   Ticket,
-  BookingDetail,
+  Cart,
 } = require("../models");
 
 const http = require("http");
@@ -32,6 +32,9 @@ module.exports = {
     res.render("booking/movieBooking");
   },
   seatBooking: async (req, res) => {
+    const userId = req.session.passport.user.id;
+    await Cart.destroy({ where: { userId } });
+
     const uuid = req.query.showtime;
 
     const showtime = await Showtime.findOne({
@@ -59,6 +62,8 @@ module.exports = {
         existsSeat.push(seats.seat);
       });
     });
+    const newSeat = await Cart.findAll();
+    newSeat.forEach((x) => existsSeat.push(x.seat));
 
     const rows = showtime.Room.row;
     const cols = showtime.Room.col;
@@ -123,7 +128,7 @@ module.exports = {
         },
       });
       console.log(insertResult);
-    }, 1000 * 60 * 1);
+    }, 1000 * 60 * 10);
 
     let showtime = await Showtime.findOne({
       where: {
@@ -146,5 +151,32 @@ module.exports = {
       showtime,
       seat,
     });
+  },
+  addCart: async (req, res) => {
+    const { showtimeId, seat } = req.body;
+    const userId = req.session.passport.user.id;
+    const resultCart = await Cart.create({ userId, seat, showtimeId });
+    console.log(resultCart.id);
+    await setTimeout(async () => {
+      await Cart.destroy({
+        where: {
+          id: resultCart.id,
+        },
+      });
+    }, 1000 * 60 * 10);
+    res.json(resultCart);
+  },
+  delCart: async (req, res) => {
+    const { showtimeId, seat } = req.body;
+    const userId = req.session.passport.user.id;
+    const destroyResult = await Cart.destroy({
+      where: {
+        showtimeId,
+        userId,
+        seat,
+      },
+    });
+    console.log(destroyResult);
+    res.json(destroyResult);
   },
 };

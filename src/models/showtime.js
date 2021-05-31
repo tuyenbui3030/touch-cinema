@@ -17,6 +17,10 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "showtimeId",
         onDelete: "cascade",
       });
+      this.hasMany(models.Cart, {
+        foreignKey: "showtimeId",
+        onDelete: "cascade",
+      });
     }
   }
   Showtime.init(
