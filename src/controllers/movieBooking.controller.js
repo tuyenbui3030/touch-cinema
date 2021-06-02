@@ -1,5 +1,9 @@
 const moment = require("moment");
 const paypal = require("paypal-rest-sdk");
+const client = require("twilio")(
+  "AC1b9f4307d8b4ed0576ba1f3cae401ecc",
+  "8ae56fe759bd519f4ecfcfcb5c238fd3"
+);
 const {
   Cinema,
   Showtime,
@@ -62,7 +66,18 @@ module.exports = {
         },
       ],
     });
-
+    // req.session.bookingRoom = showtime.Room.name;
+    // req.session.bookingCinema = showtime.Room.Cinema.name;
+    req.session.booking = {
+      movie: showtime.Movie.name,
+      room: showtime.Room.name,
+      cinema: showtime.Room.Cinema.name,
+      typeroom: showtime.Room.Typeroom.type,
+      id: "",
+      seat: "",
+      qty: 0,
+      total: 0,
+    };
     //Lọc ghế đã có người đặt
     const existsSeat = [];
     const listSeat = showtime.Bookings.map((x) => x.Tickets);
@@ -94,7 +109,6 @@ module.exports = {
     // }
 
     // await setTimeout(myFunc, 10000, "funky");
-
     res.render("booking/seatBooking", {
       layout: "../views/layouts/layoutBooking.ejs",
       moment,
@@ -152,8 +166,8 @@ module.exports = {
     });
     const seat = cb.join(", ");
     // res.send(showtime);
-
-    req.session.bookingId = resultBooking.id;
+    req.session.booking.seat = seat;
+    req.session.booking.id = resultBooking.id;
 
     res.render("booking/payBooking", {
       layout: "../views/layouts/layoutBooking.ejs",
@@ -163,6 +177,46 @@ module.exports = {
     });
   },
   actionPay: async (req, res) => {
+    const booking = await Booking.findOne({
+      where: {
+        id: req.session.booking.id,
+      },
+      include: [
+        Ticket,
+        {
+          model: Showtime,
+          include: [Movie],
+        },
+        // {
+        //   model: Ticket,
+        //   include: [Cinema, Typeroom],
+        // },
+      ],
+    });
+    const tickets = booking.Tickets;
+
+    // Start - Liệt kê vé
+    let items = [];
+    let total = 0;
+    tickets.forEach((item) => {
+      items.push({
+        name: `Phim: ${
+          req.session.booking.movie
+        } - Ghế: ${item.seat.toUpperCase()} - Phòng: ${
+          req.session.booking.room
+        } - Rạp: ${req.session.booking.cinema}`,
+        sku: item.id,
+        price: item.price,
+        currency: "USD",
+        quantity: 1,
+      });
+      total += item.price;
+    });
+    req.session.booking.total = total.toString();
+    req.session.booking.qty = tickets.length;
+
+    // End - liệt kê vé
+
     const create_payment_json = {
       intent: "sale",
       payer: {
@@ -175,26 +229,11 @@ module.exports = {
       transactions: [
         {
           item_list: {
-            items: [
-              {
-                name: "Vé xem phim mắt biếc 1",
-                sku: "001",
-                price: "5.00",
-                currency: "USD",
-                quantity: 1,
-              },
-              {
-                name: "Vé xem phim mắt biếc 2",
-                sku: "002",
-                price: "5.00",
-                currency: "USD",
-                quantity: 1,
-              },
-            ],
+            items,
           },
           amount: {
             currency: "USD",
-            total: "10.0",
+            total: req.session.booking.total,
           },
           description: "Hat for the best team ever",
         },
@@ -214,6 +253,9 @@ module.exports = {
     });
   },
   success: async (req, res) => {
+    res.json(req.session.booking);
+    res.render("booking/success");
+
     const payerId = req.query.PayerID;
     const paymentId = req.query.paymentId;
 
@@ -223,7 +265,7 @@ module.exports = {
         {
           amount: {
             currency: "USD",
-            total: "10.0",
+            total: req.session.booking.total,
           },
         },
       ],
@@ -234,8 +276,21 @@ module.exports = {
       execute_payment_json,
       async function (error, payment) {
         if (error) {
-          res.render("cancle");
+          res.render("cancel");
         } else {
+          // client.messages
+          //   .create({
+          //     body: `Mã đặt chỗ của bạn là: ${req.session.booking.id}. Ghế: ${req.session.booking.seat}. Phòng ${req.session.booking.room} - ${req.session.booking.typeroom}, Rạp ${req.session.booking.cinema}`,
+          //     to: "+84338218374",
+          //     from: "+14083594978",
+          //   })
+          //   .then((message) => console.log(message))
+          //   // here you can implement your fallback code
+          //   .catch((error) => console.log(error));
+          console.log("===============>", req.session.booking);
+          console.log(
+            `Mã đặt chỗ của bạn là: ${req.session.booking.id}. Ghế: ${req.session.booking.seat}. Phòng ${req.session.booking.room} - ${req.session.booking.typeroom}, ${req.session.booking.cinema}`
+          );
           console.log(JSON.stringify(payment));
           const result = await Booking.update(
             {
@@ -243,11 +298,11 @@ module.exports = {
             },
             {
               where: {
-                id: req.session.bookingId,
+                id: req.session.booking.id,
               },
             }
           );
-          res.send("OK");
+          res.render("booking/success");
         }
       }
     );
