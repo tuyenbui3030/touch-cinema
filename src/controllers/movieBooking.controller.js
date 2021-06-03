@@ -134,6 +134,7 @@ module.exports = {
       status: false,
     });
     //Tạo vé mới
+    let totalBooking = 0;
     cb.forEach(async function (element) {
       const col = element.match(/\d+/g);
       const row = element.match(/[a-zA-Z]+/g);
@@ -144,6 +145,7 @@ module.exports = {
         colAddress: col[0],
         price: Number(priceTicket),
       });
+      totalBooking += resultTicket.price;
     });
 
     await setTimeout(async () => {
@@ -168,13 +170,14 @@ module.exports = {
         },
       ],
     });
-    const seat = cb.join(", ");
+    const seat = cb.join(", ").toUpperCase();
     // res.send(showtime);
-    req.session.booking.seat = seat;
+    req.session.booking.seat = seat.toUpperCase();
     req.session.booking.id = resultBooking.id;
 
     res.render("booking/payBooking", {
       layout: "../views/layouts/layoutBooking.ejs",
+      totalBooking,
       moment,
       showtime,
       seat,
@@ -256,10 +259,6 @@ module.exports = {
     });
   },
   success: async (req, res) => {
-    const infoPayment = req.session.booking;
-    const helo = infoPayment.id;
-    res.render("booking/success", { infoPayment, helo });
-
     const payerId = req.query.PayerID;
     const paymentId = req.query.paymentId;
 
@@ -306,7 +305,13 @@ module.exports = {
               },
             }
           );
-          res.render("booking/success");
+          const infoPayment = req.session.booking;
+          qr.toDataURL(infoPayment.id, (err, src) => {
+            if (err) res.send("Error occured");
+            res.render("booking/success", { infoPayment, src });
+          });
+          req.session.booking = null;
+          // res.render("booking/success");
         }
       }
     );

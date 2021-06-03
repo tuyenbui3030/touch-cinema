@@ -44,7 +44,7 @@
 											<!-- <h3>Mon, 31 Dec | 09.30PM</h3> -->
                       <h3><%= infoPayment.time %></h3>
 
-											<h6>Rạp: <%= infoPayment.cinema %> - <%= helo %><br> 
+											<h6>Rạp: <%= infoPayment.cinema %><br> 
                           Phòng: <%= infoPayment.room %></h6>
 										</div>
 										<div class="st_purchase_img">
@@ -59,10 +59,10 @@
 									</div>
 								</div>
 								<div class="st_bcc_tecket_bottom_right_wrapper">
-									<img src="/public/images/content/qr.png" alt="img">
+									<img src="<%= src %>" alt="img">
 									<!-- <h4>Booking ID<br>SSST0000310644</h4> -->
 								</div>
-								<div class="st_bcc_tecket_bottom_left_price_wrapper" style="padding-top: 50px;">
+								<div class="st_bcc_tecket_bottom_left_price_wrapper">
 									<h4>Tổng tiền</h4>
 									<h5>$ <%= infoPayment.total %></h5>
 								</div>

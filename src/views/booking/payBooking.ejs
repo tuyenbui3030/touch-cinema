@@ -2,8 +2,8 @@
   <div class="container">
     <div class="row">
       <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
-        <div class="st_bt_top_back_btn float_left">	<a href="index.html"><i class="fas fa-long-arrow-alt-left"></i> &nbsp;Back</a>
-        </div>
+        <!-- <div class="st_bt_top_back_btn float_left">	<a href="index.html"><i class="fas fa-long-arrow-alt-left"></i> &nbsp;Back</a>
+        </div> -->
       </div>
       <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
         <div class="st_bt_top_center_heading float_left">
@@ -51,7 +51,7 @@
                 </ul>
               </div>
             </div>
-            <div class="col-md-12">
+            <!-- <div class="col-md-12">
               <div class="st_cherity_section float_left">
                 <div class="st_dtts_bs_heading float_left">
                   <p>Chọn hình thức thanh toán</p>
@@ -86,7 +86,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
@@ -99,31 +99,28 @@
               </div>
               <div class="st_dtts_sb_ul float_left">
                 <ul>
-                  <li>Platinum - PB7, PB8
-                    <br>( 2 Tickets ) AUDI-5 <span>Rs . 790.00</span>
-                  </li>
-                  <li>Internet handling fees <span>Rs.70.80</span>
+                  <li><%= showtime.Movie.name %> - <%= seat %>
+                    <br><%= showtime.Room.Cinema.name %> | <%= showtime.Room.name %> | <%= showtime.Room.Typeroom.type %>
+                    <span>$ <%= totalBooking %></span>
                   </li>
                 </ul>
-                <p>Booking Fees <span>Rs.60.00</span>
-                </p>
-                <p>Integrated GST (IGST) @ 18% <span>Rs.60.00</span>
-                </p>
               </div>
               <div class="st_dtts_sb_h2 float_left">
-                <h3>Sub total <span>Rs.860.80</span></h3>
-                <h4>Current State is <span>Kerala</span></h4>
-                <h5>Payable Amount <span>Rs.860.80</span></h5>
+                <h3>Tạm tính <span>$ <%= totalBooking %></span></h3>
+                <h5>Tổng <span>$ <%= totalBooking %></span></h5>
               </div>
             </div>
+            <form id="actionPay" action="/booking/actionPay" method="post">
+              <!-- <button class="pay-btn" type="submit">Thanh toán</button> -->
+              <!-- <button class="pay-btn" type="submit">Thanh toán</button> -->
+            </form>
             <div class="st_seatlay_btn float_left">
               <!-- <a href="">Tiếp tục</a> -->
-              <!-- <button class="pay-btn" type="submit" form="booking_seat">Thanh toán</button> -->
+              <button class="pay-btn" type="submit" form="actionPay">Thanh toán</button>
             </div>
-            <form action="/booking/actionPay" method="post">
-              <!-- <button class="pay-btn" type="submit">Thanh toán</button> -->
+            <!-- <form action="/booking/actionPay" method="post">
               <button class="pay-btn" type="submit">Thanh toán</button>
-            </form>
+            </form> -->
           </div>
         </div>
       </div>
