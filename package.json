@@ -28,6 +28,7 @@
     "paypal-rest-sdk": "^1.8.1",
     "pg": "^8.6.0",
     "pg-hstore": "^2.3.3",
+    "qrcode": "^1.4.4",
     "randomstring": "^1.2.1",
     "sequelize": "^6.6.2",
     "sequelize-cli": "^6.2.0",

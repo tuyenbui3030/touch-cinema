@@ -1,4 +1,6 @@
 const moment = require("moment");
+const qr = require("qrcode");
+
 const paypal = require("paypal-rest-sdk");
 const client = require("twilio")(
   "AC1b9f4307d8b4ed0576ba1f3cae401ecc",
@@ -73,6 +75,8 @@ module.exports = {
       room: showtime.Room.name,
       cinema: showtime.Room.Cinema.name,
       typeroom: showtime.Room.Typeroom.type,
+      time: showtime.timeStart,
+      poster: "",
       id: "",
       seat: "",
       qty: 0,
@@ -194,7 +198,6 @@ module.exports = {
       ],
     });
     const tickets = booking.Tickets;
-
     // Start - Liệt kê vé
     let items = [];
     let total = 0;
@@ -214,7 +217,7 @@ module.exports = {
     });
     req.session.booking.total = total.toString();
     req.session.booking.qty = tickets.length;
-
+    req.session.booking.poster = booking.Showtime.Movie.poster;
     // End - liệt kê vé
 
     const create_payment_json = {
@@ -253,8 +256,9 @@ module.exports = {
     });
   },
   success: async (req, res) => {
-    res.json(req.session.booking);
-    res.render("booking/success");
+    const infoPayment = req.session.booking;
+    const helo = infoPayment.id;
+    res.render("booking/success", { infoPayment, helo });
 
     const payerId = req.query.PayerID;
     const paymentId = req.query.paymentId;

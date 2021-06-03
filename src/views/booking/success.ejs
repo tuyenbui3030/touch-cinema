@@ -5,11 +5,11 @@
 			<div class="row">
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 					<div class="prs_title_heading_wrapper">
-						<h2>Confirmation Screen</h2>
+						<h2>Thanh toán</h2>
 						<ul>
-							<li><a href="#">Home</a>
+							<li><a href="#">Trang chủ</a>
 							</li>
-							<li>&nbsp;&nbsp; >&nbsp;&nbsp; Confirmation Screen</li>
+							<li>&nbsp;&nbsp; >&nbsp;&nbsp; Thanh toán</li>
 						</ul>
 					</div>
 				</div>
@@ -24,53 +24,57 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="st_bcc_heading_wrapper float_left">	<i class="fa fa-check-circle"></i>
-							<h3>Payment of <span>Rs 373.00</span> Complete successfull</h3>
+							<h3>Thanh toán <span>$ <%= infoPayment.total %></span> Thành công</h3>
 						</div>
 					</div>
 					<div class="col-md-12">
 						<div class="st_bcc_ticket_boxes_wrapper float_left">
 							<div class="st_bcc_tecket_top_hesder float_left">
-								<p>Your Booking is Confirmed!</p>	<span>Booking ID SSST0000310644 </span>
+								<p>Chúc mừng bạn đã đặt chỗ thành công!</p>	<span>Booking ID <%= infoPayment.id %> </span>
 							</div>
 							<div class="st_bcc_tecket_bottom_hesder float_left">
 								<div class="st_bcc_tecket_bottom_left_wrapper">
 									<div class="st_bcc_tecket_bottom_inner_left">
 										<div class="st_bcc_teckt_bot_inner_img">
-											<img src="/public/images/content/tcc1.png" alt="img">
+											<img src="/public/images/content/<%= infoPayment.poster %>" style="width: 100px;" alt="img">
 										</div>
 										<div class="st_bcc_teckt_bot_inner_img_cont">
-											<h4>Njan Prakashan</h4>
-											<h5>Malayalam, 2D</h5>
-											<h3>Mon, 31 Dec | 09.30PM</h3>
-											<h6>Carnival: Artech Central Mall,<br> 
-Trivandrum Audi-5</h6>
+											<h4><%= infoPayment.movie %></h4>
+											<!-- <h5>Malayalam, 2D</h5> -->
+											<!-- <h3>Mon, 31 Dec | 09.30PM</h3> -->
+                      <h3><%= infoPayment.time %></h3>
+
+											<h6>Rạp: <%= infoPayment.cinema %> - <%= helo %><br> 
+                          Phòng: <%= infoPayment.room %></h6>
 										</div>
 										<div class="st_purchase_img">
 											<img src="/public/images/content/pur2.png" alt="img">
 										</div>
 									</div>
 									<div class="st_bcc_tecket_bottom_inner_right">	<i class="fas fa-chair"></i>
-										<h3>2 TICKETS <br>
-<span>EXECUTIV - K1, K2</span></h3>
+										<h3>
+                      <%= infoPayment.qty %> TICKETS <br>
+                      <span>Ghế - <%= infoPayment.seat %></span>
+                  	</h3>
 									</div>
 								</div>
 								<div class="st_bcc_tecket_bottom_right_wrapper">
 									<img src="/public/images/content/qr.png" alt="img">
-									<h4>Booking ID<br>SSST0000310644</h4>
+									<!-- <h4>Booking ID<br>SSST0000310644</h4> -->
 								</div>
-								<div class="st_bcc_tecket_bottom_left_price_wrapper">
-									<h4>Total Amount</h4>
-									<h5>₹373.00</h5>
+								<div class="st_bcc_tecket_bottom_left_price_wrapper" style="padding-top: 50px;">
+									<h4>Tổng tiền</h4>
+									<h5>$ <%= infoPayment.total %></h5>
 								</div>
 							</div>
 						</div>
 						<div class="st_bcc_ticket_boxes_bottom_wrapper float_left">
-							<p>You can access your ticket from your Profile. We will send you
-								<br>an e-Mail/SMS Confirmation with in 15 Minutes.</p>
+							<p>Bạn có thể xem xem lại vé trong hồ sơ của bạn
+								<br>Sẽ có tin nhắn gửi thông tin đặt chỗ thành công về số điện thoại của bạn</p>
 							<ul>
-								<li><a href="#">INVITE FRIENDS</a>
+								<li><a href="/profile">Trang cá nhân</a>
 								</li>
-								<li><a href="#">Locate Friend</a>
+								<li><a href="/">Về Trang chủ</a>
 								</li>
 							</ul>
 						</div>
