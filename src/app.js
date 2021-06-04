@@ -55,6 +55,7 @@ app.post("/signout", (req, res) => {
 });
 app.use("/cinema", require("./routes/cinema.route"));
 app.use("/movie", require("./routes/movie.route"));
+app.use("/account", require("./routes/account.route"));
 
 app.use("/test", require("./routes/test.route"));
 
