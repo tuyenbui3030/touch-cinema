@@ -1,0 +1,37 @@
+<div class="prs_title_main_sec_wrapper">
+  <div class="prs_title_img_overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="prs_title_heading_wrapper">
+          <h2>Trang cá nhân</h2>
+          <ul>
+            <li><a href="/">Trang chủ</a>
+            </li>
+            <li>&nbsp;&nbsp; >&nbsp;&nbsp;<a href="/account/profile">Thông tin cá nhân</a>
+            </li>
+            <li>&nbsp;&nbsp; >&nbsp;&nbsp; Chỉnh sửa</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="prs_es_faq_main_wrapper">
+  <div class="container">
+    <div class="row">
+      <!-- <div class="col-lg-5 col-md-5 col-ms-12 col-xs-12"> -->
+      <div class="col-md-6 col-md-offset-3">
+        <div class="prs_es_faq_left_wrapper">
+          <h2>Thông tin cá nhân</h2>
+          <form action="" method="post">
+            <input type="text" placeholder="Fullname" name="fullname" class="first_input" value="<%= user.fullname %>" required>
+            <input type="email" placeholder="Email" name="email" value="<%= user.email %>" required>
+            <input type="text" placeholder="Phone" name="phone" value="<%= user.phone %>" required>
+            <button type="submit" class="btn-profile">Thay đổi thông tin</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

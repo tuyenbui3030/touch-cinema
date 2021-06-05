@@ -1,17 +1,28 @@
-const { Movie, Booking, User, Ticket, Showtime } = require("../models");
-const { Op } = require("sequelize");
-const nonAccentVietnamese = require("../utils/nonAccentVietnamese");
+const {
+  Movie,
+  Booking,
+  User,
+  Ticket,
+  Showtime,
+  Room,
+  Typeroom,
+  Cinema,
+} = require("../models");
+
+const moment = require("moment");
+const QRCode = require("qrcode");
 
 module.exports = {
   profile: async (req, res) => {
     const userId = req.session.passport.user.id;
-    const infoUser = await User.findOne({
+    let infoUser = await User.findOne({
       where: {
         id: userId,
       },
       include: [
         {
           model: Booking,
+          required: false,
           where: {
             status: true,
           },
@@ -25,8 +36,10 @@ module.exports = {
                     {
                       model: Showtime,
                       include: [
+                        Movie,
                         {
-                          model: Movie,
+                          model: Room,
+                          include: [Typeroom, Cinema],
                         },
                       ],
                     },
@@ -37,23 +50,63 @@ module.exports = {
           ],
         },
       ],
+      order: [[Booking, "createdAt", "DESC"]],
     });
     const listBooking = infoUser.Bookings;
     let listTicket = [];
-    // res.json(listBooking[0].Tickets[0].seat);
-    listBooking.forEach((booking) => {
-      booking.Tickets.forEach((ticket) => {
+    // const result = await QRCode.toDataURL("I am a pony!");
+    // console.log("============>", result);
+
+    // listBooking.forEach((booking) => {
+    //   booking.Tickets.forEach((ticket) => {
+    //     listTicket.push({
+    //       ticketId: ticket.id,
+    //       seat: ticket.seat.toUpperCase(),
+    //       price: ticket.price,
+    //       bookingTime: ticket.Booking.bookingTime,
+    //       timeStart: ticket.Booking.Showtime.timeStart,
+    //       movie: ticket.Booking.Showtime.Movie.name,
+    //       time: ticket.Booking.Showtime.Movie.time,
+    //       poster: ticket.Booking.Showtime.Movie.poster,
+    //       room: ticket.Booking.Showtime.Room.name,
+    //       typeRoom: ticket.Booking.Showtime.Room.Typeroom.type,
+    //       cinema: ticket.Booking.Showtime.Room.Cinema.name,
+    //     });
+    //   });
+    // });
+
+    for (const booking of listBooking) {
+      for (const ticket of booking.Tickets) {
         listTicket.push({
           ticketId: ticket.id,
-          seat: ticket.seat,
+          qrCode: await QRCode.toDataURL(ticket.id),
+          seat: ticket.seat.toUpperCase(),
           price: ticket.price,
           bookingTime: ticket.Booking.bookingTime,
+          timeStart: ticket.Booking.Showtime.timeStart,
           movie: ticket.Booking.Showtime.Movie.name,
           time: ticket.Booking.Showtime.Movie.time,
+          poster: ticket.Booking.Showtime.Movie.poster,
+          room: ticket.Booking.Showtime.Room.name,
+          typeRoom: ticket.Booking.Showtime.Room.Typeroom.type,
+          cinema: ticket.Booking.Showtime.Room.Cinema.name,
         });
-      });
+      }
+    }
+
+    res.render("account/profile", { infoUser, listTicket, moment });
+  },
+  edit: async (req, res) => {
+    const user = await User.findByPk(req.session.passport.user.id);
+    res.render("account/edit", { user });
+  },
+  submitEdit: async (req, res) => {
+    const { fullname, email, phone } = req.body;
+    res.send({
+      fullname,
+      email,
+      phone,
     });
-    // res.json(listTicket);
-    res.render("account/profile", { infoUser, listTicket });
+    res.redirect("/account/profile");
   },
 };

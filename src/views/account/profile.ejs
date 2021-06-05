@@ -51,20 +51,24 @@
                 <h2>Lịch sử mua vé</h2>
               </div>
             </div>
+            <% listTicket.forEach(function(ticket) { %>
             <div class="st_bcc_tecket_bottom_hesder float_left" style="background-color: white;">
               <div class="st_bcc_tecket_bottom_left_wrapper">
                 <div class="st_bcc_tecket_bottom_inner_left">
                   <div class="st_bcc_teckt_bot_inner_img">
-                    <img src="/public/images/content/mat-biec-poster.jpg" style="width: 150px;" alt="img">
+                    <img src="/public/images/content/<%= ticket.poster %>" style="width: 100px;" alt="img">
                   </div>
                   <div class="st_bcc_teckt_bot_inner_img_cont">
-                    <h4>Mắt biếc</h4>
-                    <h5>Malayalam, 2D</h5>
-                    <h3>Mon, 31 Dec | 09.30PM</h3>
-                    <h6>
+                    <h4><%= ticket.movie %></h4>
+                    <h5><b>Rạp:</b> <%= ticket.cinema %></h5>
+                    <h5><b>Phòng:</b> <%= ticket.room %> | <b>Loại:</b> <%= ticket.typeRoom %></h5>
+                    <h5><b>Ngày chiếu:</b> <%= moment(ticket.timeStart).format('L'); %> | <%= moment(ticket.timeStart).format('LT'); %></h3>
+                    <h5><b>Ngày mua:</b> <%= moment(ticket.bookingTime).format('L'); %> | <%= moment(ticket.bookingTime).format('LT'); %></h3>
+
+                    <!-- <h6>
                       Carnival: Artech Central Mall,<br> 
                       Trivandrum Audi-5
-                    </h6>
+                    </h6> -->
                   </div>
                   <div class="st_purchase_img">
                     <img src="/public/images/content/pur2.png" alt="img">
@@ -72,20 +76,20 @@
                 </div>
                 <div class="st_bcc_tecket_bottom_inner_right">	<i class="fas fa-chair"></i>
                   <h3>
-                    2 TICKETS <br>
-                    <span>EXECUTIV - K1, K2</span>
+                    TICKET<br>
+                    <span>Ghế - <%= ticket.seat %></span>
                   </h3>
                 </div>
               </div>
               <div class="st_bcc_tecket_bottom_right_wrapper">
-                <img src="/public/images/content/qr.png" alt="img">
-                <h4>Booking ID<br>SSST0000310644</h4>
+                <img style="width: 170px;" src="<%= ticket.qrCode %>" alt="img">
               </div>
               <div class="st_bcc_tecket_bottom_left_price_wrapper">
-                <h4>Total Amount</h4>
-                <h5>₹373.00</h5>
+                <h4>Giá vé</h4>
+                <h5>$ <%= ticket.price %></h5>
               </div>
             </div>
+            <% }); %>
           </div>
         </div>
       </div>

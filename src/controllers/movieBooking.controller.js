@@ -76,6 +76,7 @@ module.exports = {
       cinema: showtime.Room.Cinema.name,
       typeroom: showtime.Room.Typeroom.type,
       time: showtime.timeStart,
+      qrCode: "",
       poster: "",
       id: "",
       seat: "",
@@ -306,10 +307,12 @@ module.exports = {
             }
           );
           const infoPayment = req.session.booking;
-          qr.toDataURL(infoPayment.id, (err, src) => {
-            if (err) res.send("Error occured");
-            res.render("booking/success", { infoPayment, src });
-          });
+          req.session.booking.qrCode = await qr.toDataURL(infoPayment.id);
+          // qr.toDataURL(infoPayment.id, (err, src) => {
+          //   if (err) res.send("Error occured");
+          //   res.render("booking/success", { infoPayment, src });
+          // });
+          res.render("booking/success", { infoPayment });
           req.session.booking = null;
           // res.render("booking/success");
         }
