@@ -16,7 +16,7 @@ module.exports = async (req, res, next) => {
     if (!(user.email && user.phone)) {
       req.flash("error", "Vui lòng cập nhật email và số điện thoại");
       req.session.returnTo = req.originalUrl;
-      res.redirect(`/profile`);
+      res.redirect(`/account/edit?retUrl=${req.originalUrl}`);
     }
   }
   next();

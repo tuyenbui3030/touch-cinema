@@ -37,11 +37,19 @@ module.exports = (sequelize, DataTypes) => {
       },
       phone: {
         type: DataTypes.STRING,
-        unique: true,
+        //unique: true,
+        unique: {
+          msg: "Số điện thoại này đã tồn tại trong hệ thống!",
+          fields: ["email"],
+        },
       },
       email: {
         type: DataTypes.STRING,
-        unique: true,
+        // unique: true,
+        unique: {
+          msg: "Email này đã tồn tại trong hệ thống!",
+          fields: ["email"],
+        },
       },
       password: {
         type: DataTypes.STRING,
