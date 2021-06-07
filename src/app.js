@@ -51,6 +51,7 @@ app.use("/signin", require("./routes/signin.route"));
 app.use("/signup", require("./routes/signup.route"));
 app.post("/signout", (req, res) => {
   req.logOut();
+  req.session.passport = false;
   res.redirect("/signin");
 });
 app.use("/cinema", require("./routes/cinema.route"));

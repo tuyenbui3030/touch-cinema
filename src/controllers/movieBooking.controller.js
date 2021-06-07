@@ -25,13 +25,13 @@ paypal.configure({
     "EK2j2GyEGCKGcA12GN6zNmn2lz0us_1n0LcXPAhtmzTSypWyrkufleGXZmeQCP4e-sUiUuTlxC5I-VC3",
 });
 
-const http = require("http");
-const socketio = require("socket.io");
-const express = require("express");
+// const http = require("http");
+// const socketio = require("socket.io");
+// const express = require("express");
 
-const app = express();
-const server = http.createServer(app);
-const io = socketio(server);
+// const app = express();
+// const server = http.createServer(app);
+// const io = socketio(server);
 
 // const processText =(inputText) => {
 //   let output = [];
