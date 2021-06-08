@@ -71,11 +71,13 @@ module.exports = {
     // req.session.bookingRoom = showtime.Room.name;
     // req.session.bookingCinema = showtime.Room.Cinema.name;
     req.session.booking = {
+      movieId: showtime.Movie.id,
       movie: showtime.Movie.name,
       room: showtime.Room.name,
       cinema: showtime.Room.Cinema.name,
       typeroom: showtime.Room.Typeroom.type,
       time: showtime.timeStart,
+      sold: showtime.Movie.sold,
       qrCode: "",
       poster: "",
       id: "",
@@ -122,10 +124,9 @@ module.exports = {
     });
   },
   payBooking: async (req, res) => {
-    // res.json(req.body);
-
     const { showtimeId, priceTicket, cb } = req.body;
-    const total = Number(priceTicket) * cb.length;
+    const qtySeat = cb.length;
+    const total = Number(priceTicket) * qtySeat;
     //Tạo Booking mới, với trạng thái chưa thanh toán
     const resultBooking = await Booking.create({
       userId: req.session.passport.user.id,
@@ -147,6 +148,7 @@ module.exports = {
         price: Number(priceTicket),
       });
       totalBooking += resultTicket.price;
+      console.log(`Hello ${totalBooking}`);
     });
 
     await setTimeout(async () => {
@@ -178,7 +180,9 @@ module.exports = {
 
     res.render("booking/payBooking", {
       layout: "../views/layouts/layoutBooking.ejs",
-      totalBooking,
+      priceTicket,
+      qtySeat,
+      total,
       moment,
       showtime,
       seat,
@@ -223,6 +227,7 @@ module.exports = {
     req.session.booking.qty = tickets.length;
     req.session.booking.poster = booking.Showtime.Movie.poster;
     // End - liệt kê vé
+    const domain = req.protocol + "://" + req.get("host");
 
     const create_payment_json = {
       intent: "sale",
@@ -230,8 +235,8 @@ module.exports = {
         payment_method: "paypal",
       },
       redirect_urls: {
-        return_url: "http://localhost:3000/booking/success",
-        cancel_url: "http://localhost:3000/booking/cancel",
+        return_url: `${domain}/booking/success`,
+        cancel_url: `${domain}/booking/cancel`,
       },
       transactions: [
         {
@@ -249,7 +254,7 @@ module.exports = {
 
     paypal.payment.create(create_payment_json, function (error, payment) {
       if (error) {
-        res.render("cancle");
+        res.render("booking/cancel");
       } else {
         for (let i = 0; i < payment.links.length; i++) {
           if (payment.links[i].rel === "approval_url") {
@@ -262,7 +267,14 @@ module.exports = {
   success: async (req, res) => {
     const payerId = req.query.PayerID;
     const paymentId = req.query.paymentId;
-
+    const checkPayment = await Booking.findOne({
+      where: { id: req.session.booking.id, status: true },
+    });
+    if (checkPayment) {
+      const infoPayment = req.session.booking;
+      req.session.booking = null;
+      return res.render("booking/success", { infoPayment });
+    }
     const execute_payment_json = {
       payer_id: payerId,
       transactions: [
@@ -280,21 +292,21 @@ module.exports = {
       execute_payment_json,
       async function (error, payment) {
         if (error) {
-          res.render("cancel");
+          res.render("booking/cancel");
         } else {
-          // client.messages
-          //   .create({
-          //     body: `Mã đặt chỗ của bạn là: ${req.session.booking.id}. Ghế: ${req.session.booking.seat}. Phòng ${req.session.booking.room} - ${req.session.booking.typeroom}, Rạp ${req.session.booking.cinema}`,
-          //     to: "+84338218374",
-          //     from: "+14083594978",
-          //   })
-          //   .then((message) => console.log(message))
-          //   // here you can implement your fallback code
-          //   .catch((error) => console.log(error));
-          console.log("===============>", req.session.booking);
-          console.log(
-            `Mã đặt chỗ của bạn là: ${req.session.booking.id}. Ghế: ${req.session.booking.seat}. Phòng ${req.session.booking.room} - ${req.session.booking.typeroom}, ${req.session.booking.cinema}`
-          );
+          client.messages
+            .create({
+              body: `Mã đặt chỗ của bạn là: ${req.session.booking.id}. Ghế: ${req.session.booking.seat}. Phòng ${req.session.booking.room} - ${req.session.booking.typeroom}, Rạp ${req.session.booking.cinema}`,
+              to: "+84338218374",
+              from: "+14083594978",
+            })
+            .then((message) => console.log(message))
+            // here you can implement your fallback code
+            .catch((error) => console.log(error));
+          // console.log("===============>", req.session.booking);
+          // console.log(
+          //   `Mã đặt chỗ của bạn là: ${req.session.booking.id}. Ghế: ${req.session.booking.seat}. Phòng ${req.session.booking.room} - ${req.session.booking.typeroom}, ${req.session.booking.cinema}`
+          // );
           console.log(JSON.stringify(payment));
           const result = await Booking.update(
             {
@@ -312,10 +324,24 @@ module.exports = {
           //   if (err) res.send("Error occured");
           //   res.render("booking/success", { infoPayment, src });
           // });
-          res.render("booking/success", { infoPayment });
-          req.session.booking = null;
+          return res.render("booking/success", { infoPayment });
           // res.render("booking/success");
         }
+      }
+    );
+    // const movie = await Movie.findOne({
+    //   where: {
+    //     id: req.session.booking.movieId,
+    //   },
+    // });
+    await Movie.update(
+      {
+        sold: req.session.booking.qty + req.session.booking.sold,
+      },
+      {
+        where: {
+          id: req.session.booking.movieId,
+        },
       }
     );
   },
