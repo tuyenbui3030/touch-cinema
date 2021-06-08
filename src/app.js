@@ -58,7 +58,8 @@ app.use("/cinema", require("./routes/cinema.route"));
 app.use("/movie", require("./routes/movie.route"));
 app.use("/account", require("./routes/account.route"));
 
-app.use("/test", require("./routes/test.route"));
+app.use("/admin/signin", require("./routes/admin/signin.route"));
+app.use("/admin", require("./routes/admin/dashboard.route"));
 
 app.use(function (req, res) {
   res.render("404");
