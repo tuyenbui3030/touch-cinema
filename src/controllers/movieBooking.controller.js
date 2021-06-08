@@ -294,15 +294,15 @@ module.exports = {
         if (error) {
           res.render("booking/cancel");
         } else {
-          client.messages
-            .create({
-              body: `Mã đặt chỗ của bạn là: ${req.session.booking.id}. Ghế: ${req.session.booking.seat}. Phòng ${req.session.booking.room} - ${req.session.booking.typeroom}, Rạp ${req.session.booking.cinema}`,
-              to: "+84338218374",
-              from: "+14083594978",
-            })
-            .then((message) => console.log(message))
-            // here you can implement your fallback code
-            .catch((error) => console.log(error));
+          // client.messages
+          //   .create({
+          //     body: `Mã đặt chỗ của bạn là: ${req.session.booking.id}. Ghế: ${req.session.booking.seat}. Phòng ${req.session.booking.room} - ${req.session.booking.typeroom}, Rạp ${req.session.booking.cinema}`,
+          //     to: "+84338218374",
+          //     from: "+14083594978",
+          //   })
+          //   .then((message) => console.log(message))
+          //   // here you can implement your fallback code
+          //   .catch((error) => console.log(error));
           // console.log("===============>", req.session.booking);
           // console.log(
           //   `Mã đặt chỗ của bạn là: ${req.session.booking.id}. Ghế: ${req.session.booking.seat}. Phòng ${req.session.booking.room} - ${req.session.booking.typeroom}, ${req.session.booking.cinema}`
