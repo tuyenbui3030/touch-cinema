@@ -1,0 +1,21 @@
+input[type="file"] {
+  display: block;
+}
+.imageThumb {
+  max-height: 75px;
+  /* border: 2px solid; */
+  padding: 1px;
+  cursor: pointer;
+}
+.pip {
+  display: inline-block;
+  margin: 10px 10px 0 0;
+}
+.remove {
+  font-size: 0.875rem;
+  border-radius: 4px;
+  color: #fff !important;
+  display: block;
+  text-align: center;
+  cursor: pointer;
+}

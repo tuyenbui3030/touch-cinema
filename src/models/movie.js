@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       this.belongsToMany(models.Cinema, {
         through: "CinemaMovie",
-        foreignKey: "cinemaId",
+        foreignKey: "movieId",
         unique: false,
       });
       this.belongsToMany(models.Room, {

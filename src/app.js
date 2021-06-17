@@ -60,6 +60,15 @@ app.use("/account", require("./routes/account.route"));
 
 app.use("/admin/signin", require("./routes/admin/signin.route"));
 app.use("/admin", require("./routes/admin/dashboard.route"));
+app.use("/admin/cinema", require("./routes/admin/cinema.route"));
+
+app.use("/admin", function (req, res) {
+  res.render("admin/404", { layout: false });
+});
+app.use("/admin", function (err, req, res, next) {
+  console.error(err.stack);
+  res.status(500).render("admin/500", { layout: false });
+});
 
 app.use(function (req, res) {
   res.render("404");

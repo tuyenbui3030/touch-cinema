@@ -12,7 +12,7 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <title>Sign in</title>
+    <title>Dashboard - Touch cinema</title>
     <!-- CSS files -->
     <link href="/public/admin/asset/css/tabler.min.css" rel="stylesheet"/>
     <link href="/public/admin/asset/css/tabler-flags.min.css" rel="stylesheet"/>
@@ -23,31 +23,20 @@
   <body class="antialiased border-top-wide border-primary d-flex flex-column">
     <div class="page page-center">
       <div class="container-tight py-4">
-        <div class="text-center mb-4">
-          <a href="."><img src="/public/admin/static/logo.svg" height="36" alt=""></a>
-        </div>
-        <form class="card card-md" action="/admin/signin" method="POST" autocomplete="off">
-          <div class="card-body">
-            <% if(message[0]) { %>
-              <div class="alert alert-danger" role="alert">
-                <h4 class="alert-title">Oops&hellip;</h4>
-                <div class="text-muted"><%= message[0] %></div>
-              </div>
-            <% } %>
-            <h2 class="card-title text-center mb-4">Đăng nhập quản lý Admin</h2>
-            <div class="mb-3">
-              <label class="form-label">Email</label>
-              <input type="email" class="form-control" name="email" placeholder="Nhập email" required />
-            </div>
-            <div class="mb-2">
-              <label class="form-label">Mật khẩu</label>
-              <input type="password" class="form-control" name="password" placeholder="Nhập mật khẩu"  autocomplete="off" required />
-            </div>
-            <div class="form-footer">
-              <button type="submit" class="btn btn-primary w-100">Sign in</button>
-            </div>
+        <div class="empty">
+          <div class="empty-header">404</div>
+          <p class="empty-title">Oops… Bạn vừa tìm đươc một trang lỗi</p>
+          <p class="empty-subtitle text-muted">
+            Xin lỗi bạn, chúng tôi không thể tìm được trang này
+          </p>
+          <div class="empty-action">
+            <a href="/admin" class="btn btn-primary">
+              <!-- Download SVG icon from http://tabler-icons.io/i/arrow-left -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="5" y1="12" x2="19" y2="12" /><line x1="5" y1="12" x2="11" y2="18" /><line x1="5" y1="12" x2="11" y2="6" /></svg>
+              Quay về trang quản lý
+            </a>
           </div>
-        </form>
+        </div>
       </div>
     </div>
     <!-- Libs JS -->
