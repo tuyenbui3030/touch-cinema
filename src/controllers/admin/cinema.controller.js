@@ -1,6 +1,7 @@
 const { Cinema, Movie, Room } = require("../../models");
 const { Sequelize } = require("sequelize");
 const { sequelize } = require("../../models");
+const multer = require("multer");
 
 module.exports = {
   index: async (req, res) => {
@@ -45,6 +46,23 @@ module.exports = {
     });
   },
   newCinema: async (req, res) => {
-    res.json(req.body);
+    const storage = multer.diskStorage({
+      filename(req, file, cb) {
+        cb(null, Date.now() + "-" + file.originalname);
+      },
+      destination(req, file, cb) {
+        // cb(null, "../../public/images/content");
+        cb(null, "src/public/images/content/test");
+      },
+    });
+    console.log(storage);
+    const upload = multer({ storage });
+    upload.array("images", 10)(req, res, function (err) {
+      if (!err) {
+        res.send("Thành công");
+      } else {
+        res.send(err);
+      }
+    });
   },
 };
