@@ -62,6 +62,15 @@ app.use("/admin/signin", require("./routes/admin/signin.route"));
 app.use("/admin", require("./routes/admin/dashboard.route"));
 app.use("/admin/cinema", require("./routes/admin/cinema.route"));
 
+app.get("/test", (req, res) => {
+  res.render("admin/test/test", {
+    layout: "admin/layouts/layout.ejs",
+  });
+});
+app.post("/test", (req, res) => {
+  res.send(req.body);
+});
+
 app.use("/admin", function (req, res) {
   res.render("admin/404", { layout: false });
 });

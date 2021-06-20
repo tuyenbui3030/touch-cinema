@@ -48,6 +48,7 @@
             $uploadedContainer.append(
               createImg(
                 plugin.settings.preloaded[i].src,
+                plugin.settings.preloaded[i].src,
                 plugin.settings.preloaded[i].id,
                 true
               )
@@ -114,11 +115,14 @@
       e.stopPropagation();
     };
 
-    let createImg = function (src, id) {
+    let createImg = function (src, file, id) {
       // Create the upladed image container
       let $container = $("<div>", { class: "uploaded-image" }),
         // Create the img tag
         $img = $("<img>", { src: src }).appendTo($container),
+        $input = $(
+          `<input value=${file.name} name="saveImg[]" hidden />`
+        ).appendTo($container),
         // Create the delete button
         $button = $("<button>", { class: "delete-image" }).appendTo($container),
         // Create the delete icon
@@ -229,7 +233,11 @@
 
         // Set preview
         $uploadedContainer.append(
-          createImg(URL.createObjectURL(file), dataTransfer.items.length - 1)
+          createImg(
+            URL.createObjectURL(file),
+            file,
+            dataTransfer.items.length - 1
+          )
         );
       });
 

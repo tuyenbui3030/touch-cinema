@@ -5,8 +5,9 @@ const restrict = require("../../middlewares/authAdmin.middleware");
 const cinemaController = require("../../controllers/admin/cinema.controller");
 const router = express.Router();
 
+const savePhoto = require("../../middlewares/savePhoto.middleware");
 router.get("/", cinemaController.index);
-router.post("/new-cinema", cinemaController.newCinema);
+router.post("/", cinemaController.newCinema);
 
 // router.post("/new-cinema", function (req, res) {
 //   const storage = multer.diskStorage({

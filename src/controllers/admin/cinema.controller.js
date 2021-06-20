@@ -1,7 +1,9 @@
-const { Cinema, Movie, Room } = require("../../models");
+const { Cinema, CinemaPhoto } = require("../../models");
 const { Sequelize } = require("sequelize");
 const { sequelize } = require("../../models");
+const nonAccentVietnamese = require("../../utils/nonAccentVietnamese");
 const multer = require("multer");
+const e = require("connect-flash");
 
 module.exports = {
   index: async (req, res) => {
@@ -45,24 +47,47 @@ module.exports = {
       cinemas,
     });
   },
+  submit: async (req, res, next) => {
+    console.log(req.body);
+    res.json(req.body);
+  },
   newCinema: async (req, res) => {
+    let imageList = [];
     const storage = multer.diskStorage({
       filename(req, file, cb) {
-        cb(null, Date.now() + "-" + file.originalname);
+        let nameImage = Date.now() + "-" + file.originalname;
+        imageList.push({ key: file.originalname, value: nameImage });
+        cb(null, nameImage);
       },
       destination(req, file, cb) {
         // cb(null, "../../public/images/content");
         cb(null, "src/public/images/content/test");
       },
     });
-    console.log(storage);
     const upload = multer({ storage });
-    upload.array("images", 10)(req, res, function (err) {
+    upload.array("images", 20)(req, res, async function (err) {
       if (!err) {
-        res.send("Thành công");
-      } else {
         res.send(err);
       }
+      const { name, address, saveImg } = req.body;
+      const filterImage = [];
+      imageList.forEach((e) => {
+        if (saveImg.includes(e.key)) {
+          filterImage.push(e.value);
+        }
+      });
+      const newCinema = await Cinema.create({
+        unsignedName: nonAccentVietnamese(name),
+        name,
+        address,
+      });
+      filterImage.forEach(async (element) => {
+        await CinemaPhoto.create({
+          name: element,
+          cinemaId: newCinema.id,
+        });
+      });
     });
+    res.redirect(req.originalUrl);
   },
 };
