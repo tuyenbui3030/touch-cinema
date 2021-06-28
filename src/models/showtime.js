@@ -38,6 +38,10 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         type: DataTypes.INTEGER,
       },
+      slot: {
+        allowNull: false,
+        type: DataTypes.INTEGER,
+      },
       timeStart: {
         allowNull: false,
         type: DataTypes.DATE,

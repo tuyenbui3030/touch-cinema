@@ -1,8 +1,16 @@
-const { Cinema, CinemaPhoto } = require("../../models");
-const { Sequelize } = require("sequelize");
+const {
+  Cinema,
+  CinemaPhoto,
+  Room,
+  Typeroom,
+  Showtime,
+  Movie,
+} = require("../../models");
+const { Sequelize, Op } = require("sequelize");
 const { sequelize } = require("../../models");
 const nonAccentVietnamese = require("../../utils/nonAccentVietnamese");
 const multer = require("multer");
+const moment = require("moment");
 const e = require("connect-flash");
 
 module.exports = {
@@ -47,10 +55,6 @@ module.exports = {
       cinemas,
     });
   },
-  submit: async (req, res, next) => {
-    console.log(req.body);
-    res.json(req.body);
-  },
   newCinema: async (req, res) => {
     let imageList = [];
     const storage = multer.diskStorage({
@@ -61,33 +65,180 @@ module.exports = {
       },
       destination(req, file, cb) {
         // cb(null, "../../public/images/content");
-        cb(null, "src/public/images/content/test");
+        cb(null, "src/public/images/content");
       },
     });
     const upload = multer({ storage });
     upload.array("images", 20)(req, res, async function (err) {
-      if (!err) {
+      if (err) {
         res.send(err);
-      }
-      const { name, address, saveImg } = req.body;
-      const filterImage = [];
-      imageList.forEach((e) => {
-        if (saveImg.includes(e.key)) {
-          filterImage.push(e.value);
-        }
-      });
-      const newCinema = await Cinema.create({
-        unsignedName: nonAccentVietnamese(name),
-        name,
-        address,
-      });
-      filterImage.forEach(async (element) => {
-        await CinemaPhoto.create({
-          name: element,
-          cinemaId: newCinema.id,
+      } else {
+        const { name, address, saveImg } = req.body;
+        const filterImage = [];
+        imageList.forEach((e) => {
+          if (saveImg.includes(e.key)) {
+            filterImage.push(e.value);
+          }
         });
-      });
+        const newCinema = await Cinema.create({
+          unsignedName: nonAccentVietnamese(name),
+          name,
+          address,
+        });
+        filterImage.forEach(async (element) => {
+          await CinemaPhoto.create({
+            name: element,
+            cinemaId: newCinema.id,
+          });
+        });
+        res.redirect(req.originalUrl);
+      }
+    });
+  },
+  destroy: async (req, res) => {
+    const result = await Cinema.destroy({
+      where: {
+        id: req.body.cinemaId,
+      },
+    });
+    res.json(result);
+  },
+
+  detail: async (req, res) => {
+    const unsignedName = req.params.unsignedname;
+    const cinema = await Cinema.findOne({
+      where: {
+        unsignedName,
+      },
+      include: [
+        {
+          model: Room,
+          include: [
+            {
+              model: Typeroom,
+            },
+          ],
+          required: false,
+        },
+        {
+          model: CinemaPhoto,
+          required: false,
+        },
+        {
+          model: Movie,
+          required: false,
+        },
+      ],
+    });
+    const typeRoom = await Typeroom.findAll();
+    const showtimes = await Showtime.findAll({
+      include: [
+        {
+          model: Room,
+          include: [
+            {
+              model: Cinema,
+              where: {
+                unsignedName,
+              },
+            },
+          ],
+          required: true,
+        },
+        { model: Movie },
+      ],
+    });
+    res.render("admin/cinema/detail", {
+      moment,
+      cinema,
+      typeRoom,
+      showtimes,
+      layout: "admin/layouts/layout.ejs",
+    });
+  },
+  newRoom: async (req, res) => {
+    const { cinemaId, name, typeRoomId, row, col } = req.body;
+    const result = await Room.create({
+      name,
+      cinemaId,
+      typeRoomId,
+      row,
+      col,
     });
     res.redirect(req.originalUrl);
+  },
+  findShowtime: async (req, res) => {
+    const freeShow = [
+      {
+        key: 1,
+        timeStart: "07:00 AM",
+        status: true,
+      },
+      {
+        key: 2,
+        timeStart: "09:00 AM",
+        status: true,
+      },
+      {
+        key: 3,
+        timeStart: "11:00 AM",
+        status: true,
+      },
+      {
+        key: 4,
+        timeStart: "13:00 PM",
+        status: true,
+      },
+      {
+        key: 5,
+        timeStart: "15:00 PM",
+        status: true,
+      },
+      {
+        key: 6,
+        timeStart: "17:00 PM",
+        status: true,
+      },
+      {
+        key: 7,
+        timeStart: "19:00 PM",
+        status: true,
+      },
+      {
+        key: 8,
+        timeStart: "21:00 PM",
+        status: true,
+      },
+    ];
+
+    const { roomId, movieId, date } = req.body;
+
+    let freeSlot = JSON.parse(
+      JSON.stringify(
+        await Showtime.findAll({
+          attributes: ["slot"],
+          where: {
+            [Op.and]: [
+              Sequelize.where(
+                Sequelize.fn("date", Sequelize.col("timeStart")),
+                date
+              ),
+              { roomId },
+            ],
+          },
+        })
+      )
+    );
+    //chuyển về mảng
+    freeSlot = freeSlot.map((e) => e.slot);
+    //check trạng thái ghế trống
+    freeShow.forEach((element) => {
+      const status = !freeSlot.includes(element.key);
+      element.status = status;
+    });
+    res.render("admin/cinema/freeTime", {
+      freeShow,
+      layout: false,
+    });
   },
 };

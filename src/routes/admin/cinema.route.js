@@ -8,6 +8,10 @@ const router = express.Router();
 const savePhoto = require("../../middlewares/savePhoto.middleware");
 router.get("/", cinemaController.index);
 router.post("/", cinemaController.newCinema);
+router.post("/destroy", cinemaController.destroy);
+router.post("/findshowtime", cinemaController.findShowtime);
+router.get("/:unsignedname", cinemaController.detail);
+router.post("/:unsignedname", cinemaController.newRoom);
 
 // router.post("/new-cinema", function (req, res) {
 //   const storage = multer.diskStorage({

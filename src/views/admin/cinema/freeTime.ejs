@@ -1,0 +1,16 @@
+<div class="" id="freeTime">
+  <div class="row">
+    <% freeShow.forEach(function(item) { %>
+      <% if(item.status) { %>
+      <div class="col-md-3 col-xl-3 mb-3">
+        <a class="card card-link" href="#">
+          <label class="form-selectgroup-item">
+            <input type="checkbox" name="name" value="<%= item.slot %>" class="form-selectgroup-input">
+            <span class="form-selectgroup-label"><%= item.timeStart %></span>
+          </label>
+        </a>
+      </div>
+      <% } %>
+    <% }); %>
+  </div>
+</div>

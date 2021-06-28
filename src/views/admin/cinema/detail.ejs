@@ -1,0 +1,321 @@
+<div class="page-wrapper">
+  <div class="container-xl">
+    <!-- Page title -->
+    <div class="page-header d-print-none">
+      <div class="row align-items-center">
+        <div class="col">
+          <h2 class="page-title">
+            Rạp <%= cinema.name %>
+          </h2>
+          <div class="text-muted mt-1"><%= cinema.address %></div>
+        </div>
+        <!-- Page title actions -->
+        <div class="col-auto ms-auto d-print-none">
+          <div class="btn-list">
+            <a href="#" class="btn btn-primary d-none d-sm-inline-block" data-bs-toggle="modal" data-bs-target="#modal-cinema">
+              <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              Thêm phòng chiếu mới
+            </a>
+            <a href="#" class="btn btn-primary d-sm-none btn-icon" data-bs-toggle="modal" data-bs-target="#modal-cinema" aria-label="Create new report">
+              <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="page-body">
+    <div class="container-xl">
+      <div class="row row-deck row-cards">
+        <div class="col-md-6 col-lg-6">
+          <div class="card" style="max-height: calc(24rem + 10px)">
+            <div class="card-header">
+              <h3 class="card-title">Danh sách phòng chiếu của rạp <%= cinema.name %></h3>
+            </div>
+            <div class="table-responsive">
+              <table class="table card-table table-vcenter" id="roomList">
+                <thead>
+                  <tr>
+                    <th>Tên rạp</th>
+                    <th>Cấu hình ghế</th>
+                    <th>Loại rạp</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% if(!cinema.Rooms[0]) { %>
+                    <tr><td>Hiện tại hệ thống rạp <%= cinema.name %> chưa có rạp chiếu nào</td></tr>
+                  <% } %>
+                  <% cinema.Rooms.forEach(function(room) { %>
+                  <tr>
+                    <td>
+                      <%= room.name %>
+                      <a href="/cinema/<%= cinema.unsignedName %>" class="ms-1" aria-label="Open website">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"></path><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"></path></svg>
+                      </a>
+                    </td>
+                    <td class="text-muted"><%= room.row %> x <%= room.col %></td>
+                    <td><%= room.Typeroom.type %></td>
+                    <td class="text-end w-1" style="position: relative;">
+                      <a class="bg-red text-white avatar destroy" data-value="<%= room.id %>">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><line x1="4" y1="7" x2="20" y2="7"></line><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line><path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path><path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path></svg>
+                      </a>
+                    </td>
+                  </tr>
+                  <% }); %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-6">
+          <div class="card" style="max-height: calc(24rem + 10px)">
+            <div class="card-header">
+              <h3 class="card-title">Các suất chiếu của rạp <%= cinema.name %></h3>
+              <div class="col-auto ms-auto d-print-none">
+                <div class="btn-list">
+                  <a href="#" class="btn btn-primary d-none d-sm-inline-block newShowtime">
+                    <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    Thêm suất chiếu
+                  </a>
+                  <a href="#" class="btn btn-primary d-sm-none btn-icon newShowtime" aria-label="Create new report">
+                    <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <table class="table card-table table-vcenter" id="cinemaList">
+                <thead>
+                  <tr>
+                    <th>Tên phim</th>
+                    <th>Phòng chiếu</th>
+                    <th>Giờ chiếu</th>
+                    <th>Ngày chiếu</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% if(!cinema.Rooms[0]) { %>
+                    <tr><td>Hiện tại hệ thống rạp <%= cinema.name %> chưa có rạp chiếu nào</td></tr>
+                  <% } %>
+                  <% showtimes.forEach(function(showtime) { %>
+                  <tr>
+                    <td>
+                      <%= showtime.Movie.name %>
+                      <a href="/detail/<%= showtime.Movie.unsignedName %>" class="ms-1" aria-label="Open website">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"></path><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"></path></svg>
+                      </a>
+                    </td>
+                    <td class="text-muted"><%= showtime.Room.name %></td>
+                    <td><%= moment(showtime.timeStart).format("LT") %></td>
+                    <td><%= moment(showtime.timeStart).subtract('days').calendar(); %></td>
+                    <td class="text-end w-1" style="position: relative;">
+                      <a class="bg-red text-white avatar destroy" data-value="">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><line x1="4" y1="7" x2="20" y2="7"></line><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line><path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path><path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path></svg>
+                      </a>
+                    </td>
+                  </tr>
+                  <% }); %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="row">
+            <% cinema.CinemaPhotos.forEach(function(photo) { %>
+            <div class="col-sm-6 col-lg-4">
+              <div class="card card-sm">
+                <img src="/public/images/content/<%= photo.name %>" class="card-img-top">
+              </div>
+            </div>
+            <% }); %>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <%- include('../partials/footer.ejs') %>
+</div>
+<%- contentFor('modalNewItem') %>
+
+<div class="modal modal-blur fade" id="modal-cinema" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <!-- <form action="/admin/cinema/new-cinema" id="form_cinema" method="post" enctype="multipart/form-data"> -->
+      <form method="POST">
+        <input type="hidden" name="cinemaId" value="<%= cinema.id %>" />
+        <div class="modal-header">
+          <h5 class="modal-title">Thêm rạp hệ thống <%= cinema.name %></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label class="form-label">Tên rạp</label>
+                <input type="text" class="form-control" name="name" placeholder="Tên rạp" required />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label class="form-label">Loại rạp</label>
+                <!-- <input type="text" class="form-control" placeholder="Địa chỉ rạp" required /> -->
+                <select type="text" class="form-select" name="typeRoomId" placeholder="Loại rạp" id="select-tags" value="" required>
+                  <% typeRoom.forEach(function(item) { %>
+                  <option value="<%= item.id %>"><%= item.type %></option>
+                  <% }); %>
+                </select>
+              </div>
+            </div>
+            <div class="hr-text">Cấu hình ghế</div>
+            <div class="col-md-6">
+              <label class="form-label">Hàng</label>
+              <input type="number" min="1" max="20" class="form-control" name="row" placeholder="Số hàng của rạp" required />
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Cột</label>
+              <input type="number" min="1" max="20" class="form-control" name="col" placeholder="Số cột của rạp" required />
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a href="#" class="btn btn-link link-secondary" data-bs-dismiss="modal">
+            Hủy
+          </a>
+          <button class="btn btn-primary ms-auto" type="submit">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
+            Thêm rạp chiếu mới
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal modal-blur fade" id="modal-showtime" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <!-- <form action="/admin/cinema/new-cinema" id="form_cinema" method="post" enctype="multipart/form-data"> -->
+      <form action="/admin/cinema/new-showtime" method="POST">
+        <input type="hidden" name="cinemaId" value="" />
+        <div class="modal-header">
+          <h5 class="modal-title">Thêm xuất chiếu mới <%= cinema.name %></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label class="form-label">Phim</label>
+                <select type="text" class="form-select" name="movieId" placeholder="Loại rạp" id="movieId" required>
+                  <option value="-1">Chọn phim</option>
+                  <% cinema.Movies.forEach(function(movie) { %>
+                    <option value="<%= movie.id %>"><%= movie.name %></option>
+                  <% }); %>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label class="form-label">Rạp chiếu</label>
+                <!-- <input type="text" class="form-control" placeholder="Địa chỉ rạp" required /> -->
+                <select type="text" class="form-select" name="roomId" placeholder="Loại rạp" id="roomId" value="" required>
+                  <option value="-1">Chọn rạp chiếu</option>
+                  <% cinema.Rooms.forEach(function(room) { %>
+                  <option value="<%= room.id %>"><%= room.name %> (<%= cinema.name %>)</option>
+                  <% }); %>
+                </select>
+              </div>
+            </div>
+            <div class="hr-text">Chọn suất chiếu</div>
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label class="form-label">Ngày chiếu</label>
+                <input type="date"  class="form-control" name="date" id="date" required/>
+                <!-- <a href="#" id="findShow">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><circle cx="12" cy="12" r="9"></circle><line x1="9" y1="12" x2="15" y2="12"></line><line x1="12" y1="9" x2="12" y2="15"></line></svg>
+                  Tìm suất chiếu còn trống
+                </a> -->
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label class="form-label">Giá vé</label>
+                <input type="number"  class="form-control" name="price" id="price" required/>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <label class="form-label">Các suất chiếu còn trống</label>
+              <div class="" id="freeTime">
+                <p class="text-warning">(*)Vui lòng nhập thông tin để tìm các suất chiếu</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a href="#" class="btn btn-link link-secondary" data-bs-dismiss="modal">
+            Hủy
+          </a>
+          <button class="btn btn-primary ms-auto" type="submit">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
+            Thêm rạp chiếu mới
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<%- contentFor() %>
+
+<script>
+  const findFreeTime = () => {
+    const thisTime = new Date();
+    const formatDay = thisTime.getFullYear()+'-'+(thisTime.getMonth()+1)+'-'+thisTime.getDate();
+    const today = new Date(formatDay);
+    const date = $("#date").val();
+
+    const roomId = $("#roomId").val();
+    const movieId = $("#movieId").val();
+    const inputDay = new Date(date);
+
+    
+    if(date === '' || movieId === "-1" || roomId === "-1") {
+      return console.log("Oh No oh no no no!!!!");
+    }
+    if(inputDay < today) {
+      return console.log("Ngày không hợp lệ!");
+    }
+    $.ajax({
+      url: "/admin/cinema/findshowtime",
+      method: "POST",
+      data: {
+        roomId,
+        movieId,
+        date
+      },
+      success: function (res) {
+        console.log(res);
+        $("#freeTime").replaceWith(res);
+      },
+    });
+  }
+  $(document).on("click", ".newShowtime", function() {
+    $("#modal-showtime").modal('show');
+  });
+
+  $(document).on("change", "#roomId", function() {
+    findFreeTime();
+  });
+  $(document).on("change", "#date", function() {
+    findFreeTime();
+  });
+</script>
