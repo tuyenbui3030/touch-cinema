@@ -5,12 +5,13 @@
       <div class="col-md-3 col-xl-3 mb-3">
         <a class="card card-link" href="#">
           <label class="form-selectgroup-item">
-            <input type="checkbox" name="name" value="<%= item.slot %>" class="form-selectgroup-input">
+            <input type="checkbox" value="<%= item.key %>" class="slot form-selectgroup-input">
             <span class="form-selectgroup-label"><%= item.timeStart %></span>
           </label>
         </a>
       </div>
       <% } %>
     <% }); %>
+    <select name="slot[]" id="slotfree" hidden multiple></select>
   </div>
 </div>

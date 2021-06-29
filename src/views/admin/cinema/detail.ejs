@@ -112,8 +112,8 @@
                       </a>
                     </td>
                     <td class="text-muted"><%= showtime.Room.name %></td>
-                    <td><%= moment(showtime.timeStart).format("LT") %></td>
-                    <td><%= moment(showtime.timeStart).subtract('days').calendar(); %></td>
+                    <td><%= moment(showtime.timeStart).format("LT"); %></td>
+                    <td><%= moment(showtime.timeStart).format('L'); %></td>
                     <td class="text-end w-1" style="position: relative;">
                       <a class="bg-red text-white avatar destroy" data-value="">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><line x1="4" y1="7" x2="20" y2="7"></line><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line><path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path><path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path></svg>
@@ -130,7 +130,7 @@
           <div class="row">
             <% cinema.CinemaPhotos.forEach(function(photo) { %>
             <div class="col-sm-6 col-lg-4">
-              <div class="card card-sm">
+              <div class="card card-sm mb-3">
                 <img src="/public/images/content/<%= photo.name %>" class="card-img-top">
               </div>
             </div>
@@ -149,8 +149,9 @@
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <!-- <form action="/admin/cinema/new-cinema" id="form_cinema" method="post" enctype="multipart/form-data"> -->
-      <form method="POST">
+      <form action="/admin/cinema/new-room" method="POST">
         <input type="hidden" name="cinemaId" value="<%= cinema.id %>" />
+        <input type="hidden" name="redirectUrl" value="<%= redirectUrl %>"/>
         <div class="modal-header">
           <h5 class="modal-title">Thêm rạp hệ thống <%= cinema.name %></h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -203,8 +204,8 @@
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <!-- <form action="/admin/cinema/new-cinema" id="form_cinema" method="post" enctype="multipart/form-data"> -->
-      <form action="/admin/cinema/new-showtime" method="POST">
-        <input type="hidden" name="cinemaId" value="" />
+      <form id="newShowtime" action="/admin/cinema/new-showtime" method="POST">
+        <input type="hidden" name="redirectUrl" value="<%= redirectUrl %>"/>
         <div class="modal-header">
           <h5 class="modal-title">Thêm xuất chiếu mới <%= cinema.name %></h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -247,14 +248,14 @@
             </div>
             <div class="col-md-6">
               <div class="mb-3">
-                <label class="form-label">Giá vé</label>
+                <label class="form-label">Giá vé ($)</label>
                 <input type="number"  class="form-control" name="price" id="price" required/>
               </div>
             </div>
             <div class="col-md-12">
               <label class="form-label">Các suất chiếu còn trống</label>
               <div class="" id="freeTime">
-                <p class="text-warning">(*)Vui lòng nhập thông tin để tìm các suất chiếu</p>
+                <!-- <p class="text-warning">(*)Vui lòng nhập thông tin hợp lệ để tìm các suất chiếu</p> -->
               </div>
             </div>
           </div>
@@ -288,10 +289,18 @@
     const inputDay = new Date(date);
 
     
-    if(date === '' || movieId === "-1" || roomId === "-1") {
+    if(date === '' || roomId === "-1" || movieId === "-1") {
+      $("#freeTime").replaceWith(
+        `<div class="" id="freeTime"></div>`
+      );
       return console.log("Oh No oh no no no!!!!");
     }
     if(inputDay < today) {
+      $("#freeTime").replaceWith(
+        `<div class="" id="freeTime">
+          <p class="text-warning">(*)Vui lòng chọn ngày lớn ngày hiện tại</p>
+          </div>`
+      );
       return console.log("Ngày không hợp lệ!");
     }
     $.ajax({
@@ -312,10 +321,32 @@
     $("#modal-showtime").modal('show');
   });
 
+  $(document).on("change", "#movieId", function() {
+    findFreeTime();
+  });
   $(document).on("change", "#roomId", function() {
     findFreeTime();
   });
   $(document).on("change", "#date", function() {
     findFreeTime();
+  });
+  $(document).on("change", ".slot", function() {
+    const check = this.checked;
+    const value = $(this).val();
+    if(check) {
+      const opt = new Option(value, value);
+      $(opt).html(value);
+      $(opt).prop("selected", true);
+      $("#slotfree").append(opt);
+    } else {
+      $(`#slotfree option[value='${value}']`).remove();
+    }
+  });
+  $("#newShowtime").on("submit", function (e) {
+    const length = $('#slotfree').children('option').length;
+    if(length < 1) {
+      e.preventDefault();
+      alert("Vui lòng chọn giờ chiếu");
+    }
   });
 </script>

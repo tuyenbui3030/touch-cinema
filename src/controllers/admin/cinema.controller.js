@@ -148,16 +148,18 @@ module.exports = {
         { model: Movie },
       ],
     });
+    const redirectUrl = req.originalUrl;
     res.render("admin/cinema/detail", {
       moment,
       cinema,
       typeRoom,
       showtimes,
+      redirectUrl,
       layout: "admin/layouts/layout.ejs",
     });
   },
   newRoom: async (req, res) => {
-    const { cinemaId, name, typeRoomId, row, col } = req.body;
+    const { cinemaId, name, typeRoomId, row, col, redirectUrl } = req.body;
     const result = await Room.create({
       name,
       cinemaId,
@@ -165,7 +167,8 @@ module.exports = {
       row,
       col,
     });
-    res.redirect(req.originalUrl);
+    // res.redirect(req.originalUrl);
+    res.redirect(redirectUrl);
   },
   findShowtime: async (req, res) => {
     const freeShow = [
@@ -186,27 +189,27 @@ module.exports = {
       },
       {
         key: 4,
-        timeStart: "13:00 PM",
+        timeStart: "01:00 PM",
         status: true,
       },
       {
         key: 5,
-        timeStart: "15:00 PM",
+        timeStart: "03:00 PM",
         status: true,
       },
       {
         key: 6,
-        timeStart: "17:00 PM",
+        timeStart: "05:00 PM",
         status: true,
       },
       {
         key: 7,
-        timeStart: "19:00 PM",
+        timeStart: "07:00 PM",
         status: true,
       },
       {
         key: 8,
-        timeStart: "21:00 PM",
+        timeStart: "09:00 PM",
         status: true,
       },
     ];
@@ -240,5 +243,75 @@ module.exports = {
       freeShow,
       layout: false,
     });
+  },
+  newShowtime: async (req, res) => {
+    const freeShow = [
+      {
+        key: "1",
+        timeStart: "07:00:00+07",
+        timeEnd: "09:00:00+07",
+        status: true,
+      },
+      {
+        key: "2",
+        timeStart: "09:00:00+07",
+        timeEnd: "11:00:00+07",
+        status: true,
+      },
+      {
+        key: "3",
+        timeStart: "11:00:00+07",
+        timeEnd: "13:00:00+07",
+        status: true,
+      },
+      {
+        key: "4",
+        timeStart: "13:00:00+07",
+        timeEnd: "15:00:00+07",
+        status: true,
+      },
+      {
+        key: "5",
+        timeStart: "15:00:00+07",
+        timeEnd: "17:00:00+07",
+        status: true,
+      },
+      {
+        key: "6",
+        timeStart: "17:00:00+07",
+        timeEnd: "19:00:00+07",
+        status: true,
+      },
+      {
+        key: "7",
+        timeStart: "19:00:00+07",
+        timeEnd: "21:00:00+07",
+        status: true,
+      },
+      {
+        key: "8",
+        timeStart: "21:00:00+07",
+        timeEnd: "23:00:00+07",
+        status: true,
+      },
+    ];
+    const actionNewShowtime = [];
+    const { movieId, roomId, date, slot, price, redirectUrl } = req.body;
+    freeShow.forEach((element) => {
+      if (slot.includes(element.key)) {
+        actionNewShowtime.push(
+          Showtime.create({
+            movieId,
+            roomId,
+            timeStart: date + " " + element.timeStart,
+            timeEnd: date + " " + element.timeEnd,
+            slot: element.key,
+            price,
+          })
+        );
+      }
+    });
+    const resultNewShowtime = await Promise.all(actionNewShowtime);
+    res.redirect(redirectUrl);
   },
 };
