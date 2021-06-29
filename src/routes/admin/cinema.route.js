@@ -9,6 +9,9 @@ const savePhoto = require("../../middlewares/savePhoto.middleware");
 router.get("/", cinemaController.index);
 router.post("/", cinemaController.newCinema);
 router.post("/destroy", cinemaController.destroy);
+router.delete("/destroy-room", cinemaController.destroyroom);
+router.delete("/destroy-showtime", cinemaController.destroyshowtime);
+
 router.get("/:unsignedname", cinemaController.detail);
 router.post("/findshowtime", cinemaController.findShowtime);
 router.post("/new-showtime", cinemaController.newShowtime);

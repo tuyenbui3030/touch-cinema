@@ -148,12 +148,23 @@ module.exports = {
         { model: Movie },
       ],
     });
+    const movies = await Movie.findAll({
+      include: [
+        {
+          model: Cinema,
+          where: {
+            unsignedName,
+          },
+        },
+      ],
+    });
     const redirectUrl = req.originalUrl;
     res.render("admin/cinema/detail", {
       moment,
       cinema,
       typeRoom,
       showtimes,
+      movies,
       redirectUrl,
       layout: "admin/layouts/layout.ejs",
     });
@@ -313,5 +324,21 @@ module.exports = {
     });
     const resultNewShowtime = await Promise.all(actionNewShowtime);
     res.redirect(redirectUrl);
+  },
+  destroyroom: async (req, res) => {
+    const result = await Room.destroy({
+      where: {
+        id: req.body.roomId,
+      },
+    });
+    res.json(result);
+  },
+  destroyshowtime: async (req, res) => {
+    const result = await Showtime.destroy({
+      where: {
+        uuid: req.body.showtimeId,
+      },
+    });
+    res.json(result);
   },
 };
