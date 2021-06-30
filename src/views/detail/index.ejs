@@ -30,7 +30,7 @@
 							<div class="st_video_slide_social_right float_left">
 								<ul>
 									<li data-animation="animated fadeInUp" class=""><i class="far fa-calendar-alt"></i>Ngày công chiếu <%= moment(movie.openingDay).format('L') %></li>
-									<li data-animation="animated fadeInUp" class=""><i class="far fa-clock"></i><%= movie.sold %> phút</li>
+									<li data-animation="animated fadeInUp" class=""><i class="far fa-clock"></i><%= movie.time %> phút</li>
 								</ul>
 							</div>
 						</div>
@@ -48,7 +48,7 @@
 					<fieldset class="rating">
 						<h3>Phim: <%= movie.name %></h3>
 					</fieldset>
-					<h3><%= movie.sold %> phút</h4>
+					<h3><%= movie.time %> phút</h4>
 				</div>
 			</div>
 			<div class="st_slider_rating_right">

@@ -11,11 +11,13 @@ router.post("/", cinemaController.newCinema);
 router.post("/destroy", cinemaController.destroy);
 router.delete("/destroy-room", cinemaController.destroyroom);
 router.delete("/destroy-showtime", cinemaController.destroyshowtime);
+router.delete("/destroy-movie", cinemaController.destroymovie);
 
 router.get("/:unsignedname", cinemaController.detail);
 router.post("/findshowtime", cinemaController.findShowtime);
 router.post("/new-showtime", cinemaController.newShowtime);
 router.post("/new-room", cinemaController.newRoom);
+router.post("/new-movie", cinemaController.newMovie);
 
 // router.post("/new-cinema", function (req, res) {
 //   const storage = multer.diskStorage({

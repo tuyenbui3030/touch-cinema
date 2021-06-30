@@ -75,7 +75,9 @@
               <h3 class="card-title">Danh sách phim</h3>
               <div class="col-auto ms-auto d-print-none">
                 <div class="btn-list">
-                  <a class="btn btn-primary d-none d-sm-inline-block newMovie">
+                  <!-- <a class="btn btn-primary d-none d-sm-inline-block newMovie"> -->
+                  <a class="btn btn-primary d-none d-sm-inline-block" data-bs-toggle="modal" data-bs-target="#modal-movie">
+
                     <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
                     Thêm phim
@@ -98,10 +100,10 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <% if(!movies[0]) { %>
+                  <% if(!cinema.Movies[0]) { %>
                     <tr><td>Hiện tại hệ thống rạp <%= cinema.name %> chưa có phim nào</td></tr>
                   <% } %>
-                  <% movies.forEach(function(movie) { %>
+                  <% cinema.Movies.forEach(function(movie) { %>
                   <tr>
                     <td>
                       <%= movie.name %>
@@ -112,7 +114,7 @@
                     <td class="text-muted"><%= moment(movie.openingDay).format("L"); %></td>
                     <td><%= movie.time; %> Phút</td>
                     <td class="text-end w-1" style="position: relative;">
-                      <a class="bg-red text-white avatar destroyMovie" data-value="<%= movie.id %>">
+                      <a class="bg-red text-white avatar destroyMovie" data-movie="<%= movie.CinemaMovie.movieId %>" data-cinema="<%= movie.CinemaMovie.cinemaId %>">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><line x1="4" y1="7" x2="20" y2="7"></line><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line><path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path><path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path></svg>
                       </a>
                     </td>
@@ -302,7 +304,7 @@
             <div class="col-md-6">
               <div class="mb-3">
                 <label class="form-label">Giá vé ($)</label>
-                <input type="number"  class="form-control" name="price" id="price" required/>
+                <input type="number" class="form-control" name="price" id="price" required/>
               </div>
             </div>
             <div class="col-md-12">
@@ -327,6 +329,45 @@
   </div>
 </div>
 
+<div class="modal modal-blur fade" id="modal-movie" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <!-- <form action="/admin/cinema/new-cinema" id="form_cinema" method="post" enctype="multipart/form-data"> -->
+      <form action="/admin/cinema/new-movie" method="POST">
+        <input type="hidden" name="cinemaId" value="<%= cinema.id %>" />
+        <input type="hidden" name="redirectUrl" value="<%= redirectUrl %>"/>
+        <div class="modal-header">
+          <h5 class="modal-title">Thêm phim</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="mb-3">
+                <label class="form-label">Chọn phim</label>
+                <!-- <input type="text" class="form-control" name="name" placeholder="Tên rạp" required /> -->
+                <select type="text" class="form-select" name="movieId" placeholder="Loại rạp" id="select-tags" value="" required>
+                  <% newMovie.forEach(function(item) { %>
+                  <option value="<%= item.id %>"><%= item.name %></option>
+                  <% }); %>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a href="#" class="btn btn-link link-secondary" data-bs-dismiss="modal">
+            Hủy
+          </a>
+          <button class="btn btn-primary ms-auto" type="submit">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
+            Thêm phim
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 
 <%- contentFor() %>
 
@@ -369,6 +410,27 @@
     });
   });
 
+  $(document).on("click", ".destroyMovie", function() {
+    const movieId = $(this).data("movie");
+    const cinemaId = $(this).data("cinema");
+    const objCinema = $(this);
+    const valueAlert = confirm("Lưu ý: Bạn thật sự muốn xóa suất chiếu này?!");
+    if(!valueAlert) return;
+    objCinema.closest('tr').remove();
+    $.ajax({
+      url: "/admin/cinema/destroy-movie",
+      type: "DELETE",
+      data: {
+        movieId,
+        cinemaId,
+      },
+      success: function (res) {
+        console.log(res);
+        objCinema.closest('tr').remove();
+      },
+    });
+  });
+  
   const findFreeTime = () => {
     const thisTime = new Date();
     const formatDay = thisTime.getFullYear()+'-'+(thisTime.getMonth()+1)+'-'+thisTime.getDate();

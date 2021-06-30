@@ -1,0 +1,196 @@
+<div class="page-wrapper">
+  <div class="container-xl">
+    <!-- Page title -->
+    <div class="page-header d-print-none">
+      <div class="row align-items-center">
+        <div class="col">
+          <h2 class="page-title">
+            Quản lý hệ thống rạp
+          </h2>
+        </div>
+        <!-- Page title actions -->
+        <div class="col-auto ms-auto d-print-none">
+          <div class="btn-list">
+            <a href="#" class="btn btn-primary d-none d-sm-inline-block" data-bs-toggle="modal" data-bs-target="#modal-report">
+              <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              Thêm hệ thống mới
+            </a>
+            <a href="#" class="btn btn-primary d-sm-none btn-icon" data-bs-toggle="modal" data-bs-target="#modal-report" aria-label="Create new report">
+              <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="page-body">
+    <div class="container-xl">
+      <div class="row row-deck row-cards">
+        <div class="col-md-12 col-lg-12">
+          <div class="card" style="height: calc(24rem + 10px)">
+            <div class="card-header">
+              <h3 class="card-title">Danh sách rạp phim</h3>
+            </div>
+            <div class="table-responsive">
+              <table class="table card-table table-vcenter" id="movieList">
+                <thead>
+                  <tr>
+                    <th>Tên phim</th>
+                    <th>Ngày công chiếu</th>
+                    <th>Thời lượng</th>
+                    <th>Số vé đã bán</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% movies.forEach(function(movie) { %>
+                  <tr>
+                    <td>
+                      <%= movie.name %>
+                      <a href="/detail/<%= movie.unsignedName %>" class="ms-1" aria-label="Open website">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"></path><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"></path></svg>
+                      </a>
+                    </td>
+                    <td class="text-muted"><%= moment(movie.openingDay).format("L"); %></td>
+                    <td class="text-muted"><%= movie.time %> Phút</td>
+                    <td class="text-muted"><%= movie.sold %> Vé</td>
+                    <td class="text-end w-1" style="position: relative;">
+                      <a class="bg-red text-white avatar destroyMovie" data-value="<%= movie.id %>">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><line x1="4" y1="7" x2="20" y2="7"></line><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line><path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path><path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path></svg>
+                      </a>
+                    </td>
+                  </tr>
+                  <% }); %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%- include('../partials/footer.ejs') %>
+</div>
+
+
+<%- contentFor('modalNewItem') %>
+
+<div class="modal modal-blur fade" id="modal-report" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <!-- <form action="/admin/cinema/new-cinema" id="form_cinema" method="post" enctype="multipart/form-data"> -->
+      <form autocomplete="off" action="/admin/movie/new-movie" method="POST" enctype="multipart/form-data">
+        <div class="modal-header">
+          <h5 class="modal-title">Thêm rạp</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-lg-4">
+              <div class="mb-3">
+                <label class="form-label">Ảnh Poster</label>
+                <div class="avatar-wrapper">
+                  <img class="profile-pic" src="/public/images/content/defaultposter.jpg" />
+                  <div class="upload-button">
+                    <!-- <i class="fa fa-arrow-circle-up" aria-hidden="true"></i> -->
+                  </div>
+                  <input class="file-upload" type="file" name="poster" accept="image/*" required />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-8">
+              <div class="mb-3">
+                <label class="form-label">Tên phim</label>
+                <input type="text" class="form-control" name="name" placeholder="Tên phim" required />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Link trailer</label>
+                <input type="text" class="form-control" placeholder="Link trailer" name="trailer" required />
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="mb-3">
+                    <label class="form-label">Thời lượng (Phút)</label>
+                    <input type="number" class="form-control" placeholder="Thời lượng của phim" name="time" required />
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="mb-3">                   
+                    <label class="form-label">Ngày công chiếu</label>
+                    <input type="date" class="form-control" name="openingDay" required />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-12">
+              <div class="mb-3">
+                <label class="form-label">Mô tả</label>
+                <textarea class="form-control" name="description" id="" cols="30" rows="5"></textarea>
+              </div>
+            </div>
+            <div class="col-lg-12">
+              <label class="form-label">Hình ảnh của rạp</label>
+              <div class="input-field">
+                <div class="input-images" style="padding-top: .5rem;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="modal-footer">
+          <a href="#" class="btn btn-link link-secondary" data-bs-dismiss="modal">
+            Hủy
+          </a>
+          <button class="btn btn-primary ms-auto" type="submit">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
+            Thêm rạp mới
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<%- contentFor() %>
+<script>
+  $(document).ready(function(){
+    $('.input-images').imageUploader();
+  });
+  $(document).ready(function () {
+    var readURL = function (input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+          $(".profile-pic").attr("src", e.target.result);
+        };
+        reader.readAsDataURL(input.files[0]);
+      }
+    };
+
+    $(".file-upload").on("change", function () {
+      readURL(this);
+    });
+
+    $(".upload-button").on("click", function () {
+      $(".file-upload").click();
+    });
+  });
+  $("#movieList").on("click", ".destroyMovie", function() {
+    const movieId = $(this).data("value");
+    const objMovie = $(this);
+    const valueAlert = confirm("Lưu ý: Các dữ liệu suất chiếu, hình ảnh liên quan đến phim sẽ bị xóa!");
+    if(!valueAlert) return;
+    $.ajax({
+      url: "/admin/movie/destroy",
+      type: "DELETE",
+      data: {
+        movieId,
+      },
+      success: function (res) {
+        objMovie.closest('tr').remove();
+      },
+    });
+  });
+</script>

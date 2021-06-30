@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
         through: "CinemaMovie",
         foreignKey: "movieId",
         unique: false,
+        onDelete: "cascade",
       });
       this.belongsToMany(models.Room, {
         // through: "Showtime",

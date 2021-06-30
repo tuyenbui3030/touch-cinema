@@ -61,6 +61,7 @@ app.use("/account", require("./routes/account.route"));
 app.use("/admin/signin", require("./routes/admin/signin.route"));
 app.use("/admin", require("./routes/admin/dashboard.route"));
 app.use("/admin/cinema", require("./routes/admin/cinema.route"));
+app.use("/admin/movie", require("./routes/admin/movie.route"));
 
 app.get("/test", (req, res) => {
   res.render("admin/test/test", {

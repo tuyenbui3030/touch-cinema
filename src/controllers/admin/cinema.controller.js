@@ -1,6 +1,7 @@
 const {
   Cinema,
   CinemaPhoto,
+  CinemaMovie,
   Room,
   Typeroom,
   Showtime,
@@ -148,23 +149,31 @@ module.exports = {
         { model: Movie },
       ],
     });
-    const movies = await Movie.findAll({
-      include: [
-        {
-          model: Cinema,
-          where: {
-            unsignedName,
-          },
-        },
-      ],
-    });
+    const movieAll = JSON.parse(JSON.stringify(await Movie.findAll()));
+    const movieItem = JSON.parse(
+      JSON.stringify(
+        await CinemaMovie.findAll({
+          include: [
+            {
+              model: Cinema,
+              where: {
+                unsignedName,
+              },
+            },
+          ],
+        })
+      )
+    ).map((e) => e.movieId);
+
+    const newMovie = movieAll.filter((x) => !movieItem.includes(x.id));
+
     const redirectUrl = req.originalUrl;
     res.render("admin/cinema/detail", {
       moment,
       cinema,
       typeRoom,
       showtimes,
-      movies,
+      newMovie,
       redirectUrl,
       layout: "admin/layouts/layout.ejs",
     });
@@ -325,6 +334,14 @@ module.exports = {
     const resultNewShowtime = await Promise.all(actionNewShowtime);
     res.redirect(redirectUrl);
   },
+  newMovie: async (req, res) => {
+    const { cinemaId, movieId, redirectUrl } = req.body;
+    const result = await CinemaMovie.create({
+      movieId,
+      cinemaId,
+    });
+    res.redirect(redirectUrl);
+  },
   destroyroom: async (req, res) => {
     const result = await Room.destroy({
       where: {
@@ -337,6 +354,15 @@ module.exports = {
     const result = await Showtime.destroy({
       where: {
         uuid: req.body.showtimeId,
+      },
+    });
+    res.json(result);
+  },
+  destroymovie: async (req, res) => {
+    const result = await CinemaMovie.destroy({
+      where: {
+        cinemaId: req.body.cinemaId,
+        movieId: req.body.movieId,
       },
     });
     res.json(result);

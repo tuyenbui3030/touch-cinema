@@ -11,7 +11,10 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       this.belongsTo(models.User, { foreignKey: "userId" });
 
-      this.belongsTo(models.Showtime, { foreignKey: "showtimeId" });
+      this.belongsTo(models.Showtime, {
+        foreignKey: "showtimeId",
+        onDelete: "cascade",
+      });
       this.hasMany(models.Ticket, {
         foreignKey: "bookingId",
         onDelete: "cascade",
