@@ -1,3 +1,4 @@
+
 <div class="page-wrapper">
   <div class="container-xl">
     <!-- Page title -->
@@ -5,7 +6,7 @@
       <div class="row align-items-center">
         <div class="col">
           <h2 class="page-title">
-            Quản lý hệ thống rạp
+            Quản lý phim
           </h2>
         </div>
         <!-- Page title actions -->
@@ -68,6 +69,63 @@
             </div>
           </div>
         </div>
+        <form action="" method="post">
+          <div class="row align-items-center">
+            <div class="col-12">
+              <div class="row">
+                <div class="col-md-3">
+                  <div class="mb-3">
+                    <label class="form-label">Từ ngày</label>
+                    <input type="date" class="form-control" name="timeFrom" id="timeFrom" placeholder="Tên rạp" value="" required>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="mb-3">
+                    <label class="form-label">Đến ngày</label>
+                    <input type="date" class="form-control" name="timeTo" id="timeTo" placeholder="Tên rạp" value="" required>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="mb-3">
+                    <label class="form-label">Phim</label>
+                    <select class="form-control" name="movieId" id="movieId">
+                      <% movies.forEach(function(movie) { %>
+                        <option value="<%= movie.id %>"><%= movie.name %></option>
+                      <% }); %>
+                    </select>
+                    <!-- <input type="text" class="form-control" name="movieId" id="movieId" placeholder="Tên rạp" required> -->
+                  </div>
+                </div>
+                <div class="col-auto ms-auto d-print-none d-flex align-items-end">
+                  <div class="mb-3">
+                    <a class="btn btn-primary d-sm-inline-block" id="submitStatistical">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                      Thống kê doanh thu
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Page title actions -->
+
+            <div class="col-md-6">
+              <label class="form-label" id="txtReve">Doanh thu</label>
+              <div class="card">
+                <div class="card-body">
+                  <div id="chartRevenue"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label" id="txtAmount">Số lượng vé</label>
+              <div class="card">
+                <div class="card-body">
+                  <div id="chartAmount"></div>
+                </div>
+              </div>
+            </div> 
+          </div>
+        </form>
       </div>
     </div>
   </div>
@@ -154,6 +212,9 @@
 </div>
 
 <%- contentFor() %>
+<%- contentFor('titlePage') %>
+  Quản lý các rạp
+<%- contentFor() %>
 <script>
   $(document).ready(function(){
     $('.input-images').imageUploader();
@@ -193,4 +254,336 @@
       },
     });
   });
+  $(document).on("click", "#submitStatistical", function(e) {
+    const movieId = $("#movieId").val();
+    const timeTo = $("#timeTo").val();
+    const timeFrom = $("#timeFrom").val();
+
+    $.ajax({
+      url: "/admin/statistical/movie",
+      method: "POST",
+      data: {
+        timeFrom,
+        timeTo,
+        movieId,
+      },
+      success: function (res) {
+        $("#txtReve").text(`Doanh thu ${res.labelTotal ? res.labelTotal : '0'} $`);
+        $("#txtAmount").text(`Số vé đã bán ${res.labelCount ? res.labelCount : '0'} vé`);
+        $("#chartRevenue").replaceWith('<div id="chartRevenue"></div>');
+        $("#chartAmount").replaceWith('<div id="chartAmount"></div>');
+
+        const optionsRevenue = {
+          chart: {
+            type: "line",
+            fontFamily: 'inherit',
+            height: 240,
+            parentHeightOffset: 0,
+            toolbar: {
+              show: false,
+            },
+            animations: {
+              enabled: false
+            },
+          },
+          fill: {
+            opacity: 1,
+          },
+          stroke: {
+            width: 2,
+            lineCap: "round",
+            curve: "smooth",
+          },
+          series: [{
+            name: "Doanh thu",
+            data: res.total,
+            // data: [722, 1866, 961, 1108, 1110, 561, 1753, 1815, 0, 1985]
+          }],
+          grid: {
+            padding: {
+              top: -20,
+              right: 0,
+              left: -4,
+              bottom: -4
+            },
+            strokeDashArray: 4,
+            xaxis: {
+              lines: {
+                show: true
+              }
+            },
+          },
+          xaxis: {
+            labels: {
+              padding: 0,
+              datetimeFormatter: {
+                year: 'yyyy',
+                month: 'MMM \'yy',
+                day: 'dd MMM',
+                hour: 'HH:mm'
+              }
+            },
+            tooltip: {
+              enabled: false
+            },
+            type: 'datetime',
+          },
+          yaxis: {
+            labels: {
+              padding: 4
+            },
+          },
+          // labels: [
+          //   '2020-06-21T00:00:00.000Z', '2020-06-22T00:00:00.000Z', '2020-06-23T00:00:00.000Z', '2020-06-24T00:00:00.000Z', '2020-06-25T00:00:00.000Z', '2020-06-26T00:00:00.000Z', '2020-06-27T00:00:00.000Z', '2020-06-28T00:00:00.000Z', '2020-06-29T00:00:00.000Z', '2020-06-30T00:00:00.000Z'
+          // ],
+          labels: res.date,
+          colors: ["#3b5998", "#1da1f2", "#ea4c89"],
+          legend: {
+            show: true,
+            position: 'bottom',
+            offsetY: 12,
+            markers: {
+              width: 10,
+              height: 10,
+              radius: 100,
+            },
+            itemMargin: {
+              horizontal: 8,
+              vertical: 8
+            },
+          },
+        }
+        const chartRevenue = new ApexCharts(document.querySelector("#chartRevenue"), optionsRevenue);
+        chartRevenue.render();
+        const optionsAmount = {
+          chart: {
+            type: "line",
+            fontFamily: 'inherit',
+            height: 240,
+            parentHeightOffset: 0,
+            toolbar: {
+              show: false,
+            },
+            animations: {
+              enabled: false
+            },
+          },
+          fill: {
+            opacity: 1,
+          },
+          stroke: {
+            width: 2,
+            lineCap: "round",
+            curve: "smooth",
+          },
+          series: [{
+            name: "Số lượng",
+            data: res.count,
+            // data: [13281, 8521, 15038, 9983, 15417, 8888, 7052, 14270, 0, 5214]
+          }],
+          grid: {
+            padding: {
+              top: -20,
+              right: 0,
+              left: -4,
+              bottom: -4
+            },
+            strokeDashArray: 4,
+            xaxis: {
+              lines: {
+                show: true
+              }
+            },
+          },
+          xaxis: {
+            labels: {
+              padding: 0,
+            },
+            tooltip: {
+              enabled: false
+            },
+            type: 'datetime',
+          },
+          yaxis: {
+            labels: {
+              padding: 4
+            },
+          },
+          // labels: [
+          //   '2020-06-21T00:00:00.000Z', '2020-06-22T00:00:00.000Z', '2020-06-23T00:00:00.000Z', '2020-06-24T00:00:00.000Z', '2020-06-25T00:00:00.000Z', '2020-06-26T00:00:00.000Z', '2020-06-27T00:00:00.000Z', '2020-06-28T00:00:00.000Z', '2020-06-29T00:00:00.000Z', '2020-06-30T00:00:00.000Z'
+          // ],
+          labels: res.date,
+          colors: ["#3b5998", "#1da1f2", "#ea4c89"],
+          legend: {
+            show: true,
+            position: 'bottom',
+            offsetY: 12,
+            markers: {
+              width: 10,
+              height: 10,
+              radius: 100,
+            },
+            itemMargin: {
+              horizontal: 8,
+              vertical: 8
+            },
+          },
+        }
+        const chartAmount = new ApexCharts(document.querySelector("#chartAmount"), optionsAmount);
+        chartAmount.render();
+      },
+    });
+
+  });
+  const optionsRevenue = {
+          chart: {
+            type: "line",
+            fontFamily: 'inherit',
+            height: 240,
+            parentHeightOffset: 0,
+            toolbar: {
+              show: false,
+            },
+            animations: {
+              enabled: false
+            },
+          },
+          fill: {
+            opacity: 1,
+          },
+          stroke: {
+            width: 2,
+            lineCap: "round",
+            curve: "smooth",
+          },
+          series: [{
+            name: "Doanh thu",
+            data: []
+          }],
+          grid: {
+            padding: {
+              top: -20,
+              right: 0,
+              left: -4,
+              bottom: -4
+            },
+            strokeDashArray: 4,
+            xaxis: {
+              lines: {
+                show: true
+              }
+            },
+          },
+          xaxis: {
+            labels: {
+              padding: 0,
+              datetimeFormatter: {
+                year: 'yyyy',
+                month: 'MMM \'yy',
+                day: 'dd MMM',
+                hour: 'HH:mm'
+              }
+            },
+            tooltip: {
+              enabled: false
+            },
+            type: 'datetime',
+          },
+          yaxis: {
+            labels: {
+              padding: 4
+            },
+          },
+
+          labels: [],
+          colors: ["#3b5998", "#1da1f2", "#ea4c89"],
+          legend: {
+            show: true,
+            position: 'bottom',
+            offsetY: 12,
+            markers: {
+              width: 10,
+              height: 10,
+              radius: 100,
+            },
+            itemMargin: {
+              horizontal: 8,
+              vertical: 8
+            },
+          },
+        }
+        const chartRevenue = new ApexCharts(document.querySelector("#chartRevenue"), optionsRevenue);
+        chartRevenue.render();
+        const optionsAmount = {
+          chart: {
+            type: "line",
+            fontFamily: 'inherit',
+            height: 240,
+            parentHeightOffset: 0,
+            toolbar: {
+              show: false,
+            },
+            animations: {
+              enabled: false
+            },
+          },
+          fill: {
+            opacity: 1,
+          },
+          stroke: {
+            width: 2,
+            lineCap: "round",
+            curve: "smooth",
+          },
+          series: [{
+            name: "Số lượng",
+            data: []
+          }],
+          grid: {
+            padding: {
+              top: -20,
+              right: 0,
+              left: -4,
+              bottom: -4
+            },
+            strokeDashArray: 4,
+            xaxis: {
+              lines: {
+                show: true
+              }
+            },
+          },
+          xaxis: {
+            labels: {
+              padding: 0,
+            },
+            tooltip: {
+              enabled: false
+            },
+            type: 'datetime',
+          },
+          yaxis: {
+            labels: {
+              padding: 4
+            },
+          },
+          labels: [],
+          colors: ["#3b5998", "#1da1f2", "#ea4c89"],
+          legend: {
+            show: true,
+            position: 'bottom',
+            offsetY: 12,
+            markers: {
+              width: 10,
+              height: 10,
+              radius: 100,
+            },
+            itemMargin: {
+              horizontal: 8,
+              vertical: 8
+            },
+          },
+        }
+        const chartAmount = new ApexCharts(document.querySelector("#chartAmount"), optionsAmount);
+        chartAmount.render();
 </script>

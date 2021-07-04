@@ -370,7 +370,9 @@
 </div>
 
 <%- contentFor() %>
-
+<%- contentFor('titlePage') %>
+  Quản lý cụm rạp <%= cinema.name %>
+<%- contentFor() %>
 <script>
   $(document).on("click", ".destroyRoom", function() {
     const roomId = $(this).data("value");

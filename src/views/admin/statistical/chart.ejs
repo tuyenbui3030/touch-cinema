@@ -1,0 +1,87 @@
+<div id="chartStatistical">
+	<div class="card-body">
+		<div id="chart-social-referrals" class="chart-lg"></div>
+	</div>
+</div>
+<script src="/public/admin/asset/libs/apexcharts/dist/apexcharts.min.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+  	window.ApexCharts && (new ApexCharts(document.getElementById('chart-social-referrals'), {
+  		chart: {
+  			type: "line",
+  			fontFamily: 'inherit',
+  			height: 240,
+  			parentHeightOffset: 0,
+  			toolbar: {
+  				show: false,
+  			},
+  			animations: {
+  				enabled: false
+  			},
+  		},
+  		fill: {
+  			opacity: 1,
+  		},
+  		stroke: {
+  			width: 2,
+  			lineCap: "round",
+  			curve: "smooth",
+  		},
+  		series: [{
+  			name: "Số lượng",
+  			data: [13281, 8521, 15038, 9983, 15417, 8888, 7052, 14270, 0, 5214]
+  		},{
+  			name: "Doanh thu",
+  			data: [722, 1866, 961, 1108, 1110, 561, 1753, 1815, 0, 1985]
+  		}],
+  		grid: {
+  			padding: {
+  				top: -20,
+  				right: 0,
+  				left: -4,
+  				bottom: -4
+  			},
+  			strokeDashArray: 4,
+  			xaxis: {
+  				lines: {
+  					show: true
+  				}
+  			},
+  		},
+  		xaxis: {
+  			labels: {
+  				padding: 0,
+  			},
+  			tooltip: {
+  				enabled: false
+  			},
+  			type: 'datetime',
+  		},
+  		yaxis: {
+  			labels: {
+  				padding: 4
+  			},
+  		},
+  		labels: [
+  			'2020-06-21T00:00:00.000Z', '2020-06-22T00:00:00.000Z', '2020-06-23T00:00:00.000Z', '2020-06-24T00:00:00.000Z', '2020-06-25T00:00:00.000Z', '2020-06-26T00:00:00.000Z', '2020-06-27T00:00:00.000Z', '2020-06-28T00:00:00.000Z', '2020-06-29T00:00:00.000Z', '2020-06-30T00:00:00.000Z'
+  		],
+  		colors: ["#3b5998", "#1da1f2", "#ea4c89"],
+  		legend: {
+  			show: true,
+  			position: 'bottom',
+  			offsetY: 12,
+  			markers: {
+  				width: 10,
+  				height: 10,
+  				radius: 100,
+  			},
+  			itemMargin: {
+  				horizontal: 8,
+  				vertical: 8
+  			},
+  		},
+  	
+		})).render();
+  });
+</script>

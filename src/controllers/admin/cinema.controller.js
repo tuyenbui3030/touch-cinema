@@ -6,6 +6,8 @@ const {
   Typeroom,
   Showtime,
   Movie,
+  Ticket,
+  Booking,
 } = require("../../models");
 const { Sequelize, Op } = require("sequelize");
 const { sequelize } = require("../../models");
@@ -366,5 +368,54 @@ module.exports = {
       },
     });
     res.json(result);
+  },
+  test: async (req, res) => {
+    // const cinema = await Ticket.findAll({
+    //   attributes: ["createdAt"],
+    //   where: {
+    //     createdAt: {
+    //       [Op.between]: [
+    //         "2021-07-02 16:17:41.699+07",
+    //         "2021-07-03 16:17:41.699+07",
+    //       ],
+    //     },
+    //   },
+    //   // group: "createdAt",
+    //   group: [Sequelize.fn("date_trunc", "day", Sequelize.col("createdAt"))],
+    // });
+    const cinema = await Ticket.findAll({
+      attributes: [
+        [Sequelize.fn("SUM", Sequelize.col("Ticket.price")), "total"],
+        [Sequelize.fn("COUNT", Sequelize.col("Ticket.id")), "count"],
+        [
+          Sequelize.fn("date_trunc", "day", Sequelize.col("Ticket.createdAt")),
+          "Date",
+        ],
+      ],
+      where: {
+        createdAt: {
+          [Op.between]: ["2021-07-01", "2021-07-03"],
+        },
+      },
+      include: [
+        {
+          model: Booking,
+          attributes: [],
+          include: [
+            {
+              model: Showtime,
+              attributes: [],
+              where: {
+                movieId: 1,
+              },
+            },
+          ],
+          required: true,
+        },
+      ],
+      order: [[Sequelize.literal('"Date"'), "ASC"]],
+      group: "Date",
+    });
+    res.json(cinema);
   },
 };

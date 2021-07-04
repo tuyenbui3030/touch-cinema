@@ -1,3 +1,5 @@
+
+
 <div class="page-wrapper">
   <div class="container-xl">
     <!-- Page title -->
@@ -14,7 +16,7 @@
             <a href="#" class="btn btn-primary d-none d-sm-inline-block" data-bs-toggle="modal" data-bs-target="#modal-report">
               <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
               <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-              Thêm hệ thống mới
+              Thêm cụm rạp mới
             </a>
             <a href="#" class="btn btn-primary d-sm-none btn-icon" data-bs-toggle="modal" data-bs-target="#modal-report" aria-label="Create new report">
               <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
@@ -31,13 +33,13 @@
         <div class="col-md-12 col-lg-12">
           <div class="card" style="height: calc(24rem + 10px)">
             <div class="card-header">
-              <h3 class="card-title">Danh sách rạp phim</h3>
+              <h3 class="card-title">Danh sách cụm rạp</h3>
             </div>
             <div class="table-responsive">
               <table class="table card-table table-vcenter" id="cinemaList">
                 <thead>
                   <tr>
-                    <th>Tên rạp</th>
+                    <th>Tên cụm</th>
                     <th>Địa chỉ</th>
                     <th>Số lượng phòng</th>
                     <th>Phim hiện có</th>
@@ -78,6 +80,103 @@
             </div>
           </div>
         </div>
+        <form action="">
+          <!-- <div class="row">
+            <div class="col-md-10">
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="mb-3">
+                    <label class="form-label">Tên phim</label>
+                    <input type="text" class="form-control" name="name" placeholder="Tên rạp" required="">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="mb-3">
+                    <label class="form-label">Tên phim</label>
+                    <input type="text" class="form-control" name="name" placeholder="Tên rạp" required="">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="mb-3">
+                    <label class="form-label">Tên phim</label>
+                    <input type="text" class="form-control" name="name" placeholder="Tên rạp" required="">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="col-md-12">
+                <div class="mb-3">
+                  <label class="form-label"></label>
+                  <input type="text" class="form-control" name="name" placeholder="Tên rạp" required="">
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="card">
+                <div id="chartStatistical">
+                  <div class="card-body">
+                    <div id="chart-social-referrals" class="chart-lg"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> -->
+          <div class="row align-items-center">
+            <div class="col-12">
+              <div class="row">
+                <div class="col-md-3">
+                  <div class="mb-3">
+                    <label class="form-label">Từ ngày</label>
+                    <input type="date" class="form-control" name="timeFrom" id="timeFrom" placeholder="Tên rạp" value="" required>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="mb-3">
+                    <label class="form-label">Đến ngày</label>
+                    <input type="date" class="form-control" name="timeTo" id="timeTo" placeholder="Tên rạp" value="" required>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="mb-3">
+                    <label class="form-label">Cụm rạp</label>
+                    <select class="form-control" name="cinemaId" id="cinemaId">
+                      <% cinemas.forEach(function(cinema) { %>
+                        <option value="<%= cinema.id %>"><%= cinema.name %></option>
+                      <% }); %>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-auto ms-auto d-print-none d-flex align-items-end">
+                  <div class="mb-3">
+                    <a class="btn btn-primary d-sm-inline-block" id="submitStatistical">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                      Thống kê doanh thu
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Page title actions -->
+
+            <div class="col-md-6">
+              <label class="form-label" id="txtReve">Doanh thu</label>
+              <div class="card">
+                <div class="card-body">
+                  <div id="chartRevenue"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label" id="txtAmount">Số lượng đã bán</label>
+              <div class="card">
+                <div class="card-body">
+                  <div id="chartAmount"></div>
+                </div>
+              </div>
+            </div> 
+          </div>
+        </form>
       </div>
     </div>
   </div>
@@ -135,7 +234,171 @@
 </div>
 
 <%- contentFor() %>
+<%- contentFor('titlePage') %>
+  Quản lý cụm rạp
+<%- contentFor() %>
 <script>
+  const renderChart = (res) => {
+    const optionsRevenue = {
+          chart: {
+            type: "line",
+            fontFamily: 'inherit',
+            height: 240,
+            parentHeightOffset: 0,
+            toolbar: {
+              show: false,
+            },
+            animations: {
+              enabled: false
+            },
+          },
+          fill: {
+            opacity: 1,
+          },
+          stroke: {
+            width: 2,
+            lineCap: "round",
+            curve: "smooth",
+          },
+          series: [{
+            name: "Doanh thu",
+            data: res.total,
+            // data: [722, 1866, 961, 1108, 1110, 561, 1753, 1815, 0, 1985]
+          }],
+          grid: {
+            padding: {
+              top: -20,
+              right: 0,
+              left: -4,
+              bottom: -4
+            },
+            strokeDashArray: 4,
+            xaxis: {
+              lines: {
+                show: true
+              }
+            },
+          },
+          xaxis: {
+            labels: {
+              padding: 0,
+              datetimeFormatter: {
+                year: 'yyyy',
+                month: 'MMM \'yy',
+                day: 'dd MMM',
+                hour: 'HH:mm'
+              }
+            },
+            tooltip: {
+              enabled: false
+            },
+            type: 'datetime',
+          },
+          yaxis: {
+            labels: {
+              padding: 4
+            },
+          },
+          // labels: [
+          //   '2020-06-21T00:00:00.000Z', '2020-06-22T00:00:00.000Z', '2020-06-23T00:00:00.000Z', '2020-06-24T00:00:00.000Z', '2020-06-25T00:00:00.000Z', '2020-06-26T00:00:00.000Z', '2020-06-27T00:00:00.000Z', '2020-06-28T00:00:00.000Z', '2020-06-29T00:00:00.000Z', '2020-06-30T00:00:00.000Z'
+          // ],
+          labels: res.date,
+          colors: ["#3b5998", "#1da1f2", "#ea4c89"],
+          legend: {
+            show: true,
+            position: 'bottom',
+            offsetY: 12,
+            markers: {
+              width: 10,
+              height: 10,
+              radius: 100,
+            },
+            itemMargin: {
+              horizontal: 8,
+              vertical: 8
+            },
+          },
+        }
+        const chartRevenue = new ApexCharts(document.querySelector("#chartRevenue"), optionsRevenue);
+        chartRevenue.render();
+        const optionsAmount = {
+          chart: {
+            type: "line",
+            fontFamily: 'inherit',
+            height: 240,
+            parentHeightOffset: 0,
+            toolbar: {
+              show: false,
+            },
+            animations: {
+              enabled: false
+            },
+          },
+          fill: {
+            opacity: 1,
+          },
+          stroke: {
+            width: 2,
+            lineCap: "round",
+            curve: "smooth",
+          },
+          series: [{
+            name: "Số lượng",
+            data: res.count,
+            // data: [13281, 8521, 15038, 9983, 15417, 8888, 7052, 14270, 0, 5214]
+          }],
+          grid: {
+            padding: {
+              top: -20,
+              right: 0,
+              left: -4,
+              bottom: -4
+            },
+            strokeDashArray: 4,
+            xaxis: {
+              lines: {
+                show: true
+              }
+            },
+          },
+          xaxis: {
+            labels: {
+              padding: 0,
+            },
+            tooltip: {
+              enabled: false
+            },
+            type: 'datetime',
+          },
+          yaxis: {
+            labels: {
+              padding: 4
+            },
+          },
+          // labels: [
+          //   '2020-06-21T00:00:00.000Z', '2020-06-22T00:00:00.000Z', '2020-06-23T00:00:00.000Z', '2020-06-24T00:00:00.000Z', '2020-06-25T00:00:00.000Z', '2020-06-26T00:00:00.000Z', '2020-06-27T00:00:00.000Z', '2020-06-28T00:00:00.000Z', '2020-06-29T00:00:00.000Z', '2020-06-30T00:00:00.000Z'
+          // ],
+          labels: res.date,
+          colors: ["#3b5998", "#1da1f2", "#ea4c89"],
+          legend: {
+            show: true,
+            position: 'bottom',
+            offsetY: 12,
+            markers: {
+              width: 10,
+              height: 10,
+              radius: 100,
+            },
+            itemMargin: {
+              horizontal: 8,
+              vertical: 8
+            },
+          },
+        }
+        const chartAmount = new ApexCharts(document.querySelector("#chartAmount"), optionsAmount);
+        chartAmount.render();
+        
+  }
   $(document).ready(function(){
     $('.input-images').imageUploader();
   });
@@ -156,4 +419,30 @@
       },
     });
   });
+  $(document).on("click", "#submitStatistical", function(e) {
+    const cinemaId = $("#cinemaId").val();
+    const timeTo = $("#timeTo").val();
+    const timeFrom = $("#timeFrom").val();
+
+    $.ajax({
+      url: "/admin/statistical/cinema",
+      method: "POST",
+      data: {
+        timeFrom,
+        timeTo,
+        cinemaId,
+      },
+      success: function (res) {
+        $("#txtReve").text(`Doanh thu ${res.labelTotal ? res.labelTotal : '0'} $`);
+        $("#txtAmount").text(`Số vé đã bán ${res.labelCount ? res.labelCount : '0'} vé`);
+        $("#chartRevenue").replaceWith('<div id="chartRevenue"></div>');
+        $("#chartAmount").replaceWith('<div id="chartAmount"></div>');
+        renderChart(res)
+      },
+    });
+
+  });
+
+  renderChart({date:[], count:[], total:[]})
+
 </script>
