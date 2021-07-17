@@ -32,6 +32,8 @@ module.exports = {
     //   ],
     //   group: ["Cinema.id"],
     // });
+    const checkPage = req.originalUrl;
+
     const list = await Cinema.findAll({
       attributes: {
         include: [
@@ -56,6 +58,7 @@ module.exports = {
     res.render("admin/cinema/index", {
       layout: "admin/layouts/layout.ejs",
       cinemas,
+      checkPage,
     });
   },
   newCinema: async (req, res) => {

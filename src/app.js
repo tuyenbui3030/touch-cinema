@@ -54,6 +54,11 @@ app.post("/signout", (req, res) => {
   req.session.passport = false;
   res.redirect("/signin");
 });
+app.post("/admin/signout", (req, res) => {
+  req.logOut();
+  req.session.passport = false;
+  res.redirect("/admin/signin");
+});
 app.use("/cinema", require("./routes/cinema.route"));
 app.use("/movie", require("./routes/movie.route"));
 app.use("/account", require("./routes/account.route"));

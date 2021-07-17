@@ -10,9 +10,12 @@ module.exports = {
   index: async (req, res) => {
     const movies = await Movie.findAll();
     // res.json(movies);
+    const checkPage = req.originalUrl;
+
     res.render("admin/movie/index", {
       movies,
       moment,
+      checkPage,
       layout: "admin/layouts/layout.ejs",
     });
   },
