@@ -10,6 +10,7 @@ module.exports = {
       order: [["openingDay", "ASC"]],
       limit: 8,
     });
+
     res.render("home/index", { movies, openDays });
   },
   checkLogin: async (req, res) => {

@@ -24,8 +24,8 @@ module.exports = {
   //Signin FB
   authenticate: passport.authenticate("facebook", { scope: ["email"] }),
   authenticateRedirect: passport.authenticate("facebook", {
-    // successRedirect: "/",
-    successReturnToOrRedirect: "/",
+    successRedirect: "/",
+    // successReturnToOrRedirect: "/",
     failureRedirect: "/signin",
     failureFlash: "Đăng nhập thất bại, có thể thông tin đã tồn tại",
   }),
@@ -37,15 +37,15 @@ module.exports = {
     ],
   }),
   authenticateGoogleRedirect: passport.authenticate("google", {
-    // successRedirect: "/",
-    successReturnToOrRedirect: "/",
+    successRedirect: "/",
+    // successReturnToOrRedirect: "/",
     failureRedirect: "/signin",
     failureFlash: "Đăng nhập thất bại, có thể thông tin đã tồn tại",
   }),
   //SigninLocal
   singinLocal: passport.authenticate("local", {
-    // successRedirect: "/",
-    successReturnToOrRedirect: "/",
+    successRedirect: "/",
+    // successReturnToOrRedirect: "/",
     failureRedirect: "/signin",
     failureFlash: "Mật khẩu hoặc Email không chính xác",
   }),

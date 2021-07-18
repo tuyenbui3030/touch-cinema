@@ -1,5 +1,6 @@
 const moment = require("moment");
 const qr = require("qrcode");
+const transporter = require("../utils/transport");
 
 const paypal = require("paypal-rest-sdk");
 const client = require("twilio")(
@@ -294,20 +295,30 @@ module.exports = {
         if (error) {
           res.render("booking/cancel");
         } else {
-          // client.messages
-          //   .create({
-          //     body: `Mã đặt chỗ của bạn là: ${req.session.booking.id}. Ghế: ${req.session.booking.seat}. Phòng ${req.session.booking.room} - ${req.session.booking.typeroom}, Rạp ${req.session.booking.cinema}`,
-          //     to: "+84338218374",
-          //     from: "+14083594978",
-          //   })
-          //   .then((message) => console.log(message))
-          //   // here you can implement your fallback code
-          //   .catch((error) => console.log(error));
-          // console.log("===============>", req.session.booking);
-          // console.log(
-          //   `Mã đặt chỗ của bạn là: ${req.session.booking.id}. Ghế: ${req.session.booking.seat}. Phòng ${req.session.booking.room} - ${req.session.booking.typeroom}, ${req.session.booking.cinema}`
-          // );
+          client.messages
+            .create({
+              body: `Mã đặt chỗ của bạn là: ${req.session.booking.id}. Ghế: ${req.session.booking.seat}. Phòng ${req.session.booking.room} - ${req.session.booking.typeroom}, Rạp ${req.session.booking.cinema}`,
+              to: "+84338218374",
+              from: "+14083594978",
+            })
+            .then((message) => console.log(message))
+            // here you can implement your fallback code
+            .catch((error) => console.log(error));
+          console.log("===============>", req.session.booking);
+          console.log(
+            `Mã đặt chỗ của bạn là: ${req.session.booking.id}. Ghế: ${req.session.booking.seat}. Phòng ${req.session.booking.room} - ${req.session.booking.typeroom}, ${req.session.booking.cinema}`
+          );
           console.log(JSON.stringify(payment));
+          await transporter
+            .sendMail({
+              from: "notolistore@gmail.com",
+              to: req.session.passport.user.email,
+              subject: "Verify Account",
+              text: "Click Here to verify",
+              html: `Mã đặt chỗ của bạn là: ${req.session.booking.id}. Ghế: ${req.session.booking.seat}. Phòng ${req.session.booking.room} - ${req.session.booking.typeroom}, ${req.session.booking.cinema}`,
+            })
+            .then(console.log)
+            .catch(console.error);
           const result = await Booking.update(
             {
               status: true,
@@ -371,5 +382,8 @@ module.exports = {
     });
     console.log(destroyResult);
     res.json(destroyResult);
+  },
+  cancel: async (req, res) => {
+    res.render("booking/fail");
   },
 };

@@ -4,6 +4,7 @@ const express = require("express");
 const socketio = require("socket.io");
 require("express-async-errors");
 const path = require("path");
+const { Showtime } = require("./models");
 
 const expressLayouts = require("express-ejs-layouts");
 const cookieSession = require("cookie-session");
@@ -69,10 +70,9 @@ app.use("/admin/cinema", require("./routes/admin/cinema.route"));
 app.use("/admin/movie", require("./routes/admin/movie.route"));
 app.use("/admin/statistical", require("./routes/admin/statistical.route"));
 
-app.get("/test", (req, res) => {
-  res.render("admin/test/test", {
-    layout: "admin/layouts/layout.ejs",
-  });
+app.get("/test", async (req, res) => {
+  const data = await Showtime.findAll();
+  res.json(data);
 });
 app.post("/test", (req, res) => {
   res.send(req.body);

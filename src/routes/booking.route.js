@@ -10,5 +10,6 @@ router.post("/delCart", restrict, bookingController.delCart);
 router.post("/pay", restrict, bookingController.payBooking);
 router.post("/actionPay", bookingController.actionPay);
 router.get("/success", bookingController.success);
+router.get("/cancel", bookingController.cancel);
 
 module.exports = router;

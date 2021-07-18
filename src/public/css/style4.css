@@ -29,7 +29,7 @@
 --------------------------*/
 body,
 html {
-  font-family: "Lato", sans-serif;
+  //font-family: "Lato", sans-serif;
   font-size: 16px;
   line-height: 23px;
   color: #707070;
@@ -70,7 +70,7 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-family: "Poppins", sans-serif;
+  //font-family: "Poppins", sans-serif;
   line-height: 1.1;
   font-weight: 400;
   color: #222222;
@@ -1029,7 +1029,7 @@ a.navbar-brand img {
   font-size: 12px;
   text-align: center;
   line-height: 18px;
-  font-family: "Lato", sans-serif;
+  //font-family: "Lato", sans-serif;
 }
 .cart-look path {
   fill: #fff;
@@ -3091,7 +3091,7 @@ body.active #mobile-nav {
 }
 .prs_footer_cont1_wrapper_4 h5 {
   font-size: 18px;
-  font-family: "Lato", sans-serif;
+  //font-family: "Lato", sans-serif;
   color: rgba(255, 255, 255, 0.57);
   padding-top: 25px;
   float: left;
@@ -3714,7 +3714,7 @@ body.active #mobile-nav {
 .con2,
 .con3,
 .con4 {
-  font-family: "Lato", sans-serif;
+  //font-family: "Lato", sans-serif;
   font-size: 20px;
   color: #fff;
   margin-top: 20px;
@@ -4207,7 +4207,7 @@ body.active #mobile-nav {
   font-size: 14px;
 }
 .prs_mcc_event_title_wrapper h4 {
-  font-family: "Lato", sans-serif;
+  //font-family: "Lato", sans-serif;
   font-size: 14px;
   color: #ff4444;
   padding-top: 15px;
@@ -4292,7 +4292,7 @@ body.active #mobile-nav {
 .prs_mcc_list_left_cont_wrapper h4 {
   color: #ff4444;
   font-size: 16px;
-  font-family: "Lato", sans-serif;
+  //font-family: "Lato", sans-serif;
   padding-top: 10px;
 }
 .prs_mcc_list_bottom_cont_wrapper {
@@ -4668,7 +4668,7 @@ body.active #mobile-nav {
   margin-top: 25px;
 }
 .prs_ms_trailer_slider_right_wrapper h5 {
-  font-family: "Lato", sans-serif;
+  //font-family: "Lato", sans-serif;
   color: #797979;
   font-size: 16px;
   padding-top: 25px;
@@ -4848,7 +4848,7 @@ body.active #mobile-nav {
   font-size: 18px;
   color: #707070;
   padding-top: 50px;
-  font-family: "Lato", sans-serif;
+  //font-family: "Lato", sans-serif;
 }
 .prs_syn_cont_wrapper h4 span {
   color: #000000;
@@ -6119,7 +6119,7 @@ body.active #mobile-nav {
   color: #ff4444;
   padding-top: 15px;
   display: inline-block;
-  font-family: "Lato", sans-serif;
+  //font-family: "Lato", sans-serif;
 }
 .prs_bc_right_about_wrapper h5 a i {
   position: relative;
@@ -6272,7 +6272,7 @@ body.active #mobile-nav {
   font-size: 16px;
   color: #ff4444;
   font-weight: bold;
-  font-family: "Lato", sans-serif;
+  //font-family: "Lato", sans-serif;
   margin-top: 10px;
 }
 .prs_bs_admin_pera_last_wrapper {
@@ -6371,12 +6371,12 @@ body.active #mobile-nav {
   transition: all 0.5s;
 }
 .hs_rs_comment_img_cont_wrapper h2 span {
-  font-family: "Lato", sans-serif;
+  //font-family: "Lato", sans-serif;
   font-size: 14px;
   color: #ff4444;
 }
 .hs_rs_comment_img_cont_wrapper h2 a {
-  font-family: "Lato", sans-serif;
+  //font-family: "Lato", sans-serif;
   font-size: 14px;
   color: #ff4444;
 }
@@ -6646,7 +6646,7 @@ body.active #mobile-nav {
 }
 .prs_es_tabs_wrapper .nav > li > a {
   padding: 25px 65px;
-  font-family: "Poppins", sans-serif;
+  //font-family: "Poppins", sans-serif;
   font-size: 18px;
   text-transform: uppercase;
   font-weight: 600;
@@ -6662,7 +6662,7 @@ body.active #mobile-nav {
   background: #ff4444;
 }
 .prs_es_tabs_wrapper .nav > li > a span {
-  font-family: "Lato", sans-serif;
+  //font-family: "Lato", sans-serif;
   font-size: 16px;
   text-transform: capitalize;
   font-weight: 100;
@@ -6728,7 +6728,7 @@ body.active #mobile-nav {
   font-weight: 600;
 }
 .prs_es_tabs_event_sche_img_cont_wrapper h3 {
-  font-family: "Lato", sans-serif;
+  //font-family: "Lato", sans-serif;
   color: #ff4444;
   font-size: 16px;
   padding-top: 10px;

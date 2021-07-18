@@ -173,6 +173,7 @@ module.exports = {
     const newMovie = movieAll.filter((x) => !movieItem.includes(x.id));
 
     const redirectUrl = req.originalUrl;
+    const checkPage = "/admin/cinema";
     res.render("admin/cinema/detail", {
       moment,
       cinema,
@@ -180,6 +181,7 @@ module.exports = {
       showtimes,
       newMovie,
       redirectUrl,
+      checkPage,
       layout: "admin/layouts/layout.ejs",
     });
   },

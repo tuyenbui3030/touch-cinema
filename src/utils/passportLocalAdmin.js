@@ -17,7 +17,7 @@ const passportLocalAdmin = () => {
           const user = await User.findOne({
             where: {
               email: email,
-              role: 1,
+              // role: 1,
             },
           });
           if (user === null) {

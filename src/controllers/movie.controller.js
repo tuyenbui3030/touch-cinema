@@ -1,5 +1,5 @@
 const moment = require("moment");
-const { Cinema, Showtime, Room } = require("../models");
+const { Cinema, Showtime, Room, Typeroom } = require("../models");
 const { Sequelize, Op } = require("sequelize");
 
 module.exports = {
@@ -43,6 +43,9 @@ module.exports = {
                   { movieId: req.body.movieId },
                 ],
               },
+            },
+            {
+              model: Typeroom,
             },
           ],
         },

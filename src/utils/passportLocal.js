@@ -18,6 +18,7 @@ const initPassportLocal = () => {
             where: {
               email: email,
               verified: true,
+              role: 1,
             },
           });
           if (user === null) {

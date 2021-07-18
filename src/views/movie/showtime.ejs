@@ -54,7 +54,7 @@
                                 <span>
                                   <h4><%= showtime.price %> $</h4>
                                   <p class="asc_pera1">Rạp</p>
-                                  <p class="asc_pera2"><%= room.name %></p>
+                                  <p class="asc_pera2"><%= room.name %> | <%= room.Typeroom.type %></p>
                                 </span>
                                 <a class="booking-seat" href="/booking/seat?showtime=<%=showtime.uuid%>"><%= moment(showtime.timeStart).format("LT") %> </a>
                               </li>

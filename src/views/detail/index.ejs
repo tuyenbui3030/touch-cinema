@@ -73,7 +73,7 @@
 				<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
 					<div class="prs_syn_cont_wrapper">
 						<h3>Giới thiệu</h3>
-						<h4><span>Genre -</span> Action , Reality , Drama, Raching</h4>
+						<!-- <h4><span>Genre -</span> Action , Reality , Drama, Raching</h4> -->
 						<p><%= movie.description %></p>
 					</div>
 				</div>
@@ -123,3 +123,6 @@
 			</div>
 		</div>
 	</div>
+<%- contentFor('titlePage') %>
+  Phim <%= movie.name %>
+<%- contentFor() %>

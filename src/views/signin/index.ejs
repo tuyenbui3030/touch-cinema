@@ -15,7 +15,7 @@
           <input name="password" type="password" required>
         </div>
         <div class="st_form_pop_fp float_left">
-          <h3><a href="#" data-toggle="modal" data-target="#myModa2" target="_blank">Quên mật khẩu?</a></h3>
+          <h3><a href="/signin/forgot">Quên mật khẩu?</a></h3>
         </div>
         <div class="st_form_pop_login_btn float_left">
           <button id="submit-signup" type="submit">ĐĂNG NHẬP</button>
@@ -37,6 +37,9 @@
     </div>  
   </div>
 </div>
+<%- contentFor('titlePage') %>
+  Đăng nhập
+<%- contentFor() %>
 <script>
   $("#singin").on("submit", function() {
     $("#preloader").css('display', 'block');
