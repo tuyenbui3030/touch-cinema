@@ -1,0 +1,3 @@
+Host: http://touch-cinema.herokuapp.com/
+Github: https://github.com/tuyenbui3030/touch-cinema
+Youtube demo: https://youtu.be/lsiel2GKQbM
