@@ -33,7 +33,7 @@ module.exports = {
         email: "tuyenbui3030@gmail.com",
         password:
           "$2a$08$PXtnaBjB4OjgqMh0FRAhSOedkbO.FSrS9hJECD0CiAXqRa8u9c172",
-        role: 0,
+        role: 1,
         verified: true,
         token:
           "3z9XEtOMf5gkUWU3Yzt1Rj6NRnrryz1LUxcknmtBhYrDYCyh56QmzfF61L0BCi1FOygjmPQwUFDFjnY7y7RRH2MbORGX50r6dNOz",
