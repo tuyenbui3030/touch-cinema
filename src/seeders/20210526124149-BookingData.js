@@ -14,40 +14,14 @@ module.exports = {
     const date = new Date();
     const data = [
       {
-        id: "9b52a2c6-4558-46de-ae71-485d8b17992b",
+        id: "f4973a6f-a3b2-4d7f-936c-2ff9be75fa73",
         userId: 1,
-        showtimeId: "9b52a2c6-4558-46de-ae71-485d8b17949a",
-        bookingTime: date,
-        total: 100000,
-        createdAt: date,
-        updatedAt: date,
-      },
-      {
-        id: "9b52a2c6-4558-46de-ae71-485d8b17992c",
-        userId: 2,
-        showtimeId: "9b52a2c6-4558-46de-ae71-485d8b17949a",
-        bookingTime: date,
-        total: 100000,
-        createdAt: date,
-        updatedAt: date,
-      },
-      {
-        id: "9b52a2c6-4558-46de-ae71-485d8b17992d",
-        userId: 1,
-        showtimeId: "9b52a2c6-4558-46de-ae71-485d8b17949a",
-        bookingTime: date,
-        total: 100000,
-        createdAt: date,
-        updatedAt: date,
-      },
-      {
-        id: "9b52a2c6-4558-46de-ae71-485d8b17992e",
-        userId: 2,
-        showtimeId: "9b52a2c6-4558-46de-ae71-485d8b17949a",
-        bookingTime: date,
-        total: 100000,
-        createdAt: date,
-        updatedAt: date,
+        showtimeId: "f544a2ce-71eb-4f40-94ec-1e0307a54748",
+        bookingTime: "2021-08-25T16:12:47.396Z",
+        status: true,
+        total: 20,
+        createdAt: "2021-08-25T16:12:47.398Z",
+        updatedAt: "2021-08-25T16:15:58.030Z",
       },
     ];
     await queryInterface.bulkInsert("Bookings", data, {});

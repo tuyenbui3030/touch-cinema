@@ -13,24 +13,24 @@ module.exports = {
      */
     const date = new Date();
     const data = [
+      // {
+      //   facebookId: "2940568766184344",
+      //   fullname: "Bùi Quang Tuyến",
+      //   phone: "0836988085",
+      //   email: "tuyenstacks@gmail.com",
+      //   password:
+      //     "$2a$08$8PNz4mIw7PRdfT5xhfLD6eQLjOMrDlWuJW9huGCDdRpH4hzgdY.ve",
+      //   role: 0,
+      //   verified: true,
+      //   token:
+      //     "Sc0HBCSESNVB0qEGy7Yy63HMvHmm4XO3GlNrCHsiPkTpdjJZNmnM7onwSTkee6Eo0gpbjpcP6UIAX5B2cPzj3ji7HFSNSrB9kvMV",
+      //   createdAt: date,
+      //   updatedAt: date,
+      // },
       {
-        facebookId: "2940568766184344",
         fullname: "Bùi Quang Tuyến",
-        phone: "0836988085",
-        email: "tuyenstacks@gmail.com",
-        password:
-          "$2a$08$8PNz4mIw7PRdfT5xhfLD6eQLjOMrDlWuJW9huGCDdRpH4hzgdY.ve",
-        role: 0,
-        verified: true,
-        token:
-          "Sc0HBCSESNVB0qEGy7Yy63HMvHmm4XO3GlNrCHsiPkTpdjJZNmnM7onwSTkee6Eo0gpbjpcP6UIAX5B2cPzj3ji7HFSNSrB9kvMV",
-        createdAt: date,
-        updatedAt: date,
-      },
-      {
-        fullname: "Bùi Quang Tuyến",
-        phone: "0338218374",
-        email: "tuyenbui3030@gmail.com",
+        phone: "0338218373",
+        email: "admin@admin.com",
         password:
           "$2a$08$PXtnaBjB4OjgqMh0FRAhSOedkbO.FSrS9hJECD0CiAXqRa8u9c172",
         role: 1,

@@ -4,7 +4,7 @@ const express = require("express");
 const socketio = require("socket.io");
 require("express-async-errors");
 const path = require("path");
-const { Showtime } = require("./models");
+const { Showtime, Booking, Ticket } = require("./models");
 
 const expressLayouts = require("express-ejs-layouts");
 const cookieSession = require("cookie-session");
@@ -71,7 +71,7 @@ app.use("/admin/movie", require("./routes/admin/movie.route"));
 app.use("/admin/statistical", require("./routes/admin/statistical.route"));
 
 app.get("/test", async (req, res) => {
-  const data = await Showtime.findAll();
+  const data = await Ticket.findAll();
   res.json(data);
 });
 app.post("/test", (req, res) => {
