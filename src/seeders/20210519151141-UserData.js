@@ -28,12 +28,25 @@ module.exports = {
       //   updatedAt: date,
       // },
       {
-        fullname: "Bùi Quang Tuyến",
+        fullname: "Admin",
         phone: "0338218373",
         email: "admin@admin.com",
         password:
           "$2a$08$PXtnaBjB4OjgqMh0FRAhSOedkbO.FSrS9hJECD0CiAXqRa8u9c172",
         role: 1,
+        verified: true,
+        token:
+          "3z9XEtOMf5gkUWU3Yzt1Rj6NRnrryz1LUxcknmtBhYrDYCyh56QmzfF61L0BCi1FOygjmPQwUFDFjnY7y7RRH2MbORGX50r6dNOz",
+        createdAt: date,
+        updatedAt: date,
+      },
+      {
+        fullname: "Bùi Quang Tuyến",
+        phone: "0836988086",
+        email: "test@gmail.com",
+        password:
+          "$2a$08$PXtnaBjB4OjgqMh0FRAhSOedkbO.FSrS9hJECD0CiAXqRa8u9c172",
+        role: 0,
         verified: true,
         token:
           "3z9XEtOMf5gkUWU3Yzt1Rj6NRnrryz1LUxcknmtBhYrDYCyh56QmzfF61L0BCi1FOygjmPQwUFDFjnY7y7RRH2MbORGX50r6dNOz",
